@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Siva Veginati — Lead Full-Stack Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0d1f3c;
+  --navy-soft:#1a3254;
+  --slate:#475569;
+  --slate-light:#94a3b8;
+  --blue-accent:#2563eb;
+  --white:#ffffff;
+  --gray-50:#f9fafb;
+  --gray-100:#f3f4f6;
+  --gray-200:#e5e7eb;
+  --gray-300:#d1d5db;
+  --text:#111827;
+  --text-2:#374151;
+  --text-3:#6b7280;
+  --ff:'Plus Jakarta Sans',sans-serif;
+  --fs:'Lora',serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--text);font-family:var(--ff);font-size:15px;line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--gray-100)}
+::-webkit-scrollbar-thumb{background:var(--blue-accent);border-radius:4px}
+
+/* ─── PROGRESS ─── */
+#bar{position:fixed;top:0;left:0;height:3px;background:var(--blue-accent);z-index:1000;width:0;transition:width .08s linear}
+
+/* ─── NAV ─── */
+header{
+  position:fixed;top:3px;left:0;right:0;z-index:200;
+  background:var(--navy);
+  height:60px;display:flex;align-items:center;
+  padding:0 5vw;
+  justify-content:space-between;
+}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-mark{
+  width:36px;height:36px;border-radius:6px;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;color:#fff;letter-spacing:0.5px;
+}
+.logo-text{color:rgba(255,255,255,0.9);font-size:14px;font-weight:500;letter-spacing:.3px}
+.logo-sub{color:rgba(255,255,255,0.4);font-size:11px;font-weight:300;letter-spacing:.5px}
+nav{display:flex;align-items:center;gap:4px}
+nav a{
+  color:rgba(255,255,255,0.55);text-decoration:none;
+  font-size:13px;font-weight:400;letter-spacing:.3px;
+  padding:6px 14px;border-radius:5px;
+  transition:color .18s,background .18s;
+}
+nav a:hover{color:#fff;background:rgba(255,255,255,0.08)}
+.nav-hire{
+  margin-left:12px;padding:7px 18px;
+  background:var(--blue-accent);color:#fff;
+  border-radius:6px;font-size:13px;font-weight:500;
+  text-decoration:none;letter-spacing:.3px;
+  transition:background .18s,transform .12s;
+}
+.nav-hire:hover{background:#1d4ed8;transform:translateY(-1px)}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;padding-top:60px;
+  background:var(--gray-50);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  position:relative;
+}
+.hero-inner{
+  display:flex;flex-direction:column;align-items:center;
+  padding:4rem 2rem 0;
+  gap:0;
+  flex:1;justify-content:center;
+}
+/* avatar circle */
+.avatar-wrap{
+  width:160px;height:160px;border-radius:50%;
+  background:var(--white);
+  border:4px solid var(--white);
+  box-shadow:0 0 0 1px var(--gray-200),0 8px 32px rgba(0,0,0,0.08);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:2rem;
+  position:relative;
+  overflow:hidden;
+}
+.avatar-initials{
+  font-family:var(--fs);font-size:3rem;font-weight:400;
+  color:var(--navy);letter-spacing:-1px;
+  font-style:italic;
+}
+.status-dot{
+  position:absolute;bottom:10px;right:10px;
+  width:14px;height:14px;border-radius:50%;
+  background:#22c55e;border:2.5px solid var(--white);
+}
+/* heading */
+.hero-tag{
+  font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--blue-accent);margin-bottom:14px;
+}
+.hero-name{
+  font-family:var(--fs);font-size:clamp(2.8rem,6vw,4.5rem);
+  font-weight:500;color:var(--navy);letter-spacing:-1px;
+  line-height:1;margin-bottom:10px;
+}
+.hero-role{
+  font-size:16px;font-weight:400;color:var(--slate);
+  margin-bottom:22px;letter-spacing:.2px;
+}
+.hero-divider{
+  width:40px;height:2px;background:var(--blue-accent);
+  border-radius:2px;margin:0 auto 22px;
+}
+.hero-bio{
+  font-size:15px;color:var(--text-3);line-height:1.8;
+  max-width:560px;margin:0 auto 30px;font-weight:400;
+}
+.hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.btn-solid{
+  padding:10px 24px;background:var(--navy);color:#fff;
+  border-radius:7px;font-size:13px;font-weight:500;letter-spacing:.3px;
+  text-decoration:none;transition:background .18s,transform .12s;
+  display:inline-flex;align-items:center;gap:6px;border:none;cursor:pointer;
+}
+.btn-solid:hover{background:var(--navy-soft);transform:translateY(-1px)}
+.btn-outline{
+  padding:10px 24px;background:transparent;color:var(--navy);
+  border:1.5px solid var(--gray-300);border-radius:7px;
+  font-size:13px;font-weight:500;letter-spacing:.3px;text-decoration:none;
+  transition:border-color .18s,color .18s;display:inline-flex;align-items:center;gap:6px;
+}
+.btn-outline:hover{border-color:var(--navy);color:var(--navy)}
+/* companies */
+.hero-companies{
+  margin-bottom:0;display:flex;flex-direction:column;align-items:center;gap:10px;
+  padding:0 2rem;
+}
+.companies-label{font-size:11px;color:var(--text-3);letter-spacing:1.5px;text-transform:uppercase}
+.companies-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.company-badge{
+  font-size:11px;font-weight:500;color:var(--slate);
+  padding:4px 12px;background:var(--white);
+  border:1px solid var(--gray-200);border-radius:20px;letter-spacing:.3px;
+}
+/* stats bar */
+.stats-bar{
+  width:100%;border-top:1px solid var(--gray-200);
+  background:var(--white);
+  display:flex;margin-top:3rem;
+}
+.stat-cell{
+  flex:1;padding:20px 16px;text-align:center;
+  border-right:1px solid var(--gray-200);
+}
+.stat-cell:last-child{border-right:none}
+.stat-n{
+  font-family:var(--fs);font-size:2rem;font-weight:500;
+  color:var(--navy);line-height:1;
+}
+.stat-n em{font-style:normal;color:var(--blue-accent);font-size:1.2rem}
+.stat-l{font-size:10px;font-weight:500;color:var(--text-3);letter-spacing:1.2px;text-transform:uppercase;margin-top:4px}
+
+/* ─── SECTION SHARED ─── */
+.section{padding:72px 5vw;border-top:1px solid var(--gray-200)}
+.sec-label{
+  font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--blue-accent);margin-bottom:8px;
+}
+h2{
+  font-family:var(--fs);font-size:clamp(1.8rem,3vw,2.4rem);
+  font-weight:500;color:var(--navy);letter-spacing:-.5px;line-height:1.1;
+  margin-bottom:8px;
+}
+.sec-desc{font-size:14px;color:var(--text-3);max-width:500px;line-height:1.7;margin-bottom:40px}
+.sec-head{margin-bottom:40px}
+
+/* ─── SKILLS ─── */
+#skills{background:var(--gray-50)}
+.skills-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1px;background:var(--gray-200);border:1px solid var(--gray-200);
+  border-radius:10px;overflow:hidden;
+}
+.skill-card{
+  background:var(--white);padding:24px;
+  transition:background .15s;
+}
+.skill-card:hover{background:var(--gray-50)}
+.sk-icon{
+  width:36px;height:36px;border-radius:8px;
+  background:var(--gray-100);border:1px solid var(--gray-200);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;margin-bottom:14px;
+}
+.sk-cat{font-size:10px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--blue-accent);margin-bottom:4px}
+.sk-title{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:12px}
+.sk-chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{
+  font-size:11px;font-weight:500;
+  padding:3px 9px;border-radius:4px;letter-spacing:.2px;
+  background:var(--gray-100);color:var(--slate);
+  border:1px solid var(--gray-200);
+}
+.chip.primary{background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe}
+
+/* ─── EXPERIENCE ─── */
+.exp-timeline{display:flex;flex-direction:column;gap:0}
+.exp-item{
+  display:grid;grid-template-columns:220px 1fr;
+  border-top:1px solid var(--gray-200);
+  transition:background .15s;
+}
+.exp-item:first-child{border-top:none}
+.exp-item:hover{background:var(--gray-50)}
+.exp-left{
+  padding:28px 24px 28px 0;
+  border-right:1px solid var(--gray-200);
+}
+.exp-period{font-size:11px;font-weight:500;color:var(--blue-accent);letter-spacing:.5px;margin-bottom:6px}
+.exp-company{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:2px}
+.exp-loc{font-size:11px;color:var(--text-3);letter-spacing:.3px}
+.exp-right{padding:28px 0 28px 28px}
+.exp-title{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:14px}
+.exp-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+.exp-list li{
+  font-size:13.5px;color:var(--text-2);line-height:1.7;
+  padding-left:16px;position:relative;
+}
+.exp-list li::before{
+  content:'';position:absolute;left:0;top:9px;
+  width:4px;height:4px;border-radius:50%;background:var(--blue-accent);
+}
+.tech-pills{display:flex;flex-wrap:wrap;gap:5px}
+.tp{
+  font-size:10px;font-weight:500;padding:2px 8px;
+  border-radius:3px;border:1px solid var(--gray-200);
+  color:var(--text-3);background:var(--white);letter-spacing:.2px;
+}
+
+/* ─── PROJECTS ─── */
+#projects{background:var(--navy)}
+#projects .sec-label{color:#93c5fd}
+#projects h2{color:#fff}
+#projects .sec-desc{color:rgba(255,255,255,.4)}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);border-radius:10px;overflow:hidden}
+.proj-card{
+  background:var(--navy);padding:28px;
+  position:relative;transition:background .18s;
+  border-top:3px solid transparent;
+}
+.proj-card:hover{background:var(--navy-soft)}
+.proj-card.c1{border-top-color:var(--blue-accent)}
+.proj-card.c2{border-top-color:#10b981}
+.proj-card.c3{border-top-color:#f59e0b}
+.proj-card.c4{border-top-color:#8b5cf6}
+.proj-idx{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px}
+.proj-title{font-family:var(--fs);font-size:18px;font-weight:500;color:#fff;margin-bottom:10px;line-height:1.3}
+.proj-desc{font-size:13px;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:16px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:5px}
+.ptag{font-size:10px;font-weight:500;padding:3px 9px;border-radius:3px;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.45);letter-spacing:.3px}
+
+/* ─── EDUCATION ─── */
+#education{background:var(--gray-50)}
+.edu-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.edu-card{
+  background:var(--white);border:1px solid var(--gray-200);
+  border-radius:10px;padding:28px;
+  display:flex;gap:18px;align-items:flex-start;
+  transition:border-color .18s,box-shadow .18s;
+}
+.edu-card:hover{border-color:var(--blue-accent);box-shadow:0 4px 20px rgba(37,99,235,.07)}
+.edu-icon{
+  width:44px;height:44px;border-radius:8px;flex-shrink:0;
+  background:#eff6ff;border:1px solid #bfdbfe;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+}
+.edu-badge{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue-accent);margin-bottom:5px}
+.edu-degree{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:3px}
+.edu-school{font-size:13px;color:var(--text-2);margin-bottom:3px}
+.edu-year{font-size:11px;color:var(--text-3);letter-spacing:.3px}
+
+/* ─── CONTACT ─── */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-heading{font-family:var(--fs);font-size:22px;font-weight:500;color:var(--navy);margin-bottom:10px}
+.contact-sub{font-size:14px;color:var(--text-3);line-height:1.75;margin-bottom:28px}
+.contact-links{display:flex;flex-direction:column;gap:0}
+.cl{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 0;border-bottom:1px solid var(--gray-200);
+  text-decoration:none;transition:padding-left .18s;
+}
+.cl:hover{padding-left:6px}
+.cl-icon{
+  width:36px;height:36px;border-radius:7px;
+  background:var(--gray-100);border:1px solid var(--gray-200);
+  display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;
+  transition:background .18s,border-color .18s;
+}
+.cl:hover .cl-icon{background:#eff6ff;border-color:#bfdbfe}
+.cl-lbl{font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-3)}
+.cl-val{font-size:13px;color:var(--navy);font-weight:500}
+/* form */
+.cform{display:flex;flex-direction:column;gap:14px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-3)}
+.fg input,.fg textarea,.fg select{
+  font-family:var(--ff);font-size:13px;color:var(--text);
+  background:var(--white);border:1.5px solid var(--gray-200);
+  border-radius:7px;padding:10px 13px;outline:none;
+  transition:border-color .18s;resize:none;font-weight:400;
+}
+.fg input:focus,.fg textarea:focus{border-color:var(--blue-accent)}
+.fg textarea{min-height:110px}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--navy);padding:24px 5vw;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+}
+.fc{font-size:12px;color:rgba(255,255,255,.35);letter-spacing:.3px}
+.fc span{color:rgba(255,255,255,.6)}
+.fl{display:flex;gap:20px}
+.fl a{font-size:12px;color:rgba(255,255,255,.35);text-decoration:none;letter-spacing:.3px;transition:color .18s}
+.fl a:hover{color:rgba(255,255,255,.8)}
+
+/* ─── REVEAL ─── */
+.fade{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.fade.in{opacity:1;transform:none}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:860px){
+  header{padding:0 4vw}
+  nav{display:none}
+  .section{padding:52px 5vw}
+  .exp-item{grid-template-columns:1fr}
+  .exp-left{border-right:none;border-bottom:1px solid var(--gray-200);padding:20px 0}
+  .exp-right{padding:20px 0}
+  .contact-wrap{grid-template-columns:1fr;gap:36px}
+  .stats-bar{flex-wrap:wrap}
+  .stat-cell{min-width:50%;border-bottom:1px solid var(--gray-200)}
+}
+</style>
+</head>
+<body>
+
+<div id="bar"></div>
+
+<!-- HEADER -->
+<header>
+  <a class="logo" href="#">
+    <div class="logo-mark">SV</div>
+    <div>
+      <div class="logo-text">Siva Veginati</div>
+      <div class="logo-sub">Lead Full-Stack Engineer</div>
+    </div>
+  </a>
+  <nav>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a href="mailto:sivavegi04@gmail.com" class="nav-hire">Hire Me</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <div class="avatar-wrap fade">
+      <div class="avatar-initials">SV</div>
+      <div class="status-dot"></div>
+    </div>
+
+    <div class="hero-tag fade">Lead Full-Stack Engineer · 10 Years Experience</div>
+
+    <h1 class="hero-name fade">Siva Veginati</h1>
+
+    <div class="hero-role fade">Angular · React · .NET · Azure — Wilmington, DE</div>
+
+    <div class="hero-divider fade"></div>
+
+    <p class="hero-bio fade">
+      Enterprise-grade full-stack engineer with a decade of experience modernizing platforms, leading architecture decisions, and delivering scalable systems at CapitalOne, Microsoft, Albertsons, and more.
+    </p>
+
+    <div class="hero-btns fade">
+      <a href="#experience" class="btn-solid">View Experience ↓</a>
+      <a href="mailto:sivavegi04@gmail.com" class="btn-outline">Get In Touch</a>
+    </div>
+
+    <div class="hero-companies fade">
+      <div class="companies-label">Trusted by</div>
+      <div class="companies-row">
+        <span class="company-badge">CapitalOne</span>
+        <span class="company-badge">Microsoft</span>
+        <span class="company-badge">Albertsons</span>
+        <span class="company-badge">ABIM</span>
+        <span class="company-badge">DSW</span>
+        <span class="company-badge">Lam Research</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="stats-bar fade">
+    <div class="stat-cell">
+      <div class="stat-n">10<em>+</em></div>
+      <div class="stat-l">Years Experience</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-n">6</div>
+      <div class="stat-l">Companies</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-n">20<em>+</em></div>
+      <div class="stat-l">Technologies</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-n">3<em>+</em></div>
+      <div class="stat-l">Engineers Mentored</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="sec-head fade">
+    <div class="sec-label">Technical Expertise</div>
+    <h2>Core Competencies</h2>
+    <p class="sec-desc">A full-spectrum stack built over 10 years across frontend, backend, cloud, analytics, and data visualization.</p>
+  </div>
+  <div class="skills-grid fade">
+
+    <div class="skill-card">
+      <div class="sk-icon">⚡</div>
+      <div class="sk-cat">Frontend</div>
+      <div class="sk-title">UI Engineering</div>
+      <div class="sk-chips">
+        <span class="chip primary">Angular 20</span>
+        <span class="chip primary">React</span>
+        <span class="chip primary">TypeScript</span>
+        <span class="chip">RxJS</span>
+        <span class="chip">NgRx / Redux</span>
+        <span class="chip">Signals</span>
+        <span class="chip">Ionic</span>
+        <span class="chip">HTML5 / SCSS</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="sk-icon">🖥</div>
+      <div class="sk-cat">Backend</div>
+      <div class="sk-title">Server & APIs</div>
+      <div class="sk-chips">
+        <span class="chip primary">.NET Core 9</span>
+        <span class="chip primary">Node.js</span>
+        <span class="chip primary">C# / ASP.NET</span>
+        <span class="chip">Entity Framework</span>
+        <span class="chip">REST / ODATA</span>
+        <span class="chip">SQL Server</span>
+        <span class="chip">MongoDB</span>
+        <span class="chip">Express.js</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="sk-icon">🎨</div>
+      <div class="sk-cat">Design Systems</div>
+      <div class="sk-title">UI Libraries</div>
+      <div class="sk-chips">
+        <span class="chip primary">Angular Material</span>
+        <span class="chip primary">Bootstrap 5</span>
+        <span class="chip primary">NZ-Zorro</span>
+        <span class="chip">Material UI</span>
+        <span class="chip">Primeng</span>
+        <span class="chip">Flex Layout</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="sk-icon">📊</div>
+      <div class="sk-cat">Data & Visualization</div>
+      <div class="sk-title">Charts & Grids</div>
+      <div class="sk-chips">
+        <span class="chip primary">AG-Grid</span>
+        <span class="chip primary">D3.js</span>
+        <span class="chip primary">Plotly</span>
+        <span class="chip">Angular Hi-Charts</span>
+        <span class="chip">Power BI</span>
+        <span class="chip">Azure App Insights</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="sk-icon">📡</div>
+      <div class="sk-cat">Analytics</div>
+      <div class="sk-title">Tag Management</div>
+      <div class="sk-chips">
+        <span class="chip primary">Adobe Launch</span>
+        <span class="chip primary">Adobe Analytics</span>
+        <span class="chip primary">Tealium</span>
+        <span class="chip">Google Analytics</span>
+        <span class="chip">Optimizely A/B</span>
+        <span class="chip">Data Layer</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="sk-icon">☁</div>
+      <div class="sk-cat">Cloud & DevOps</div>
+      <div class="sk-title">Infrastructure</div>
+      <div class="sk-chips">
+        <span class="chip primary">Azure Cloud</span>
+        <span class="chip primary">GitHub Actions</span>
+        <span class="chip primary">Azure DevOps</span>
+        <span class="chip">Apache Kafka</span>
+        <span class="chip">CI/CD Pipelines</span>
+        <span class="chip">Agile / Scrum</span>
+        <span class="chip">Git</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="sec-head fade">
+    <div class="sec-label">Career History</div>
+    <h2>Work Experience</h2>
+    <p class="sec-desc">Ten years spanning Fortune 500 companies and specialized tech firms across the United States.</p>
+  </div>
+  <div class="exp-timeline">
+
+    <div class="exp-item fade">
+      <div class="exp-left">
+        <div class="exp-period">Feb 2026 — Present</div>
+        <div class="exp-company">CapitalOne</div>
+        <div class="exp-loc">Wilmington, DE</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">Lead Software Engineer</div>
+        <ul class="exp-list">
+          <li>Built scalable web applications with Angular 20 using standalone components, Signals, and Reactive Forms — reducing change detection overhead and improving maintainability across the codebase.</li>
+          <li>Configured and maintained CI/CD pipelines via GitHub Actions and Azure DevOps, with automated Jest test gates enforcing quality standards before every merge.</li>
+          <li>Led pull request reviews, enforced Angular architecture standards team-wide, and identified anti-patterns in change detection, lazy loading, and reactive form design.</li>
+          <li>Integrated Bloomreach WCM, enabling non-technical stakeholders to update UI content without code deployments — eliminating a recurring development bottleneck.</li>
+          <li>Presented frontend architecture proposals in cross-team technical reviews, driving adoption of Signals-based state handling and OnPush change detection across engineering groups.</li>
+        </ul>
+        <div class="tech-pills">
+          <span class="tp">Angular 20</span><span class="tp">Signals</span><span class="tp">GitHub Actions</span><span class="tp">Azure DevOps</span><span class="tp">Bloomreach WCM</span><span class="tp">Jest</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade">
+      <div class="exp-left">
+        <div class="exp-period">Aug 2025 — Jan 2026</div>
+        <div class="exp-company">ABIM</div>
+        <div class="exp-loc">Malvern, PA</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">Lead Full-Stack Engineer</div>
+        <ul class="exp-list">
+          <li>Led design and development of dynamic, responsive applications using Angular 20, TypeScript, Bootstrap 5, and ng-zorro component library.</li>
+          <li>Established Clean Architecture patterns and SOLID design principles as team-wide standards, reviewing all backend service and API designs to ensure long-term maintainability.</li>
+          <li>Coached 3 junior developers in Angular best practices and TypeScript patterns through weekly design reviews and pairing sessions, measurably reducing bug rates in delivered features.</li>
+          <li>Developed RESTful APIs and microservices using .NET Core 9 and Entity Framework Core 9 with optimized SQL Server stored procedures and LINQ queries.</li>
+        </ul>
+        <div class="tech-pills">
+          <span class="tp">Angular 20</span><span class="tp">.NET Core 9</span><span class="tp">NZ-Zorro</span><span class="tp">Bootstrap 5</span><span class="tp">Entity Framework</span><span class="tp">SQL Server</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade">
+      <div class="exp-left">
+        <div class="exp-period">Aug 2022 — Jul 2025</div>
+        <div class="exp-company">Albertsons</div>
+        <div class="exp-loc">Malvern, PA</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">Senior Full-Stack Engineer</div>
+        <ul class="exp-list">
+          <li>Built front-end applications using Angular 15/17/18 and React with TypeScript and SCSS; contributed to Albertsons' custom Angular Material Design theme.</li>
+          <li>Led integration modernization by replacing point-to-point pipelines with Apache Kafka streaming, decoupling 4+ upstream service dependencies and improving resilience.</li>
+          <li>Implemented end-to-end analytics using Adobe Launch and Adobe Analytics across multiple repositories, enabling comprehensive user behavior insights for marketing teams.</li>
+          <li>Simultaneously led 3 independent workstreams — Search modernization, analytics pipeline, and Kafka integration — delivering each within sprint commitments without dedicated PM support.</li>
+          <li>Designed state management with NgRx (Angular) and Redux (React); developed REST APIs with Node.js and Express.js.</li>
+        </ul>
+        <div class="tech-pills">
+          <span class="tp">Angular 15–18</span><span class="tp">React</span><span class="tp">Apache Kafka</span><span class="tp">Adobe Launch</span><span class="tp">NgRx</span><span class="tp">Node.js</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade">
+      <div class="exp-left">
+        <div class="exp-period">Apr 2021 — Jul 2022</div>
+        <div class="exp-company">Designer Brands (DSW)</div>
+        <div class="exp-loc">Cleveland, OH</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">Software Engineer II</div>
+        <ul class="exp-list">
+          <li>Drove Angular module architecture decisions including NgRx state management strategy, component decomposition, and third-party library evaluation.</li>
+          <li>Implemented A/B testing with Optimizely and integrated Strapi CMS for dynamic content management by business teams.</li>
+          <li>Developed responsive UIs with Angular 11/12/14 and Flex Layout; established unit testing standards using Karma and Jasmine.</li>
+        </ul>
+        <div class="tech-pills">
+          <span class="tp">Angular 11–14</span><span class="tp">NgRx</span><span class="tp">Optimizely</span><span class="tp">Strapi CMS</span><span class="tp">Karma/Jasmine</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade">
+      <div class="exp-left">
+        <div class="exp-period">Nov 2019 — Mar 2021</div>
+        <div class="exp-company">Lam Research</div>
+        <div class="exp-loc">Portland, OR</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">Software Engineer</div>
+        <ul class="exp-list">
+          <li>Designed and built a full MEAN stack application (MongoDB, Express, AngularJS, Node.js) and cross-platform mobile/web apps using the Ionic framework.</li>
+          <li>Used AG-Grid for live data display and D3.js / Plotly for interactive charts; configured Azure Application Insights for telemetry and built Power BI reporting dashboards.</li>
+        </ul>
+        <div class="tech-pills">
+          <span class="tp">MEAN Stack</span><span class="tp">Ionic</span><span class="tp">AG-Grid</span><span class="tp">D3.js</span><span class="tp">Power BI</span><span class="tp">Azure Insights</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade">
+      <div class="exp-left">
+        <div class="exp-period">Apr 2018 — Oct 2019</div>
+        <div class="exp-company">Microsoft</div>
+        <div class="exp-loc">Redmond, WA</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">UI Developer (Full-Stack)</div>
+        <ul class="exp-list">
+          <li>Full-stack development of internal web apps using Angular 5, Entity Framework, SQL Server, and ODATA API, owning frontend architecture to database optimization end-to-end.</li>
+          <li>Configured end-to-end Azure deployment pipelines from development to production; built RESTful APIs through .NET and ODATA.</li>
+        </ul>
+        <div class="tech-pills">
+          <span class="tp">Angular 5</span><span class="tp">.NET / ODATA</span><span class="tp">SQL Server</span><span class="tp">Azure Pipelines</span><span class="tp">Entity Framework</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade">
+      <div class="exp-left">
+        <div class="exp-period">May 2016 — Jan 2018</div>
+        <div class="exp-company">Aplomb Technologies</div>
+        <div class="exp-loc">Edison, NJ</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">UI Developer</div>
+        <ul class="exp-list">
+          <li>Built front-end architecture with Angular 2, TypeScript, and Angular-CLI using OOP methodologies to create reusable, modular components.</li>
+          <li>Developed application logic using C#, ASP.NET MVC, and Entity Framework; deployed to Azure with Git source control.</li>
+        </ul>
+        <div class="tech-pills">
+          <span class="tp">Angular 2</span><span class="tp">C# / ASP.NET</span><span class="tp">Entity Framework</span><span class="tp">Azure</span><span class="tp">SQL Server</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects" style="background:var(--navy);border-top:none">
+  <div class="sec-head fade">
+    <div class="sec-label">Selected Work</div>
+    <h2>Key Projects</h2>
+    <p class="sec-desc">High-impact deliverables from enterprise-scale engagements across 10 years.</p>
+  </div>
+  <div class="proj-grid fade">
+    <div class="proj-card c1">
+      <div class="proj-idx">01 — CapitalOne · 2026</div>
+      <div class="proj-title">Angular 20 Enterprise Platform with Signals Architecture</div>
+      <p class="proj-desc">Architected a scalable platform using Angular Signals and OnPush change detection, with GitHub Actions CI/CD pipelines and automated Jest quality gates — improving team velocity and code standards across all engineering groups.</p>
+      <div class="proj-tags">
+        <span class="ptag">Angular 20</span><span class="ptag">Signals</span><span class="ptag">GitHub Actions</span><span class="ptag">Bloomreach WCM</span><span class="ptag">Jest</span>
+      </div>
+    </div>
+    <div class="proj-card c2">
+      <div class="proj-idx">02 — Albertsons · 2022–2025</div>
+      <div class="proj-title">Kafka Modernization & End-to-End Analytics Pipeline</div>
+      <p class="proj-desc">Replaced legacy point-to-point data pipelines with Apache Kafka streaming, decoupling 4+ upstream service dependencies. Simultaneously delivered a full Adobe Launch / Adobe Analytics pipeline across multiple repositories.</p>
+      <div class="proj-tags">
+        <span class="ptag">Apache Kafka</span><span class="ptag">Adobe Launch</span><span class="ptag">Adobe Analytics</span><span class="ptag">NgRx</span><span class="ptag">Node.js</span>
+      </div>
+    </div>
+    <div class="proj-card c3">
+      <div class="proj-idx">03 — ABIM · 2025</div>
+      <div class="proj-title">Clean Architecture Full-Stack Platform (.NET Core 9)</div>
+      <p class="proj-desc">Led design of a full-stack platform on Angular 20 and .NET Core 9, establishing Clean Architecture and SOLID design principles as team-wide standards, reviewed through structured architecture sessions.</p>
+      <div class="proj-tags">
+        <span class="ptag">Angular 20</span><span class="ptag">.NET Core 9</span><span class="ptag">Entity Framework</span><span class="ptag">SQL Server</span><span class="ptag">NZ-Zorro</span>
+      </div>
+    </div>
+    <div class="proj-card c4">
+      <div class="proj-idx">04 — Lam Research · 2019–2021</div>
+      <div class="proj-title">MEAN Stack Dashboard with AG-Grid & Power BI Reporting</div>
+      <p class="proj-desc">Built a full MEAN stack application from scratch with live AG-Grid data tables, D3.js / Plotly visualizations, Azure Application Insights telemetry capture, and Power BI dashboards for operational reporting.</p>
+      <div class="proj-tags">
+        <span class="ptag">AG-Grid</span><span class="ptag">D3.js</span><span class="ptag">Plotly</span><span class="ptag">Power BI</span><span class="ptag">Azure Insights</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+  <div class="sec-head fade">
+    <div class="sec-label">Academic Background</div>
+    <h2>Education</h2>
+  </div>
+  <div class="edu-cards fade">
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-badge">Graduate Degree</div>
+        <div class="edu-degree">Master of Science — Computer Science</div>
+        <div class="edu-school">University of Central Missouri, Warrensburg, MO</div>
+        <div class="edu-year">Aug 2014 — Dec 2015</div>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon">🏛</div>
+      <div>
+        <div class="edu-badge">Undergraduate Degree</div>
+        <div class="edu-degree">Bachelor of Technology</div>
+        <div class="edu-school">Acharya Nagarjuna University, Guntur, Andhra Pradesh</div>
+        <div class="edu-year">Sep 2010 — Jun 2014</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact" style="background:var(--gray-50)">
+  <div class="sec-head fade">
+    <div class="sec-label">Let's Connect</div>
+    <h2>Get In Touch</h2>
+  </div>
+  <div class="contact-wrap fade">
+    <div>
+      <div class="contact-heading">Open to New Opportunities</div>
+      <p class="contact-sub">Available for senior and lead engineering roles, consulting engagements, and architecture advisory. Based in Wilmington, DE — open to remote, hybrid, or on-site arrangements.</p>
+      <div class="contact-links">
+        <a href="mailto:sivavegi04@gmail.com" class="cl">
+          <div class="cl-icon">✉</div>
+          <div><div class="cl-lbl">Email</div><div class="cl-val">sivavegi04@gmail.com</div></div>
+        </a>
+        <a href="tel:9132323109" class="cl">
+          <div class="cl-icon">☎</div>
+          <div><div class="cl-lbl">Phone</div><div class="cl-val">(913) 232-3109</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/siva-veginati-27a21110a/" target="_blank" class="cl">
+          <div class="cl-icon">in</div>
+          <div><div class="cl-lbl">LinkedIn</div><div class="cl-val">linkedin.com/in/siva-veginati</div></div>
+        </a>
+        <div class="cl">
+          <div class="cl-icon">📍</div>
+          <div><div class="cl-lbl">Location</div><div class="cl-val">Wilmington, DE — Open to Relocation</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="cform">
+      <div class="frow">
+        <div class="fg"><label>Your Name</label><input type="text" placeholder="Jane Smith"/></div>
+        <div class="fg"><label>Your Email</label><input type="email" placeholder="jane@company.com"/></div>
+      </div>
+      <div class="fg"><label>Company</label><input type="text" placeholder="Acme Corp"/></div>
+      <div class="fg"><label>Subject</label><input type="text" placeholder="Lead Engineer role · Consulting inquiry"/></div>
+      <div class="fg"><label>Message</label><textarea placeholder="Tell me about the opportunity or project..."></textarea></div>
+      <button class="btn-solid" style="align-self:flex-start" onclick="alert('Thank you! Connect this form to Formspree or your backend.')">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fc">© 2026 <span>Siva Veginati</span> · Lead Full-Stack Engineer · Wilmington, DE</div>
+  <div class="fl">
+    <a href="#">Top ↑</a>
+    <a href="https://www.linkedin.com/in/siva-veginati-27a21110a/" target="_blank">LinkedIn</a>
+    <a href="mailto:sivavegi04@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+/* progress bar */
+window.addEventListener('scroll',()=>{
+  const d=document.documentElement;
+  document.getElementById('bar').style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';
+});
+/* fade in on scroll */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*80);io.unobserve(e.target)}
+  });
+},{threshold:0.07});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
