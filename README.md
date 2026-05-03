@@ -2,7 +2,7 @@
 
 Personal portfolio website for **Siva Veginati**, Lead Full-Stack Engineer with 10+ years of experience in Angular, React, .NET, and Azure.
 
-🌐 **Live Site:** [https://yourusername.github.io/siva-portfolio](https://yourusername.github.io/siva-portfolio)
+🌐 **Live Site:** [https://sveginati.github.io/siva-portfolio](https://sveginati.github.io/siva-portfolio)
 
 ## Tech Stack Used
 

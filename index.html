@@ -3,11 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Siva Veginati — Lead Full-Stack Engineer</title>
+    <title>Siva Veginati | Lead Full-Stack Engineer</title>
+    <meta
+      name="description"
+      content="Siva Veginati is a lead full-stack engineer building enterprise web platforms with Angular, React, .NET, and Azure."
+    />
+    <meta name="theme-color" content="#0d1f3c" />
+    <meta
+      property="og:title"
+      content="Siva Veginati | Lead Full-Stack Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Enterprise web platforms, architecture leadership, and delivery quality across Angular, React, .NET, and Azure."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;family=Lora:ital,wght@0,400;0,500;1,400&amp;display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" href="avatar.svg" type="image/svg+xml" />
     <style>
       *,
       *::before,
@@ -30,6 +47,8 @@
         --text: #111827;
         --text-2: #374151;
         --text-3: #6b7280;
+        --bg-1: #f7fbff;
+        --bg-2: #eef4fb;
         --ff: "Plus Jakarta Sans", sans-serif;
         --fs: "Lora", serif;
       }
@@ -37,12 +56,90 @@
         scroll-behavior: smooth;
       }
       body {
-        background: var(--white);
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(37, 99, 235, 0.08),
+            transparent 24%
+          ),
+          radial-gradient(
+            circle at top right,
+            rgba(13, 31, 60, 0.08),
+            transparent 22%
+          ),
+          linear-gradient(180deg, var(--bg-1) 0%, #ffffff 18%, #ffffff 100%);
         color: var(--text);
         font-family: var(--ff);
         font-size: 15px;
         line-height: 1.6;
         overflow-x: hidden;
+        position: relative;
+      }
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: auto;
+        pointer-events: none;
+        z-index: -1;
+      }
+      body::before {
+        top: -120px;
+        left: -140px;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(37, 99, 235, 0.08),
+          transparent 70%
+        );
+      }
+      body::after {
+        right: -140px;
+        bottom: 12%;
+        width: 360px;
+        height: 360px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(13, 31, 60, 0.06),
+          transparent 68%
+        );
+      }
+      main {
+        display: block;
+      }
+      a,
+      button,
+      input,
+      textarea,
+      select {
+        -webkit-tap-highlight-color: transparent;
+      }
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible,
+      select:focus-visible {
+        outline: 3px solid rgba(37, 99, 235, 0.35);
+        outline-offset: 2px;
+      }
+      .skip-link {
+        position: absolute;
+        left: 50%;
+        top: 10px;
+        transform: translate(-50%, -180%);
+        background: var(--navy);
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 999px;
+        text-decoration: none;
+        z-index: 2000;
+        transition: transform 0.2s ease;
+      }
+      .skip-link:focus {
+        transform: translate(-50%, 0);
       }
       ::-webkit-scrollbar {
         width: 4px;
@@ -74,12 +171,15 @@
         left: 0;
         right: 0;
         z-index: 200;
-        background: var(--navy);
-        height: 60px;
+        background: rgba(13, 31, 60, 0.94);
+        backdrop-filter: blur(14px);
+        height: 66px;
         display: flex;
         align-items: center;
         padding: 0 5vw;
         justify-content: space-between;
+        overflow: visible;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       }
       .logo {
         display: flex;
@@ -113,33 +213,65 @@
         font-weight: 300;
         letter-spacing: 0.5px;
       }
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
       nav {
         display: flex;
         align-items: center;
         gap: 4px;
       }
       nav a {
-        color: rgba(255, 255, 255, 0.55);
+        color: rgba(255, 255, 255, 0.62);
         text-decoration: none;
         font-size: 13px;
-        font-weight: 400;
+        font-weight: 500;
         letter-spacing: 0.3px;
-        padding: 6px 14px;
-        border-radius: 5px;
+        padding: 8px 14px;
+        border-radius: 999px;
         transition:
           color 0.18s,
-          background 0.18s;
+          background 0.18s,
+          transform 0.18s;
       }
       nav a:hover {
         color: #fff;
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+      .nav-toggle {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.06);
+        color: #fff;
+        border-radius: 999px;
+        font-family: var(--ff);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.7px;
+        text-transform: uppercase;
+        height: 38px;
+        padding: 0 14px;
+        cursor: pointer;
+        transition:
+          background 0.18s,
+          transform 0.18s,
+          border-color 0.18s;
+      }
+      .nav-toggle:hover {
+        background: rgba(255, 255, 255, 0.11);
+        transform: translateY(-1px);
       }
       .nav-hire {
-        margin-left: 12px;
-        padding: 7px 18px;
+        margin-left: 4px;
+        padding: 9px 18px;
         background: var(--blue-accent);
         color: #fff;
-        border-radius: 6px;
+        border-radius: 999px;
         font-size: 13px;
         font-weight: 500;
         text-decoration: none;
@@ -147,6 +279,7 @@
         transition:
           background 0.18s,
           transform 0.12s;
+        white-space: nowrap;
       }
       .nav-hire:hover {
         background: #1d4ed8;
@@ -155,29 +288,57 @@
 
       /* ─── HERO ─── */
       .hero {
-        min-height: 100vh;
-        padding-top: 60px;
-        background: var(--gray-50);
+        min-height: 92vh;
+        padding-top: 88px;
+        padding-bottom: 48px;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.86),
+            rgba(255, 255, 255, 0.94)
+          ),
+          radial-gradient(
+            circle at top left,
+            rgba(37, 99, 235, 0.08),
+            transparent 36%
+          ),
+          var(--bg-1);
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        text-align: center;
+        justify-content: flex-start;
+        text-align: left;
         position: relative;
       }
       .hero-inner {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        padding: 4rem 2rem 0;
-        gap: 0;
+        align-items: stretch;
+        width: min(100%, 1080px);
+        padding: 0 5vw;
+        gap: 24px;
         flex: 1;
-        justify-content: center;
+        justify-content: flex-start;
+      }
+      .hero-panels {
+        display: grid;
+        grid-template-columns: minmax(0, 1.18fr) minmax(360px, 0.82fr);
+        gap: 22px;
+        width: 100%;
+        align-items: stretch;
+      }
+      .hero-identity {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        padding-top: 4px;
+        max-width: 660px;
       }
       /* avatar circle */
       .avatar-wrap {
-        width: 160px;
-        height: 160px;
+        width: 132px;
+        height: 132px;
         border-radius: 50%;
         background: var(--white);
         border: 4px solid var(--white);
@@ -187,9 +348,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 2rem;
+        margin-bottom: 1.15rem;
         position: relative;
         overflow: hidden;
+        align-self: flex-start;
       }
       .avatar-initials {
         font-family: var(--fs);
@@ -211,27 +373,33 @@
       }
       /* heading */
       .hero-tag {
-        font-size: 11px;
+        font-size: 10px;
         font-weight: 500;
-        letter-spacing: 2.5px;
+        letter-spacing: 2px;
         text-transform: uppercase;
         color: var(--blue-accent);
-        margin-bottom: 14px;
+        margin-bottom: 12px;
+        padding: 6px 11px;
+        border: 1px solid rgba(37, 99, 235, 0.14);
+        background: rgba(37, 99, 235, 0.06);
+        border-radius: 999px;
       }
       .hero-name {
         font-family: var(--fs);
-        font-size: clamp(2.8rem, 6vw, 4.5rem);
+        font-size: clamp(2.25rem, 4.1vw, 3.9rem);
         font-weight: 500;
         color: var(--navy);
         letter-spacing: -1px;
-        line-height: 1;
+        line-height: 0.95;
         margin-bottom: 10px;
+        max-width: none;
+        text-wrap: balance;
       }
       .hero-role {
-        font-size: 16px;
-        font-weight: 400;
+        font-size: 14px;
+        font-weight: 500;
         color: var(--slate);
-        margin-bottom: 22px;
+        margin-bottom: 12px;
         letter-spacing: 0.2px;
       }
       .hero-divider {
@@ -242,19 +410,36 @@
         margin: 0 auto 22px;
       }
       .hero-bio {
-        font-size: 15px;
+        font-size: 14px;
         color: var(--text-3);
-        line-height: 1.8;
+        line-height: 1.7;
         max-width: 560px;
-        margin: 0 auto 30px;
+        margin: 0 0 20px;
         font-weight: 400;
       }
       .hero-btns {
         display: flex;
         gap: 10px;
-        justify-content: center;
+        justify-content: flex-start;
         flex-wrap: wrap;
-        margin-bottom: 3rem;
+        margin-bottom: 18px;
+      }
+      .hero-summary-card {
+        margin-bottom: 0;
+        border-radius: 22px;
+        padding: 34px 38px;
+      }
+      .hero-contact-card {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        height: 100%;
+      }
+      .hero-contact-card .contact-actions {
+        margin-top: auto;
+      }
+      #contact {
+        scroll-margin-top: 96px;
       }
       .btn-solid {
         padding: 10px 24px;
@@ -298,6 +483,37 @@
       .btn-outline:hover {
         border-color: var(--navy);
         color: var(--navy);
+      }
+      .hero-snapshot {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        width: min(100%, 900px);
+        margin: 0 auto 24px;
+      }
+      .snapshot-card {
+        text-align: left;
+        background: rgba(255, 255, 255, 0.94);
+        border: 1px solid var(--gray-200);
+        border-radius: 16px;
+        padding: 16px 18px;
+        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+      }
+      .snapshot-label {
+        display: block;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+        color: var(--blue-accent);
+        margin-bottom: 8px;
+      }
+      .snapshot-value {
+        display: block;
+        font-size: 13px;
+        color: var(--navy);
+        line-height: 1.6;
+        font-weight: 600;
       }
       /* companies */
       .hero-companies {
@@ -370,8 +586,9 @@
 
       /* ─── SECTION SHARED ─── */
       .section {
-        padding: 72px 5vw;
+        padding: 80px 5vw;
         border-top: 1px solid var(--gray-200);
+        position: relative;
       }
       .sec-label {
         font-size: 10px;
@@ -393,7 +610,7 @@
       .sec-desc {
         font-size: 14px;
         color: var(--text-3);
-        max-width: 500px;
+        max-width: 640px;
         line-height: 1.7;
         margin-bottom: 40px;
       }
@@ -657,34 +874,40 @@
       }
       .proj-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-        gap: 1px;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: 10px;
-        overflow: hidden;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
       }
       .proj-card {
-        background: var(--navy);
-        padding: 28px;
+        background: rgba(8, 23, 46, 0.92);
+        padding: 26px;
         position: relative;
-        transition: background 0.18s;
-        border-top: 3px solid transparent;
+        transition:
+          background 0.18s,
+          transform 0.18s,
+          border-color 0.18s;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        min-height: 100%;
+        box-shadow: 0 14px 35px rgba(1, 8, 24, 0.16);
       }
       .proj-card:hover {
-        background: var(--navy-soft);
+        background: #102545;
+        transform: translateY(-4px);
       }
       .proj-card.c1 {
-        border-top-color: var(--blue-accent);
+        border-top: 3px solid var(--blue-accent);
       }
       .proj-card.c2 {
-        border-top-color: #10b981;
+        border-top: 3px solid #10b981;
       }
       .proj-card.c3 {
-        border-top-color: #f59e0b;
+        border-top: 3px solid #f59e0b;
       }
       .proj-card.c4 {
-        border-top-color: #8b5cf6;
+        border-top: 3px solid #8b5cf6;
       }
       .proj-idx {
         font-size: 10px;
@@ -692,26 +915,62 @@
         letter-spacing: 2px;
         text-transform: uppercase;
         color: rgba(255, 255, 255, 0.3);
-        margin-bottom: 14px;
       }
       .proj-title {
         font-family: var(--fs);
-        font-size: 18px;
+        font-size: 19px;
         font-weight: 500;
         color: #fff;
-        margin-bottom: 10px;
-        line-height: 1.3;
+        line-height: 1.35;
+        letter-spacing: -0.2px;
       }
-      .proj-desc {
+      .proj-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 4px;
+      }
+      .proj-meta-row {
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .proj-meta-row span {
+        display: block;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+        color: #93c5fd;
+        margin-bottom: 6px;
+      }
+      .proj-meta-row strong {
+        display: block;
         font-size: 13px;
-        color: rgba(255, 255, 255, 0.5);
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.7);
         line-height: 1.75;
-        margin-bottom: 16px;
       }
       .proj-tags {
         display: flex;
         flex-wrap: wrap;
         gap: 5px;
+        margin-top: 2px;
+      }
+      .proj-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: auto;
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.2px;
+        width: fit-content;
+        transition: color 0.18s;
+      }
+      .proj-link:hover {
+        color: #93c5fd;
       }
       .ptag {
         font-size: 10px;
@@ -721,6 +980,55 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
         color: rgba(255, 255, 255, 0.45);
         letter-spacing: 0.3px;
+      }
+
+      /* ─── INSIGHTS ─── */
+      .insights-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+      }
+      .insight-card {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+        transition:
+          transform 0.18s,
+          border-color 0.18s,
+          box-shadow 0.18s;
+      }
+      .insight-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(37, 99, 235, 0.25);
+        box-shadow: 0 14px 32px rgba(37, 99, 235, 0.08);
+      }
+      .insight-kicker {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+        color: var(--blue-accent);
+        margin-bottom: 10px;
+      }
+      .insight-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--navy);
+        line-height: 1.35;
+        margin-bottom: 10px;
+      }
+      .insight-copy {
+        font-size: 13.5px;
+        color: var(--text-3);
+        line-height: 1.75;
+        margin-bottom: 14px;
+      }
+      .insight-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
       }
 
       /* ─── EDUCATION ─── */
@@ -788,8 +1096,8 @@
       /* ─── CONTACT ─── */
       .contact-wrap {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 32px;
         align-items: start;
       }
       .contact-heading {
@@ -853,50 +1161,60 @@
         color: var(--navy);
         font-weight: 500;
       }
-      /* form */
-      .cform {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
+      .contact-panel {
+        position: relative;
       }
-      .frow {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-      }
-      .fg {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-      }
-      .fg label {
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        color: var(--text-3);
-      }
-      .fg input,
-      .fg textarea,
-      .fg select {
-        font-family: var(--ff);
-        font-size: 13px;
-        color: var(--text);
+      .contact-card {
         background: var(--white);
-        border: 1.5px solid var(--gray-200);
-        border-radius: 7px;
-        padding: 10px 13px;
-        outline: none;
-        transition: border-color 0.18s;
-        resize: none;
-        font-weight: 400;
+        border: 1px solid var(--gray-200);
+        border-radius: 18px;
+        padding: 28px;
+        box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04);
       }
-      .fg input:focus,
-      .fg textarea:focus {
-        border-color: var(--blue-accent);
+      .contact-badge {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+        color: var(--blue-accent);
+        margin-bottom: 10px;
       }
-      .fg textarea {
-        min-height: 110px;
+      .contact-card-title {
+        font-family: var(--fs);
+        font-size: 22px;
+        font-weight: 500;
+        color: var(--navy);
+        line-height: 1.28;
+        margin-bottom: 12px;
+      }
+      .contact-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 22px;
+      }
+      .contact-list li {
+        position: relative;
+        padding-left: 18px;
+        font-size: 13.5px;
+        line-height: 1.7;
+        color: var(--text-2);
+      }
+      .contact-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--blue-accent);
+      }
+      .contact-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
       }
 
       /* ─── FOOTER ─── */
@@ -944,17 +1262,85 @@
         opacity: 1;
         transform: none;
       }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+        .fade {
+          opacity: 1;
+          transform: none;
+        }
+      }
 
       /* ─── RESPONSIVE ─── */
       @media (max-width: 860px) {
         header {
           padding: 0 4vw;
         }
+        .header-actions {
+          gap: 8px;
+          margin-left: auto;
+        }
         nav {
+          display: none;
+          position: absolute;
+          top: calc(100% + 10px);
+          left: 4vw;
+          right: 4vw;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 6px;
+          padding: 12px;
+          background: rgba(13, 31, 60, 0.98);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 18px;
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+        }
+        header.nav-open nav {
+          display: flex;
+        }
+        nav a {
+          padding: 10px 14px;
+          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.04);
+        }
+        .nav-toggle {
+          display: inline-flex;
+        }
+        .nav-hire {
           display: none;
         }
         .section {
           padding: 52px 5vw;
+        }
+        .hero {
+          padding-top: 108px;
+          min-height: auto;
+        }
+        .hero-panels {
+          grid-template-columns: 1fr;
+        }
+        .hero-identity {
+          max-width: none;
+          align-items: center;
+          text-align: center;
+        }
+        .hero-contact-card {
+          height: auto;
+        }
+        .hero-name {
+          font-size: clamp(2.1rem, 7vw, 3rem);
+        }
+        .avatar-wrap {
+          align-self: center;
         }
         .exp-item {
           grid-template-columns: 1fr;
@@ -969,14 +1355,65 @@
         }
         .contact-wrap {
           grid-template-columns: 1fr;
-          gap: 36px;
+          gap: 24px;
         }
-        .stats-bar {
+        .overall-summary {
+          grid-template-columns: 1fr;
+          gap: 22px;
+          padding: 28px 24px;
+        }
+        .os-highlights {
           flex-wrap: wrap;
         }
-        .stat-cell {
+        .os-hi {
           min-width: 50%;
-          border-bottom: 1px solid var(--gray-200);
+          padding: 0 12px 12px;
+        }
+        .proj-grid,
+        .insights-grid {
+          grid-template-columns: 1fr;
+        }
+        .contact-card {
+          padding: 24px;
+        }
+        footer {
+          gap: 16px;
+        }
+      }
+      @media (max-width: 560px) {
+        header {
+          height: auto;
+          min-height: 66px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+        .logo-sub {
+          display: none;
+        }
+        .hero-tag {
+          letter-spacing: 1.8px;
+          padding: 6px 10px;
+        }
+        .btn-solid,
+        .btn-outline {
+          width: 100%;
+          justify-content: center;
+        }
+        .hero-btns,
+        .contact-actions {
+          width: 100%;
+          justify-content: center;
+        }
+        .hero-btns .btn-outline,
+        .contact-actions .btn-outline {
+          width: 100%;
+        }
+        .hero-btns .btn-solid,
+        .contact-actions .btn-solid {
+          width: 100%;
+        }
+        .hero-summary-card {
+          padding: 28px 22px;
         }
       }
     </style>
@@ -986,928 +1423,1025 @@
 
     <!-- HEADER -->
     <header>
-      <a class="logo" href="#">
+      <a class="logo" href="#hero" aria-label="Siva Veginati home">
         <div class="logo-mark">SV</div>
         <div>
           <div class="logo-text">Siva Veginati</div>
           <div class="logo-sub">Lead Full-Stack Engineer</div>
         </div>
       </a>
-      <nav>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <a href="mailto:sivavegi04@gmail.com" class="nav-hire">Hire Me</a>
+      <div class="header-actions">
+        <nav id="site-nav" aria-label="Primary">
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#insights">Insights</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-controls="site-nav"
+          aria-expanded="false"
+        >
+          Menu
+        </button>
+        <a href="#experience" class="nav-hire">View Resume</a>
+      </div>
     </header>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-inner">
-        <div class="avatar-wrap fade">
-          <img src="data:image/jpeg;base64,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" alt="Siva Veginati" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;"/>
-          <div class="status-dot"></div>
-        </div>
-
-        <div class="hero-tag fade">
-          Lead Full-Stack Engineer · 10 Years Experience
-        </div>
-
-        <h1 class="hero-name fade">Siva Veginati</h1>
-
-        <div class="hero-role fade">
-          Angular · React · .NET · Azure — Wilmington, DE
-        </div>
-
-        <div class="hero-divider fade"></div>
-
-        <p class="hero-bio fade">
-          Enterprise-grade full-stack engineer with a decade of experience
-          modernizing platforms, leading architecture decisions, and delivering
-          scalable systems at CapitalOne, Microsoft, Albertsons, and more.
-        </p>
-
-        <div class="hero-btns fade">
-          <a href="#experience" class="btn-solid">View Experience ↓</a>
-          <a href="mailto:sivavegi04@gmail.com" class="btn-outline"
-            >Get In Touch</a
-          >
-        </div>
-
-        <div class="hero-companies fade">
-          <div class="companies-label">Trusted by</div>
-          <div class="companies-row">
-            <span class="company-badge">CapitalOne</span>
-            <span class="company-badge">Microsoft</span>
-            <span class="company-badge">Albertsons</span>
-            <span class="company-badge">ABIM</span>
-            <span class="company-badge">DSW</span>
-            <span class="company-badge">Lam Research</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="sec-head fade">
-        <div class="sec-label">Career History</div>
-        <h2>Work Experience</h2>
-        <p class="sec-desc">
-          Ten years spanning Fortune 500 companies and specialized tech firms
-          across the United States.
-        </p>
-      </div>
-
-      <!-- OVERALL SUMMARY BANNER -->
-      <div class="overall-summary fade">
-        <div class="os-left">
-          <div class="os-label">Professional Summary</div>
-          <div class="os-title">
-            10 Years of Enterprise Full-Stack Engineering
-          </div>
-        </div>
-        <div class="os-right">
-          <p>
-            Over a decade, I have progressed from UI Developer to Lead
-            Full-Stack Engineer — building and modernizing enterprise platforms
-            at six organizations across fintech, retail, healthcare, and
-            semiconductor industries. My career is defined by three consistent
-            themes: <strong>architectural leadership</strong> (establishing
-            standards, leading reviews, driving modernization),
-            <strong>full-stack ownership</strong> (Angular to .NET to Azure,
-            end-to-end), and
-            <strong>cross-functional impact</strong> (partnering with product,
-            design, and business stakeholders to deliver resilient, maintainable
-            systems at scale). I have led teams, mentored engineers, replaced
-            legacy infrastructure with modern streaming pipelines, and
-            consistently delivered complex multi-workstream initiatives on time
-            — autonomously and without dedicated project management support.
-          </p>
-          <div class="os-highlights">
-            <div class="os-hi">
-              <span class="os-hi-num">6</span
-              ><span class="os-hi-lbl">Companies</span>
-            </div>
-            <div class="os-hi">
-              <span class="os-hi-num">10+</span
-              ><span class="os-hi-lbl">Years</span>
-            </div>
-            <div class="os-hi">
-              <span class="os-hi-num">3</span
-              ><span class="os-hi-lbl">Engineers Mentored</span>
-            </div>
-            <div class="os-hi">
-              <span class="os-hi-num">4+</span
-              ><span class="os-hi-lbl">Services Decoupled</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="section" id="skills">
-      <div class="sec-head fade">
-        <div class="sec-label">Technical Expertise</div>
-        <h2>Core Competencies</h2>
-        <p class="sec-desc">
-          A full-spectrum stack built over 10 years across frontend, backend,
-          cloud, analytics, and data visualization.
-        </p>
-      </div>
-      <div class="skills-grid fade">
-        <div class="skill-card">
-          <div class="sk-icon">⚡</div>
-          <div class="sk-cat">Frontend</div>
-          <div class="sk-title">UI Engineering</div>
-          <div class="sk-chips">
-            <span class="chip primary">Angular 20</span>
-            <span class="chip primary">React</span>
-            <span class="chip primary">TypeScript</span>
-            <span class="chip">RxJS</span>
-            <span class="chip">NgRx / Redux</span>
-            <span class="chip">Signals</span>
-            <span class="chip">Ionic</span>
-            <span class="chip">HTML5 / SCSS</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="sk-icon">🖥</div>
-          <div class="sk-cat">Backend</div>
-          <div class="sk-title">Server & APIs</div>
-          <div class="sk-chips">
-            <span class="chip primary">.NET Core 9</span>
-            <span class="chip primary">Node.js</span>
-            <span class="chip primary">C# / ASP.NET</span>
-            <span class="chip">Entity Framework</span>
-            <span class="chip">REST / ODATA</span>
-            <span class="chip">SQL Server</span>
-            <span class="chip">MongoDB</span>
-            <span class="chip">Express.js</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="sk-icon">🎨</div>
-          <div class="sk-cat">Design Systems</div>
-          <div class="sk-title">UI Libraries</div>
-          <div class="sk-chips">
-            <span class="chip primary">Angular Material</span>
-            <span class="chip primary">Bootstrap 5</span>
-            <span class="chip primary">NZ-Zorro</span>
-            <span class="chip">Material UI</span>
-            <span class="chip">Primeng</span>
-            <span class="chip">Flex Layout</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="sk-icon">📊</div>
-          <div class="sk-cat">Data & Visualization</div>
-          <div class="sk-title">Charts & Grids</div>
-          <div class="sk-chips">
-            <span class="chip primary">AG-Grid</span>
-            <span class="chip primary">D3.js</span>
-            <span class="chip primary">Plotly</span>
-            <span class="chip">Angular Hi-Charts</span>
-            <span class="chip">Power BI</span>
-            <span class="chip">Azure App Insights</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="sk-icon">📡</div>
-          <div class="sk-cat">Analytics</div>
-          <div class="sk-title">Tag Management</div>
-          <div class="sk-chips">
-            <span class="chip primary">Adobe Launch</span>
-            <span class="chip primary">Adobe Analytics</span>
-            <span class="chip primary">Tealium</span>
-            <span class="chip">Google Analytics</span>
-            <span class="chip">Optimizely A/B</span>
-            <span class="chip">Data Layer</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="sk-icon">☁</div>
-          <div class="sk-cat">Cloud & DevOps</div>
-          <div class="sk-title">Infrastructure</div>
-          <div class="sk-chips">
-            <span class="chip primary">Azure Cloud</span>
-            <span class="chip primary">GitHub Actions</span>
-            <span class="chip primary">Azure DevOps</span>
-            <span class="chip">Apache Kafka</span>
-            <span class="chip">CI/CD Pipelines</span>
-            <span class="chip">Agile / Scrum</span>
-            <span class="chip">Git</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section class="section" id="experience">
-      <div class="exp-timeline">
-        <!-- CAPITALONE -->
-        <div class="exp-item fade">
-          <div class="exp-left">
-            <div class="exp-period">Feb 2026 — Present</div>
-            <div class="exp-company">CapitalOne</div>
-            <div class="exp-loc">Wilmington, DE</div>
-          </div>
-          <div class="exp-right">
-            <div class="exp-title">Lead Software Engineer</div>
-            <div class="exp-summary">
-              Leading frontend architecture at one of the largest US banks —
-              driving Angular 20 adoption, CI/CD quality standards, and
-              Bloomreach CMS integration across enterprise-scale consumer-facing
-              applications.
-            </div>
-            <ul class="exp-list">
-              <li>
-                Architected and built scalable consumer web applications with
-                Angular 20 using standalone components, Signals, and Reactive
-                Forms, significantly reducing change detection overhead and
-                improving long-term maintainability.
-              </li>
-              <li>
-                Configured and maintained CI/CD pipelines via GitHub Actions and
-                Azure DevOps, incorporating automated Jest test gates and code
-                quality checks to enforce standards before every merge to main.
-              </li>
-              <li>
-                Led pull request reviews across the engineering team,
-                identifying and resolving anti-patterns in change detection,
-                lazy loading, and reactive form design to ensure consistent,
-                high-quality code.
-              </li>
-              <li>
-                Integrated Bloomreach Web Content Management (WCM) platform to
-                enable non-technical stakeholders to update UI content
-                dynamically without requiring code deployments — eliminating a
-                recurring development bottleneck.
-              </li>
-              <li>
-                Implemented OnPush change detection and optimized component
-                architecture using Angular Signals, improving application
-                rendering performance measurably across key user flows.
-              </li>
-              <li>
-                Presented frontend architecture proposals and integration design
-                patterns in cross-team technical review sessions, driving
-                adoption of consistent Angular standards across multiple
-                engineering groups.
-              </li>
-              <li>
-                Partnered with product managers and business stakeholders to
-                assess technical feasibility of requirements, presenting
-                tradeoffs and risk assessments during sprint planning and design
-                sessions.
-              </li>
-            </ul>
-            <div class="tech-pills">
-              <span class="tp">Angular 20</span><span class="tp">Signals</span
-              ><span class="tp">GitHub Actions</span
-              ><span class="tp">Azure DevOps</span
-              ><span class="tp">Bloomreach WCM</span><span class="tp">Jest</span
-              ><span class="tp">TypeScript</span><span class="tp">RxJS</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ABIM -->
-        <div class="exp-item fade">
-          <div class="exp-left">
-            <div class="exp-period">Aug 2025 — Jan 2026</div>
-            <div class="exp-company">ABIM</div>
-            <div class="exp-loc">Malvern, PA</div>
-          </div>
-          <div class="exp-right">
-            <div class="exp-title">Lead Full-Stack Engineer</div>
-            <div class="exp-summary">
-              Led full-stack engineering for the American Board of Internal
-              Medicine — establishing Clean Architecture standards, mentoring
-              the engineering team, and delivering a modern .NET Core 9 +
-              Angular 20 platform from the ground up.
-            </div>
-            <ul class="exp-list">
-              <li>
-                Led the design and development of dynamic, responsive web
-                applications using Angular 20, TypeScript, Bootstrap 5, and the
-                ng-zorro component library, optimizing for performance,
-                accessibility, and user experience.
-              </li>
-              <li>
-                Established Clean Architecture patterns and SOLID design
-                principles as team-wide engineering standards, conducting
-                architecture review sessions to evaluate all backend service and
-                API proposals before implementation.
-              </li>
-              <li>
-                Coached 3 junior developers through weekly design reviews,
-                TypeScript pairing sessions, and code quality workshops —
-                measurably reducing bug rates and improving the consistency of
-                delivered features.
-              </li>
-              <li>
-                Developed RESTful APIs and microservices using .NET Core 9,
-                ensuring clean separation of concerns, scalability, and
-                adherence to API design best practices.
-              </li>
-              <li>
-                Implemented Entity Framework Core 9 for ORM, leveraging LINQ
-                queries, database migrations, and optimized data access patterns
-                to support complex data requirements.
-              </li>
-              <li>
-                Designed and tuned complex SQL Server stored procedures, views,
-                and indexes, improving query performance and reducing database
-                load under production traffic.
-              </li>
-              <li>
-                Led sprint planning, code reviews, and deployment cycles within
-                an Agile/Scrum delivery environment, ensuring consistent on-time
-                delivery of features.
-              </li>
-              <li>
-                Optimized Angular build times and bundle size through AOT
-                compilation, code-splitting strategies, and Angular CLI
-                configuration improvements.
-              </li>
-            </ul>
-            <div class="tech-pills">
-              <span class="tp">Angular 20</span
-              ><span class="tp">.NET Core 9</span
-              ><span class="tp">NZ-Zorro</span
-              ><span class="tp">Bootstrap 5</span
-              ><span class="tp">Entity Framework</span
-              ><span class="tp">SQL Server</span
-              ><span class="tp">Clean Architecture</span
-              ><span class="tp">Agile</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ALBERTSONS -->
-        <div class="exp-item fade">
-          <div class="exp-left">
-            <div class="exp-period">Aug 2022 — Jul 2025</div>
-            <div class="exp-company">Albertsons</div>
-            <div class="exp-loc">Malvern, PA</div>
-          </div>
-          <div class="exp-right">
-            <div class="exp-title">Senior Full-Stack Engineer</div>
-            <div class="exp-summary">
-              Drove large-scale integration modernization and analytics platform
-              delivery at one of the US's largest grocery chains — leading Kafka
-              migration, Adobe Launch analytics pipelines, and Search page
-              modernization across 3 simultaneous workstreams.
-            </div>
-            <ul class="exp-list">
-              <li>
-                Developed dynamic, responsive front-end applications using
-                Angular 15/17/18 and React, leveraging TypeScript for type
-                safety and SCSS for modular styling; contributed to Albertsons'
-                custom Angular Material Design theme for consistency across the
-                platform.
-              </li>
-              <li>
-                Led integration modernization by replacing legacy point-to-point
-                data pipelines with Apache Kafka streaming, decoupling 4+
-                upstream service dependencies and significantly improving system
-                resilience and operational efficiency.
-              </li>
-              <li>
-                Implemented end-to-end analytics data capture across multiple
-                repositories using Adobe Launch and Adobe Analytics, providing
-                marketing teams with comprehensive user behavior insights and
-                enabling data-driven decisions.
-              </li>
-              <li>
-                Automated third-party pixel validation as part of the CI/CD
-                release pipeline, reducing manual QA effort and enabling
-                reliable, repeatable deployments across multiple repositories.
-              </li>
-              <li>
-                Simultaneously led 3 independent workstreams — Search page
-                modernization, analytics pipeline, and Kafka integration —
-                delivering each within sprint commitments without dedicated
-                project management support.
-              </li>
-              <li>
-                Designed and implemented state management solutions using NgRx
-                in Angular and Redux in React, while utilizing RxJS for
-                efficient reactive component communication, improving
-                application performance and user experience.
-              </li>
-              <li>
-                Served as frontend technical partner to back-end engineering
-                teams, defining API contract expectations, reviewing integration
-                designs, and identifying performance improvements across team
-                boundaries.
-              </li>
-              <li>
-                Developed REST APIs using Node.js and Express.js to support
-                server-side data capture and reporting for marketing and
-                analytics strategies.
-              </li>
-              <li>
-                Integrated third-party pixels using Adobe Launch for analytics,
-                ensuring accurate cross-repository data tracking and reporting
-                consistency.
-              </li>
-            </ul>
-            <div class="tech-pills">
-              <span class="tp">Angular 15–18</span><span class="tp">React</span
-              ><span class="tp">Apache Kafka</span
-              ><span class="tp">Adobe Launch</span
-              ><span class="tp">Adobe Analytics</span
-              ><span class="tp">NgRx</span><span class="tp">Redux</span
-              ><span class="tp">Node.js</span><span class="tp">Tealium</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- DSW -->
-        <div class="exp-item fade">
-          <div class="exp-left">
-            <div class="exp-period">Apr 2021 — Jul 2022</div>
-            <div class="exp-company">Designer Brands (DSW)</div>
-            <div class="exp-loc">Cleveland, OH</div>
-          </div>
-          <div class="exp-right">
-            <div class="exp-title">Software Engineer II</div>
-            <div class="exp-summary">
-              Contributed to frontend modernization at DSW — driving Angular
-              architecture decisions, implementing A/B testing frameworks, and
-              building CMS-driven content experiences for one of the largest US
-              footwear retailers.
-            </div>
-            <ul class="exp-list">
-              <li>
-                Drove Angular module architecture decisions including NgRx state
-                management strategy, component decomposition, and third-party
-                library evaluation — improving maintainability and reducing
-                overall bundle size.
-              </li>
-              <li>
-                Designed and built user interfaces using Angular 11/12/14 with
-                Bootstrap for responsive layouts, enhancing existing HTML5,
-                CSS3, and TypeScript implementations.
-              </li>
-              <li>
-                Implemented A/B testing with Optimizely for UI variations,
-                enabling data-driven product decisions and improving conversion
-                rates through real user analysis.
-              </li>
-              <li>
-                Integrated Strapi CMS for content management, empowering the
-                business team to update site content dynamically without
-                engineering involvement.
-              </li>
-              <li>
-                Enhanced site performance and user experience by replacing
-                heavyweight third-party libraries with custom, reusable in-house
-                functions — reducing bundle size and improving load time.
-              </li>
-              <li>
-                Advanced UI development using Angular Flex Layout, focusing on
-                modular, accessible, and responsive component design for
-                enhanced cross-device user experience.
-              </li>
-              <li>
-                Established and enforced unit testing standards using Karma and
-                Jasmine, setting meaningful coverage thresholds and reviewing
-                test quality during code reviews.
-              </li>
-              <li>
-                Collaborated closely with cross-functional teams and
-                implementation partners, translating business requirements into
-                structured, testable technical implementations.
-              </li>
-            </ul>
-            <div class="tech-pills">
-              <span class="tp">Angular 11–14</span><span class="tp">NgRx</span
-              ><span class="tp">Optimizely</span
-              ><span class="tp">Strapi CMS</span
-              ><span class="tp">Karma/Jasmine</span
-              ><span class="tp">Bootstrap</span
-              ><span class="tp">TypeScript</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- LAM RESEARCH -->
-        <div class="exp-item fade">
-          <div class="exp-left">
-            <div class="exp-period">Nov 2019 — Mar 2021</div>
-            <div class="exp-company">Lam Research</div>
-            <div class="exp-loc">Portland, OR</div>
-          </div>
-          <div class="exp-right">
-            <div class="exp-title">Software Engineer</div>
-            <div class="exp-summary">
-              Built full-stack MEAN applications and cross-platform Ionic mobile
-              apps for semiconductor equipment telemetry and reporting —
-              delivering data-rich dashboards with AG-Grid, D3.js, and Power BI
-              for engineering and operations teams.
-            </div>
-            <ul class="exp-list">
-              <li>
-                Designed, developed, and implemented a full MEAN stack web
-                application (MongoDB, Express.js, AngularJS, Node.js) from
-                scratch, delivering a comprehensive data management and
-                reporting platform for internal engineering teams.
-              </li>
-              <li>
-                Developed and maintained cross-platform mobile and web
-                applications using the Ionic framework, creating custom themes
-                and ensuring full responsiveness across all device sizes using
-                Ionic Grid and Flexbox.
-              </li>
-              <li>
-                Used AG-Grid for displaying live telemetry data in interactive
-                grids, and D3.js and Plotly for building rich, interactive
-                charts and reports for engineering analysis.
-              </li>
-              <li>
-                Configured Azure Application Insights to capture and monitor
-                telemetry data from production systems, enabling proactive
-                performance monitoring and alerting.
-              </li>
-              <li>
-                Created Power BI visualizations and dashboards from database
-                telemetry and operational data, providing actionable insights to
-                engineering and operations leadership.
-              </li>
-              <li>
-                Developed extensive REST APIs using Node.js, Express.js, and
-                MongoDB to support data retrieval and backend processing for all
-                application features.
-              </li>
-              <li>
-                Created interactive mockups using Adobe XD, collaborating
-                directly with end users to gather feedback and drive iterative
-                design improvements.
-              </li>
-              <li>
-                Authored detailed software specification documents for offshore
-                development teams, translating business requirements into
-                implementable technical designs that accelerated cross-timezone
-                delivery.
-              </li>
-            </ul>
-            <div class="tech-pills">
-              <span class="tp">MEAN Stack</span><span class="tp">Ionic</span
-              ><span class="tp">AG-Grid</span><span class="tp">D3.js</span
-              ><span class="tp">Plotly</span><span class="tp">Power BI</span
-              ><span class="tp">Azure Insights</span
-              ><span class="tp">MongoDB</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- MICROSOFT -->
-        <div class="exp-item fade">
-          <div class="exp-left">
-            <div class="exp-period">Apr 2018 — Oct 2019</div>
-            <div class="exp-company">Microsoft</div>
-            <div class="exp-loc">Redmond, WA</div>
-          </div>
-          <div class="exp-right">
-            <div class="exp-title">UI Developer (Full-Stack)</div>
-            <div class="exp-summary">
-              Full-stack engineer at Microsoft — owning end-to-end delivery of
-              internal web applications using Angular 5, .NET ODATA APIs, and
-              SQL Server, while configuring Azure deployment pipelines for
-              consistent, repeatable production releases.
-            </div>
-            <ul class="exp-list">
-              <li>
-                Owned full-stack delivery of internal web applications —
-                designing Angular 5 frontend architecture, building ODATA REST
-                APIs in .NET, and optimizing SQL Server stored procedures and
-                LINQ queries end-to-end.
-              </li>
-              <li>
-                Implemented Angular 5 modular design with a shared module
-                managing all cross-module reusable components, improving code
-                reuse and reducing duplication across the application.
-              </li>
-              <li>
-                Created complex SQL queries, views, functions, and stored
-                procedures in SQL Server, optimizing data retrieval performance
-                through efficient LINQ and query tuning.
-              </li>
-              <li>
-                Configured end-to-end Azure deployment pipelines from
-                development through production, ensuring consistent, repeatable
-                release processes with minimal manual intervention.
-              </li>
-              <li>
-                Built RESTful APIs using .NET and ODATA, exposing structured
-                data endpoints consumed by the Angular frontend and third-party
-                integrations.
-              </li>
-              <li>
-                Used Primeng and Angular Material Design components to deliver
-                polished, consistent UI experiences aligned with Microsoft's
-                internal design standards.
-              </li>
-              <li>
-                Maintained source control repositories using Git, enforcing
-                branching strategies and code review workflows across the team.
-              </li>
-            </ul>
-            <div class="tech-pills">
-              <span class="tp">Angular 5</span
-              ><span class="tp">.NET / ODATA</span
-              ><span class="tp">SQL Server</span
-              ><span class="tp">Azure Pipelines</span
-              ><span class="tp">Entity Framework</span
-              ><span class="tp">Primeng</span><span class="tp">TypeScript</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- APLOMB -->
-        <div class="exp-item fade">
-          <div class="exp-left">
-            <div class="exp-period">May 2016 — Jan 2018</div>
-            <div class="exp-company">Aplomb Technologies</div>
-            <div class="exp-loc">Edison, NJ</div>
-          </div>
-          <div class="exp-right">
-            <div class="exp-title">UI Developer</div>
-            <div class="exp-summary">
-              Started career as a UI Developer building Angular 2 SPAs and
-              ASP.NET MVC applications — establishing a strong foundation in
-              OOP, component architecture, REST API integration, and Azure cloud
-              deployment.
-            </div>
-            <ul class="exp-list">
-              <li>
-                Built scalable front-end architecture using Angular 2,
-                TypeScript, and Angular-CLI — applying OOP methodologies to
-                create reusable, modular components and services across business
-                and UI layers.
-              </li>
-              <li>
-                Developed full application logic using C#, ASP.NET MVC, and
-                Entity Framework, integrating with SQL Server 2008 for data
-                persistence and business rule enforcement.
-              </li>
-              <li>
-                Created RESTful Web APIs for UI data retrieval and integrated
-                them into Angular components, enabling seamless communication
-                between frontend and backend layers.
-              </li>
-              <li>
-                Designed database structures including tables, views, and stored
-                procedures in SQL using Visual Studio 2017, ensuring normalized,
-                performant schemas for application data.
-              </li>
-              <li>
-                Deployed applications on Microsoft Azure for high availability,
-                managing environment configurations and release processes.
-              </li>
-              <li>
-                Adopted Git for version control and Visual Studio Online for
-                development tracking, ensuring full project traceability and
-                collaborative workflow across the team.
-              </li>
-              <li>
-                Leveraged Agile methodology for rapid iterative development,
-                participating in sprint planning, daily standups, and
-                retrospectives to ensure consistent delivery cadence.
-              </li>
-            </ul>
-            <div class="tech-pills">
-              <span class="tp">Angular 2</span
-              ><span class="tp">C# / ASP.NET</span
-              ><span class="tp">Entity Framework</span
-              ><span class="tp">Azure</span><span class="tp">SQL Server</span
-              ><span class="tp">REST APIs</span><span class="tp">Git</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section
-      class="section"
-      id="projects"
-      style="background: var(--navy); border-top: none"
-    >
-      <div class="sec-head fade">
-        <div class="sec-label">Selected Work</div>
-        <h2>Key Projects</h2>
-        <p class="sec-desc">
-          High-impact deliverables from enterprise-scale engagements across 10
-          years.
-        </p>
-      </div>
-      <div class="proj-grid fade">
-        <div class="proj-card c1">
-          <div class="proj-idx">01 — CapitalOne · 2026</div>
-          <div class="proj-title">
-            Angular 20 Enterprise Platform with Signals Architecture
-          </div>
-          <p class="proj-desc">
-            Architected a scalable platform using Angular Signals and OnPush
-            change detection, with GitHub Actions CI/CD pipelines and automated
-            Jest quality gates — improving team velocity and code standards
-            across all engineering groups.
-          </p>
-          <div class="proj-tags">
-            <span class="ptag">Angular 20</span><span class="ptag">Signals</span
-            ><span class="ptag">GitHub Actions</span
-            ><span class="ptag">Bloomreach WCM</span
-            ><span class="ptag">Jest</span>
-          </div>
-        </div>
-        <div class="proj-card c2">
-          <div class="proj-idx">02 — Albertsons · 2022–2025</div>
-          <div class="proj-title">
-            Kafka Modernization & End-to-End Analytics Pipeline
-          </div>
-          <p class="proj-desc">
-            Replaced legacy point-to-point data pipelines with Apache Kafka
-            streaming, decoupling 4+ upstream service dependencies.
-            Simultaneously delivered a full Adobe Launch / Adobe Analytics
-            pipeline across multiple repositories.
-          </p>
-          <div class="proj-tags">
-            <span class="ptag">Apache Kafka</span
-            ><span class="ptag">Adobe Launch</span
-            ><span class="ptag">Adobe Analytics</span
-            ><span class="ptag">NgRx</span><span class="ptag">Node.js</span>
-          </div>
-        </div>
-        <div class="proj-card c3">
-          <div class="proj-idx">03 — ABIM · 2025</div>
-          <div class="proj-title">
-            Clean Architecture Full-Stack Platform (.NET Core 9)
-          </div>
-          <p class="proj-desc">
-            Led design of a full-stack platform on Angular 20 and .NET Core 9,
-            establishing Clean Architecture and SOLID design principles as
-            team-wide standards, reviewed through structured architecture
-            sessions.
-          </p>
-          <div class="proj-tags">
-            <span class="ptag">Angular 20</span
-            ><span class="ptag">.NET Core 9</span
-            ><span class="ptag">Entity Framework</span
-            ><span class="ptag">SQL Server</span
-            ><span class="ptag">NZ-Zorro</span>
-          </div>
-        </div>
-        <div class="proj-card c4">
-          <div class="proj-idx">04 — Lam Research · 2019–2021</div>
-          <div class="proj-title">
-            MEAN Stack Dashboard with AG-Grid & Power BI Reporting
-          </div>
-          <p class="proj-desc">
-            Built a full MEAN stack application from scratch with live AG-Grid
-            data tables, D3.js / Plotly visualizations, Azure Application
-            Insights telemetry capture, and Power BI dashboards for operational
-            reporting.
-          </p>
-          <div class="proj-tags">
-            <span class="ptag">AG-Grid</span><span class="ptag">D3.js</span
-            ><span class="ptag">Plotly</span><span class="ptag">Power BI</span
-            ><span class="ptag">Azure Insights</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section class="section" id="education">
-      <div class="sec-head fade">
-        <div class="sec-label">Academic Background</div>
-        <h2>Education</h2>
-      </div>
-      <div class="edu-cards fade">
-        <div class="edu-card">
-          <div class="edu-icon">🎓</div>
-          <div>
-            <div class="edu-badge">Graduate Degree</div>
-            <div class="edu-degree">Master of Science — Computer Science</div>
-            <div class="edu-school">
-              University of Central Missouri, Warrensburg, MO
-            </div>
-            <div class="edu-year">Aug 2014 — Dec 2015</div>
-          </div>
-        </div>
-        <div class="edu-card">
-          <div class="edu-icon">🏛</div>
-          <div>
-            <div class="edu-badge">Undergraduate Degree</div>
-            <div class="edu-degree">Bachelor of Technology</div>
-            <div class="edu-school">
-              Acharya Nagarjuna University, Guntur, Andhra Pradesh
-            </div>
-            <div class="edu-year">Sep 2010 — Jun 2014</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact" style="background: var(--gray-50)">
-      <div class="sec-head fade">
-        <div class="sec-label">Let's Connect</div>
-        <h2>Get In Touch</h2>
-      </div>
-      <div class="contact-wrap fade">
-        <div>
-          <div class="contact-heading">Open to New Opportunities</div>
-          <p class="contact-sub">
-            Available for senior and lead engineering roles, consulting
-            engagements, and architecture advisory. Based in Wilmington, DE —
-            open to remote, hybrid, or on-site arrangements.
-          </p>
-          <div class="contact-links">
-            <a href="mailto:sivavegi04@gmail.com" class="cl">
-              <div class="cl-icon">✉</div>
-              <div>
-                <div class="cl-lbl">Email</div>
-                <div class="cl-val">sivavegi04@gmail.com</div>
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero" id="hero">
+        <div class="hero-inner">
+          <div class="hero-panels">
+            <div class="hero-identity">
+              <div class="avatar-wrap fade">
+                <img
+                  src="profile.png"
+                  alt="Portrait of Siva Veginati"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center 18%;
+                    border-radius: 50%;
+                  "
+                  loading="eager"
+                  decoding="async"
+                />
+                <div class="status-dot"></div>
               </div>
-            </a>
-            <a href="tel:9132323109" class="cl">
-              <div class="cl-icon">☎</div>
-              <div>
-                <div class="cl-lbl">Phone</div>
-                <div class="cl-val">(913) 232-3109</div>
+
+              <div class="hero-tag fade">
+                Lead Full-Stack Engineer · Enterprise Platforms
               </div>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/siva-veginati-27a21110a/"
-              target="_blank"
-              class="cl"
-            >
-              <div class="cl-icon">in</div>
-              <div>
-                <div class="cl-lbl">LinkedIn</div>
-                <div class="cl-val">linkedin.com/in/siva-veginati</div>
+
+              <h1 class="hero-name fade">Siva Veginati</h1>
+
+              <div class="hero-role fade">
+                Angular · React · .NET · Azure · Wilmington, DE
               </div>
-            </a>
-            <div class="cl">
-              <div class="cl-icon">📍</div>
-              <div>
-                <div class="cl-lbl">Location</div>
-                <div class="cl-val">Wilmington, DE — Open to Relocation</div>
+
+              <p class="hero-bio fade">
+                I help teams ship quickly and stay maintainable across fintech,
+                retail, healthcare, and semiconductor environments.
+              </p>
+
+              <div class="hero-btns fade">
+                <a href="#projects" class="btn-solid">View Case Studies ↓</a>
+                <a href="#experience" class="btn-outline">View Resume</a>
+                <a href="#" class="btn-outline" id="download-resume"
+                  >Download Resume</a
+                >
+              </div>
+            </div>
+
+            <div class="contact-card hero-contact-card fade" id="contact">
+              <div class="contact-links">
+                <a href="mailto:sivavegi04@gmail.com" class="cl">
+                  <div class="cl-icon">✉</div>
+                  <div>
+                    <div class="cl-lbl">Email</div>
+                    <div class="cl-val">sivavegi04@gmail.com</div>
+                  </div>
+                </a>
+                <a href="tel:9132323109" class="cl">
+                  <div class="cl-icon">☎</div>
+                  <div>
+                    <div class="cl-lbl">Phone</div>
+                    <div class="cl-val">(913) 232-3109</div>
+                  </div>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/siva-veginati-27a21110a/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cl"
+                >
+                  <div class="cl-icon">in</div>
+                  <div>
+                    <div class="cl-lbl">LinkedIn</div>
+                    <div class="cl-val">linkedin.com/in/siva-veginati</div>
+                  </div>
+                </a>
+                <div class="cl">
+                  <div class="cl-icon">📍</div>
+                  <div>
+                    <div class="cl-lbl">Location</div>
+                    <div class="cl-val">
+                      Wilmington, DE — Open to Relocation
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="contact-actions">
+                <a href="mailto:sivavegi04@gmail.com" class="btn-solid"
+                  >Email Me</a
+                >
+                <a
+                  href="https://www.linkedin.com/in/siva-veginati-27a21110a/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-outline"
+                  >LinkedIn</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="overall-summary hero-summary-card fade">
+            <div class="os-left">
+              <div class="os-label">Professional Summary</div>
+              <div class="os-title">
+                10 Years of Enterprise Full-Stack Engineering
+              </div>
+            </div>
+            <div class="os-right">
+              <p>
+                Over a decade, I have moved from UI Developer to Lead Full-Stack
+                Engineer, building and modernizing enterprise platforms across
+                fintech, retail, healthcare, and semiconductor teams. The
+                through line has stayed the same: strong architecture,
+                full-stack ownership, and close collaboration with product and
+                business partners.
+              </p>
+              <div class="os-highlights">
+                <div class="os-hi">
+                  <span class="os-hi-num">6</span
+                  ><span class="os-hi-lbl">Companies</span>
+                </div>
+                <div class="os-hi">
+                  <span class="os-hi-num">10+</span
+                  ><span class="os-hi-lbl">Years</span>
+                </div>
+                <div class="os-hi">
+                  <span class="os-hi-num">3</span
+                  ><span class="os-hi-lbl">Engineers Mentored</span>
+                </div>
+                <div class="os-hi">
+                  <span class="os-hi-num">4+</span
+                  ><span class="os-hi-lbl">Services Decoupled</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="cform">
-          <div class="frow">
-            <div class="fg">
-              <label>Your Name</label
-              ><input type="text" placeholder="Jane Smith" />
-            </div>
-            <div class="fg">
-              <label>Your Email</label
-              ><input type="email" placeholder="jane@company.com" />
-            </div>
-          </div>
-          <div class="fg">
-            <label>Company</label><input type="text" placeholder="Acme Corp" />
-          </div>
-          <div class="fg">
-            <label>Subject</label
-            ><input
-              type="text"
-              placeholder="Lead Engineer role · Consulting inquiry"
-            />
-          </div>
-          <div class="fg">
-            <label>Message</label
-            ><textarea
-              placeholder="Tell me about the opportunity or project..."
-            ></textarea>
-          </div>
-          <button
-            class="btn-solid"
-            style="align-self: flex-start"
-            onclick="
-              alert(
-                'Thank you! Connect this form to Formspree or your backend.',
-              )
-            "
-          >
-            Send Message →
-          </button>
+      </section>
+      <!-- SKILLS -->
+      <section class="section" id="skills">
+        <div class="sec-head fade">
+          <div class="sec-label">Technical Expertise</div>
+          <h2>Core Competencies</h2>
+          <p class="sec-desc">
+            A full-spectrum stack built over 10 years across frontend, backend,
+            cloud, analytics, and data visualization.
+          </p>
         </div>
-      </div>
-    </section>
+        <div class="skills-grid fade">
+          <div class="skill-card">
+            <div class="sk-icon">⚡</div>
+            <div class="sk-cat">Frontend</div>
+            <div class="sk-title">UI Engineering</div>
+            <div class="sk-chips">
+              <span class="chip primary">Angular 20</span>
+              <span class="chip primary">React</span>
+              <span class="chip primary">TypeScript</span>
+              <span class="chip">RxJS</span>
+              <span class="chip">NgRx / Redux</span>
+              <span class="chip">Signals</span>
+              <span class="chip">Ionic</span>
+              <span class="chip">HTML5 / SCSS</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="sk-icon">🖥</div>
+            <div class="sk-cat">Backend</div>
+            <div class="sk-title">Server &amp; APIs</div>
+            <div class="sk-chips">
+              <span class="chip primary">.NET Core 9</span>
+              <span class="chip primary">Node.js</span>
+              <span class="chip primary">C# / ASP.NET</span>
+              <span class="chip">Entity Framework</span>
+              <span class="chip">REST / ODATA</span>
+              <span class="chip">SQL Server</span>
+              <span class="chip">MongoDB</span>
+              <span class="chip">Express.js</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="sk-icon">🎨</div>
+            <div class="sk-cat">Design Systems</div>
+            <div class="sk-title">UI Libraries</div>
+            <div class="sk-chips">
+              <span class="chip primary">Angular Material</span>
+              <span class="chip primary">Bootstrap 5</span>
+              <span class="chip primary">NZ-Zorro</span>
+              <span class="chip">Material UI</span>
+              <span class="chip">Primeng</span>
+              <span class="chip">Flex Layout</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="sk-icon">📊</div>
+            <div class="sk-cat">Data &amp; Visualization</div>
+            <div class="sk-title">Charts &amp; Grids</div>
+            <div class="sk-chips">
+              <span class="chip primary">AG-Grid</span>
+              <span class="chip primary">D3.js</span>
+              <span class="chip primary">Plotly</span>
+              <span class="chip">Angular Hi-Charts</span>
+              <span class="chip">Power BI</span>
+              <span class="chip">Azure App Insights</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="sk-icon">📡</div>
+            <div class="sk-cat">Analytics</div>
+            <div class="sk-title">Tag Management</div>
+            <div class="sk-chips">
+              <span class="chip primary">Adobe Launch</span>
+              <span class="chip primary">Adobe Analytics</span>
+              <span class="chip primary">Tealium</span>
+              <span class="chip">Google Analytics</span>
+              <span class="chip">Optimizely A/B</span>
+              <span class="chip">Data Layer</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="sk-icon">☁</div>
+            <div class="sk-cat">Cloud &amp; DevOps</div>
+            <div class="sk-title">Infrastructure</div>
+            <div class="sk-chips">
+              <span class="chip primary">Azure Cloud</span>
+              <span class="chip primary">GitHub Actions</span>
+              <span class="chip primary">Azure DevOps</span>
+              <span class="chip">Apache Kafka</span>
+              <span class="chip">CI/CD Pipelines</span>
+              <span class="chip">Agile / Scrum</span>
+              <span class="chip">Git</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section class="section" id="experience">
+        <div class="exp-timeline">
+          <!-- CAPITALONE -->
+          <div class="exp-item fade">
+            <div class="exp-left">
+              <div class="exp-period">Feb 2026 — Present</div>
+              <div class="exp-company">CapitalOne</div>
+              <div class="exp-loc">Wilmington, DE</div>
+            </div>
+            <div class="exp-right">
+              <div class="exp-title">Lead Software Engineer</div>
+              <div class="exp-summary">
+                Leading frontend architecture at one of the largest US banks —
+                driving Angular 20 adoption, CI/CD quality standards, and
+                Bloomreach CMS integration across enterprise-scale
+                consumer-facing applications.
+              </div>
+              <ul class="exp-list">
+                <li>
+                  Architected and built scalable consumer web applications with
+                  Angular 20 using standalone components, Signals, and Reactive
+                  Forms, significantly reducing change detection overhead and
+                  improving long-term maintainability.
+                </li>
+                <li>
+                  Configured and maintained CI/CD pipelines via GitHub Actions
+                  and Azure DevOps, incorporating automated Jest test gates and
+                  code quality checks to enforce standards before every merge to
+                  main.
+                </li>
+                <li>
+                  Led pull request reviews across the engineering team,
+                  identifying and resolving anti-patterns in change detection,
+                  lazy loading, and reactive form design to ensure consistent,
+                  high-quality code.
+                </li>
+                <li>
+                  Integrated Bloomreach Web Content Management (WCM) platform to
+                  enable non-technical stakeholders to update UI content
+                  dynamically without requiring code deployments — eliminating a
+                  recurring development bottleneck.
+                </li>
+                <li>
+                  Implemented OnPush change detection and optimized component
+                  architecture using Angular Signals, improving application
+                  rendering performance measurably across key user flows.
+                </li>
+                <li>
+                  Presented frontend architecture proposals and integration
+                  design patterns in cross-team technical review sessions,
+                  driving adoption of consistent Angular standards across
+                  multiple engineering groups.
+                </li>
+                <li>
+                  Partnered with product managers and business stakeholders to
+                  assess technical feasibility of requirements, presenting
+                  tradeoffs and risk assessments during sprint planning and
+                  design sessions.
+                </li>
+              </ul>
+              <div class="tech-pills">
+                <span class="tp">Angular 20</span><span class="tp">Signals</span
+                ><span class="tp">GitHub Actions</span
+                ><span class="tp">Azure DevOps</span
+                ><span class="tp">Bloomreach WCM</span
+                ><span class="tp">Jest</span><span class="tp">TypeScript</span
+                ><span class="tp">RxJS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ABIM -->
+          <div class="exp-item fade">
+            <div class="exp-left">
+              <div class="exp-period">Aug 2025 — Jan 2026</div>
+              <div class="exp-company">ABIM</div>
+              <div class="exp-loc">Malvern, PA</div>
+            </div>
+            <div class="exp-right">
+              <div class="exp-title">Lead Full-Stack Engineer</div>
+              <div class="exp-summary">
+                Led full-stack engineering for the American Board of Internal
+                Medicine — establishing Clean Architecture standards, mentoring
+                the engineering team, and delivering a modern .NET Core 9 +
+                Angular 20 platform from the ground up.
+              </div>
+              <ul class="exp-list">
+                <li>
+                  Led the design and development of dynamic, responsive web
+                  applications using Angular 20, TypeScript, Bootstrap 5, and
+                  the ng-zorro component library, optimizing for performance,
+                  accessibility, and user experience.
+                </li>
+                <li>
+                  Established Clean Architecture patterns and SOLID design
+                  principles as team-wide engineering standards, conducting
+                  architecture review sessions to evaluate all backend service
+                  and API proposals before implementation.
+                </li>
+                <li>
+                  Coached 3 junior developers through weekly design reviews,
+                  TypeScript pairing sessions, and code quality workshops —
+                  measurably reducing bug rates and improving the consistency of
+                  delivered features.
+                </li>
+                <li>
+                  Developed RESTful APIs and microservices using .NET Core 9,
+                  ensuring clean separation of concerns, scalability, and
+                  adherence to API design best practices.
+                </li>
+                <li>
+                  Implemented Entity Framework Core 9 for ORM, leveraging LINQ
+                  queries, database migrations, and optimized data access
+                  patterns to support complex data requirements.
+                </li>
+                <li>
+                  Designed and tuned complex SQL Server stored procedures,
+                  views, and indexes, improving query performance and reducing
+                  database load under production traffic.
+                </li>
+                <li>
+                  Led sprint planning, code reviews, and deployment cycles
+                  within an Agile/Scrum delivery environment, ensuring
+                  consistent on-time delivery of features.
+                </li>
+                <li>
+                  Optimized Angular build times and bundle size through AOT
+                  compilation, code-splitting strategies, and Angular CLI
+                  configuration improvements.
+                </li>
+              </ul>
+              <div class="tech-pills">
+                <span class="tp">Angular 20</span
+                ><span class="tp">.NET Core 9</span
+                ><span class="tp">NZ-Zorro</span
+                ><span class="tp">Bootstrap 5</span
+                ><span class="tp">Entity Framework</span
+                ><span class="tp">SQL Server</span
+                ><span class="tp">Clean Architecture</span
+                ><span class="tp">Agile</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ALBERTSONS -->
+          <div class="exp-item fade">
+            <div class="exp-left">
+              <div class="exp-period">Aug 2022 — Jul 2025</div>
+              <div class="exp-company">Albertsons</div>
+              <div class="exp-loc">Malvern, PA</div>
+            </div>
+            <div class="exp-right">
+              <div class="exp-title">Senior Full-Stack Engineer</div>
+              <div class="exp-summary">
+                Drove large-scale integration modernization and analytics
+                platform delivery at one of the US's largest grocery chains —
+                leading Kafka migration, Adobe Launch analytics pipelines, and
+                Search page modernization across 3 simultaneous workstreams.
+              </div>
+              <ul class="exp-list">
+                <li>
+                  Developed dynamic, responsive front-end applications using
+                  Angular 15/17/18 and React, leveraging TypeScript for type
+                  safety and SCSS for modular styling; contributed to
+                  Albertsons' custom Angular Material Design theme for
+                  consistency across the platform.
+                </li>
+                <li>
+                  Led integration modernization by replacing legacy
+                  point-to-point data pipelines with Apache Kafka streaming,
+                  decoupling 4+ upstream service dependencies and significantly
+                  improving system resilience and operational efficiency.
+                </li>
+                <li>
+                  Implemented end-to-end analytics data capture across multiple
+                  repositories using Adobe Launch and Adobe Analytics, providing
+                  marketing teams with comprehensive user behavior insights and
+                  enabling data-driven decisions.
+                </li>
+                <li>
+                  Automated third-party pixel validation as part of the CI/CD
+                  release pipeline, reducing manual QA effort and enabling
+                  reliable, repeatable deployments across multiple repositories.
+                </li>
+                <li>
+                  Simultaneously led 3 independent workstreams — Search page
+                  modernization, analytics pipeline, and Kafka integration —
+                  delivering each within sprint commitments without dedicated
+                  project management support.
+                </li>
+                <li>
+                  Designed and implemented state management solutions using NgRx
+                  in Angular and Redux in React, while utilizing RxJS for
+                  efficient reactive component communication, improving
+                  application performance and user experience.
+                </li>
+                <li>
+                  Served as frontend technical partner to back-end engineering
+                  teams, defining API contract expectations, reviewing
+                  integration designs, and identifying performance improvements
+                  across team boundaries.
+                </li>
+                <li>
+                  Developed REST APIs using Node.js and Express.js to support
+                  server-side data capture and reporting for marketing and
+                  analytics strategies.
+                </li>
+                <li>
+                  Integrated third-party pixels using Adobe Launch for
+                  analytics, ensuring accurate cross-repository data tracking
+                  and reporting consistency.
+                </li>
+              </ul>
+              <div class="tech-pills">
+                <span class="tp">Angular 15–18</span
+                ><span class="tp">React</span
+                ><span class="tp">Apache Kafka</span
+                ><span class="tp">Adobe Launch</span
+                ><span class="tp">Adobe Analytics</span
+                ><span class="tp">NgRx</span><span class="tp">Redux</span
+                ><span class="tp">Node.js</span><span class="tp">Tealium</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DSW -->
+          <div class="exp-item fade">
+            <div class="exp-left">
+              <div class="exp-period">Apr 2021 — Jul 2022</div>
+              <div class="exp-company">Designer Brands (DSW)</div>
+              <div class="exp-loc">Cleveland, OH</div>
+            </div>
+            <div class="exp-right">
+              <div class="exp-title">Software Engineer II</div>
+              <div class="exp-summary">
+                Contributed to frontend modernization at DSW — driving Angular
+                architecture decisions, implementing A/B testing frameworks, and
+                building CMS-driven content experiences for one of the largest
+                US footwear retailers.
+              </div>
+              <ul class="exp-list">
+                <li>
+                  Drove Angular module architecture decisions including NgRx
+                  state management strategy, component decomposition, and
+                  third-party library evaluation — improving maintainability and
+                  reducing overall bundle size.
+                </li>
+                <li>
+                  Designed and built user interfaces using Angular 11/12/14 with
+                  Bootstrap for responsive layouts, enhancing existing HTML5,
+                  CSS3, and TypeScript implementations.
+                </li>
+                <li>
+                  Implemented A/B testing with Optimizely for UI variations,
+                  enabling data-driven product decisions and improving
+                  conversion rates through real user analysis.
+                </li>
+                <li>
+                  Integrated Strapi CMS for content management, empowering the
+                  business team to update site content dynamically without
+                  engineering involvement.
+                </li>
+                <li>
+                  Enhanced site performance and user experience by replacing
+                  heavyweight third-party libraries with custom, reusable
+                  in-house functions — reducing bundle size and improving load
+                  time.
+                </li>
+                <li>
+                  Advanced UI development using Angular Flex Layout, focusing on
+                  modular, accessible, and responsive component design for
+                  enhanced cross-device user experience.
+                </li>
+                <li>
+                  Established and enforced unit testing standards using Karma
+                  and Jasmine, setting meaningful coverage thresholds and
+                  reviewing test quality during code reviews.
+                </li>
+                <li>
+                  Collaborated closely with cross-functional teams and
+                  implementation partners, translating business requirements
+                  into structured, testable technical implementations.
+                </li>
+              </ul>
+              <div class="tech-pills">
+                <span class="tp">Angular 11–14</span><span class="tp">NgRx</span
+                ><span class="tp">Optimizely</span
+                ><span class="tp">Strapi CMS</span
+                ><span class="tp">Karma/Jasmine</span
+                ><span class="tp">Bootstrap</span
+                ><span class="tp">TypeScript</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- LAM RESEARCH -->
+          <div class="exp-item fade">
+            <div class="exp-left">
+              <div class="exp-period">Nov 2019 — Mar 2021</div>
+              <div class="exp-company">Lam Research</div>
+              <div class="exp-loc">Portland, OR</div>
+            </div>
+            <div class="exp-right">
+              <div class="exp-title">Software Engineer</div>
+              <div class="exp-summary">
+                Built full-stack MEAN applications and cross-platform Ionic
+                mobile apps for semiconductor equipment telemetry and reporting
+                — delivering data-rich dashboards with AG-Grid, D3.js, and Power
+                BI for engineering and operations teams.
+              </div>
+              <ul class="exp-list">
+                <li>
+                  Designed, developed, and implemented a full MEAN stack web
+                  application (MongoDB, Express.js, AngularJS, Node.js) from
+                  scratch, delivering a comprehensive data management and
+                  reporting platform for internal engineering teams.
+                </li>
+                <li>
+                  Developed and maintained cross-platform mobile and web
+                  applications using the Ionic framework, creating custom themes
+                  and ensuring full responsiveness across all device sizes using
+                  Ionic Grid and Flexbox.
+                </li>
+                <li>
+                  Used AG-Grid for displaying live telemetry data in interactive
+                  grids, and D3.js and Plotly for building rich, interactive
+                  charts and reports for engineering analysis.
+                </li>
+                <li>
+                  Configured Azure Application Insights to capture and monitor
+                  telemetry data from production systems, enabling proactive
+                  performance monitoring and alerting.
+                </li>
+                <li>
+                  Created Power BI visualizations and dashboards from database
+                  telemetry and operational data, providing actionable insights
+                  to engineering and operations leadership.
+                </li>
+                <li>
+                  Developed extensive REST APIs using Node.js, Express.js, and
+                  MongoDB to support data retrieval and backend processing for
+                  all application features.
+                </li>
+                <li>
+                  Created interactive mockups using Adobe XD, collaborating
+                  directly with end users to gather feedback and drive iterative
+                  design improvements.
+                </li>
+                <li>
+                  Authored detailed software specification documents for
+                  offshore development teams, translating business requirements
+                  into implementable technical designs that accelerated
+                  cross-timezone delivery.
+                </li>
+              </ul>
+              <div class="tech-pills">
+                <span class="tp">MEAN Stack</span><span class="tp">Ionic</span
+                ><span class="tp">AG-Grid</span><span class="tp">D3.js</span
+                ><span class="tp">Plotly</span><span class="tp">Power BI</span
+                ><span class="tp">Azure Insights</span
+                ><span class="tp">MongoDB</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- MICROSOFT -->
+          <div class="exp-item fade">
+            <div class="exp-left">
+              <div class="exp-period">Apr 2018 — Oct 2019</div>
+              <div class="exp-company">Microsoft</div>
+              <div class="exp-loc">Redmond, WA</div>
+            </div>
+            <div class="exp-right">
+              <div class="exp-title">UI Developer (Full-Stack)</div>
+              <div class="exp-summary">
+                Full-stack engineer at Microsoft — owning end-to-end delivery of
+                internal web applications using Angular 5, .NET ODATA APIs, and
+                SQL Server, while configuring Azure deployment pipelines for
+                consistent, repeatable production releases.
+              </div>
+              <ul class="exp-list">
+                <li>
+                  Owned full-stack delivery of internal web applications —
+                  designing Angular 5 frontend architecture, building ODATA REST
+                  APIs in .NET, and optimizing SQL Server stored procedures and
+                  LINQ queries end-to-end.
+                </li>
+                <li>
+                  Implemented Angular 5 modular design with a shared module
+                  managing all cross-module reusable components, improving code
+                  reuse and reducing duplication across the application.
+                </li>
+                <li>
+                  Created complex SQL queries, views, functions, and stored
+                  procedures in SQL Server, optimizing data retrieval
+                  performance through efficient LINQ and query tuning.
+                </li>
+                <li>
+                  Configured end-to-end Azure deployment pipelines from
+                  development through production, ensuring consistent,
+                  repeatable release processes with minimal manual intervention.
+                </li>
+                <li>
+                  Built RESTful APIs using .NET and ODATA, exposing structured
+                  data endpoints consumed by the Angular frontend and
+                  third-party integrations.
+                </li>
+                <li>
+                  Used Primeng and Angular Material Design components to deliver
+                  polished, consistent UI experiences aligned with Microsoft's
+                  internal design standards.
+                </li>
+                <li>
+                  Maintained source control repositories using Git, enforcing
+                  branching strategies and code review workflows across the
+                  team.
+                </li>
+              </ul>
+              <div class="tech-pills">
+                <span class="tp">Angular 5</span
+                ><span class="tp">.NET / ODATA</span
+                ><span class="tp">SQL Server</span
+                ><span class="tp">Azure Pipelines</span
+                ><span class="tp">Entity Framework</span
+                ><span class="tp">Primeng</span
+                ><span class="tp">TypeScript</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- APLOMB -->
+          <div class="exp-item fade">
+            <div class="exp-left">
+              <div class="exp-period">May 2016 — Jan 2018</div>
+              <div class="exp-company">Aplomb Technologies</div>
+              <div class="exp-loc">Edison, NJ</div>
+            </div>
+            <div class="exp-right">
+              <div class="exp-title">UI Developer</div>
+              <div class="exp-summary">
+                Started career as a UI Developer building Angular 2 SPAs and
+                ASP.NET MVC applications — establishing a strong foundation in
+                OOP, component architecture, REST API integration, and Azure
+                cloud deployment.
+              </div>
+              <ul class="exp-list">
+                <li>
+                  Built scalable front-end architecture using Angular 2,
+                  TypeScript, and Angular-CLI — applying OOP methodologies to
+                  create reusable, modular components and services across
+                  business and UI layers.
+                </li>
+                <li>
+                  Developed full application logic using C#, ASP.NET MVC, and
+                  Entity Framework, integrating with SQL Server 2008 for data
+                  persistence and business rule enforcement.
+                </li>
+                <li>
+                  Created RESTful Web APIs for UI data retrieval and integrated
+                  them into Angular components, enabling seamless communication
+                  between frontend and backend layers.
+                </li>
+                <li>
+                  Designed database structures including tables, views, and
+                  stored procedures in SQL using Visual Studio 2017, ensuring
+                  normalized, performant schemas for application data.
+                </li>
+                <li>
+                  Deployed applications on Microsoft Azure for high
+                  availability, managing environment configurations and release
+                  processes.
+                </li>
+                <li>
+                  Adopted Git for version control and Visual Studio Online for
+                  development tracking, ensuring full project traceability and
+                  collaborative workflow across the team.
+                </li>
+                <li>
+                  Leveraged Agile methodology for rapid iterative development,
+                  participating in sprint planning, daily standups, and
+                  retrospectives to ensure consistent delivery cadence.
+                </li>
+              </ul>
+              <div class="tech-pills">
+                <span class="tp">Angular 2</span
+                ><span class="tp">C# / ASP.NET</span
+                ><span class="tp">Entity Framework</span
+                ><span class="tp">Azure</span><span class="tp">SQL Server</span
+                ><span class="tp">REST APIs</span><span class="tp">Git</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section
+        class="section"
+        id="projects"
+        style="background: var(--navy); border-top: none"
+      >
+        <div class="sec-head fade">
+          <div class="sec-label">Selected Work</div>
+          <h2>Case Studies</h2>
+          <p class="sec-desc">
+            A curated set of enterprise deliveries that show the problem, the
+            solution, and the operational impact.
+          </p>
+        </div>
+        <div class="proj-grid fade">
+          <article class="proj-card c1">
+            <div class="proj-idx">CapitalOne · 2026</div>
+            <div class="proj-title">
+              Angular 20 platform with Signals architecture
+            </div>
+            <div class="proj-meta">
+              <div class="proj-meta-row">
+                <span>Challenge</span>
+                <strong>
+                  Reduce change-detection overhead in a complex consumer app.
+                </strong>
+              </div>
+              <div class="proj-meta-row">
+                <span>What I built</span>
+                <strong>
+                  Standalone components, Signals, OnPush change detection,
+                  GitHub Actions quality gates, and Bloomreach CMS integration.
+                </strong>
+              </div>
+              <div class="proj-meta-row">
+                <span>Impact</span>
+                <strong>
+                  Faster content updates, cleaner architecture, and stronger
+                  merge confidence.
+                </strong>
+              </div>
+            </div>
+            <div class="proj-tags">
+              <span class="ptag">Angular 20</span
+              ><span class="ptag">Signals</span
+              ><span class="ptag">GitHub Actions</span
+              ><span class="ptag">Bloomreach WCM</span
+              ><span class="ptag">Jest</span>
+            </div>
+            <a class="proj-link" href="#experience">Read role details →</a>
+          </article>
+          <article class="proj-card c2">
+            <div class="proj-idx">Albertsons · 2022–2025</div>
+            <div class="proj-title">
+              Kafka modernization &amp; analytics pipeline
+            </div>
+            <div class="proj-meta">
+              <div class="proj-meta-row">
+                <span>Challenge</span>
+                <strong>
+                  Replace brittle point-to-point dependencies and unify
+                  analytics tracking across multiple repos.
+                </strong>
+              </div>
+              <div class="proj-meta-row">
+                <span>What I built</span>
+                <strong>
+                  Apache Kafka streaming, Adobe Launch / Adobe Analytics wiring,
+                  and front-end updates to support the new data flow.
+                </strong>
+              </div>
+              <div class="proj-meta-row">
+                <span>Impact</span>
+                <strong>
+                  Decoupled 4+ upstream services and made event tracking easier
+                  to evolve.
+                </strong>
+              </div>
+            </div>
+            <div class="proj-tags">
+              <span class="ptag">Apache Kafka</span
+              ><span class="ptag">Adobe Launch</span
+              ><span class="ptag">Adobe Analytics</span
+              ><span class="ptag">NgRx</span><span class="ptag">Node.js</span>
+            </div>
+            <a class="proj-link" href="#experience">Read role details →</a>
+          </article>
+          <article class="proj-card c3">
+            <div class="proj-idx">ABIM · 2025</div>
+            <div class="proj-title">
+              Clean Architecture platform with Angular 20 and .NET Core 9
+            </div>
+            <div class="proj-meta">
+              <div class="proj-meta-row">
+                <span>Challenge</span>
+                <strong>
+                  Create a maintainable foundation for a new full-stack platform
+                  with strong technical standards.
+                </strong>
+              </div>
+              <div class="proj-meta-row">
+                <span>What I built</span>
+                <strong>
+                  Clean Architecture patterns, REST APIs, Entity Framework,
+                  Angular 20 UI flows, and SQL Server performance tuning.
+                </strong>
+              </div>
+              <div class="proj-meta-row">
+                <span>Impact</span>
+                <strong>
+                  Established a shared engineering baseline the team could build
+                  on confidently.
+                </strong>
+              </div>
+            </div>
+            <div class="proj-tags">
+              <span class="ptag">Angular 20</span
+              ><span class="ptag">.NET Core 9</span
+              ><span class="ptag">Entity Framework</span
+              ><span class="ptag">SQL Server</span
+              ><span class="ptag">NZ-Zorro</span>
+            </div>
+            <a class="proj-link" href="#experience">Read role details →</a>
+          </article>
+          <article class="proj-card c4">
+            <div class="proj-idx">Lam Research · 2019–2021</div>
+            <div class="proj-title">
+              MEAN stack dashboard with AG-Grid and Power BI reporting
+            </div>
+            <div class="proj-meta">
+              <div class="proj-meta-row">
+                <span>Challenge</span>
+                <strong>
+                  Turn operational telemetry into something engineering and
+                  operations teams could use quickly.
+                </strong>
+              </div>
+              <div class="proj-meta-row">
+                <span>What I built</span>
+                <strong>
+                  A MEAN stack application with AG-Grid, D3.js, Plotly, Azure
+                  Insights, and Power BI dashboards.
+                </strong>
+              </div>
+              <div class="proj-meta-row">
+                <span>Impact</span>
+                <strong>
+                  Gave teams a clearer view of performance and reporting without
+                  manual spreadsheet work.
+                </strong>
+              </div>
+            </div>
+            <div class="proj-tags">
+              <span class="ptag">AG-Grid</span><span class="ptag">D3.js</span
+              ><span class="ptag">Plotly</span><span class="ptag">Power BI</span
+              ><span class="ptag">Azure Insights</span>
+            </div>
+            <a class="proj-link" href="#experience">Read role details →</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- INSIGHTS -->
+      <section class="section" id="insights">
+        <div class="sec-head fade">
+          <div class="sec-label">Perspectives</div>
+          <h2>Engineering Notes</h2>
+          <p class="sec-desc">
+            Topics I tend to write or talk about: maintainable frontends,
+            reliable APIs, and delivery systems that keep teams moving.
+          </p>
+        </div>
+        <div class="insights-grid fade">
+          <article class="insight-card">
+            <div class="insight-kicker">01</div>
+            <div class="insight-title">
+              Angular systems that stay maintainable
+            </div>
+            <p class="insight-copy">
+              Standalone components, Signals, and OnPush are most valuable when
+              they are paired with clean boundaries, predictable state, and a
+              strong review culture.
+            </p>
+            <div class="insight-tags">
+              <span class="chip primary">Angular</span>
+              <span class="chip">Signals</span>
+              <span class="chip">Architecture</span>
+            </div>
+          </article>
+          <article class="insight-card">
+            <div class="insight-kicker">02</div>
+            <div class="insight-title">
+              Backends and APIs that stay predictable
+            </div>
+            <p class="insight-copy">
+              Good API design is mostly about consistency, clear contracts, and
+              avoiding accidental complexity as the system grows.
+            </p>
+            <div class="insight-tags">
+              <span class="chip primary">.NET</span>
+              <span class="chip">REST</span>
+              <span class="chip">SQL Server</span>
+            </div>
+          </article>
+          <article class="insight-card">
+            <div class="insight-kicker">03</div>
+            <div class="insight-title">
+              Delivery systems that keep teams moving
+            </div>
+            <p class="insight-copy">
+              CI/CD, testing gates, and stakeholder alignment matter because
+              they reduce friction before it becomes expensive.
+            </p>
+            <div class="insight-tags">
+              <span class="chip primary">CI/CD</span>
+              <span class="chip">Quality</span>
+              <span class="chip">Collaboration</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section class="section" id="education">
+        <div class="sec-head fade">
+          <div class="sec-label">Academic Background</div>
+          <h2>Education</h2>
+        </div>
+        <div class="edu-cards fade">
+          <div class="edu-card">
+            <div class="edu-icon">🎓</div>
+            <div>
+              <div class="edu-badge">Graduate Degree</div>
+              <div class="edu-degree">Master of Science — Computer Science</div>
+              <div class="edu-school">
+                University of Central Missouri, Warrensburg, MO
+              </div>
+              <div class="edu-year">Aug 2014 — Dec 2015</div>
+            </div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-icon">🏛</div>
+            <div>
+              <div class="edu-badge">Undergraduate Degree</div>
+              <div class="edu-degree">Bachelor of Technology</div>
+              <div class="edu-school">
+                Acharya Nagarjuna University, Guntur, Andhra Pradesh
+              </div>
+              <div class="edu-year">Sep 2010 — Jun 2014</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!-- FOOTER -->
     <footer>
@@ -1916,10 +2450,13 @@
         Wilmington, DE
       </div>
       <div class="fl">
-        <a href="#">Top ↑</a>
+        <a href="#hero">Top ↑</a>
+        <a href="#experience">Resume</a>
+        <a href="#projects">Case Studies</a>
         <a
           href="https://www.linkedin.com/in/siva-veginati-27a21110a/"
           target="_blank"
+          rel="noopener noreferrer"
           >LinkedIn</a
         >
         <a href="mailto:sivavegi04@gmail.com">Email</a>
@@ -1933,6 +2470,302 @@
         document.getElementById("bar").style.width =
           (d.scrollTop / (d.scrollHeight - d.clientHeight)) * 100 + "%";
       });
+      const header = document.querySelector("header");
+      const navToggle = document.querySelector(".nav-toggle");
+      const navLinks = document.querySelectorAll("nav a");
+
+      if (navToggle && header) {
+        navToggle.addEventListener("click", () => {
+          const isOpen = header.classList.toggle("nav-open");
+          navToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            header.classList.remove("nav-open");
+            navToggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+
+      function escapeHtml(text) {
+        return String(text)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function cleanText(text) {
+        return String(text).replace(/\s+/g, " ").trim();
+      }
+
+      function textOf(root, selector) {
+        const el = root.querySelector(selector);
+        return el ? cleanText(el.textContent || "") : "";
+      }
+
+      function buildResumeHtml() {
+        const name = textOf(document, ".hero-name");
+        const title = textOf(document, ".hero-role");
+        const intro = textOf(document, ".hero-bio");
+        const contactItems = Array.from(
+          document.querySelectorAll(".hero-contact-card .cl"),
+        )
+          .map((item) => ({
+            label: textOf(item, ".cl-lbl"),
+            value: textOf(item, ".cl-val"),
+          }))
+          .filter((item) => item.label && item.value);
+
+        const experiences = Array.from(
+          document.querySelectorAll("#experience .exp-item"),
+        ).map((item) => ({
+          role: textOf(item, ".exp-title"),
+          company: textOf(item, ".exp-company"),
+          location: textOf(item, ".exp-loc"),
+          period: textOf(item, ".exp-period"),
+          summary: textOf(item, ".exp-summary"),
+          bullets: Array.from(item.querySelectorAll(".exp-list li"))
+            .slice(0, 3)
+            .map((li) => cleanText(li.textContent || "")),
+        }));
+
+        const education = Array.from(
+          document.querySelectorAll("#education .edu-card"),
+        ).map((item) => ({
+          degree: textOf(item, ".edu-degree"),
+          school: textOf(item, ".edu-school"),
+          year: textOf(item, ".edu-year"),
+        }));
+
+        const contactHtml = contactItems
+          .map(
+            (item) =>
+              `<span class="pill"><strong>${escapeHtml(
+                item.label,
+              )}:</strong> ${escapeHtml(item.value)}</span>`,
+          )
+          .join("");
+
+        const experienceHtml = experiences
+          .map(
+            (item) => `
+              <section class="entry">
+                <div class="entry-head">
+                  <div>
+                    <h3 class="role">${escapeHtml(item.role)}</h3>
+                    <div class="meta">${escapeHtml(item.company)} · ${escapeHtml(
+                      item.location,
+                    )}</div>
+                  </div>
+                  <div class="period">${escapeHtml(item.period)}</div>
+                </div>
+                <p class="summary">${escapeHtml(item.summary)}</p>
+                <ul class="bullets">
+                  ${item.bullets
+                    .map((bullet) => `<li>${escapeHtml(bullet)}</li>`)
+                    .join("")}
+                </ul>
+              </section>
+            `,
+          )
+          .join("");
+
+        const educationHtml = education
+          .map(
+            (item) => `
+              <section class="edu-entry">
+                <h3 class="role">${escapeHtml(item.degree)}</h3>
+                <div class="meta">${escapeHtml(item.school)} · ${escapeHtml(
+                  item.year,
+                )}</div>
+              </section>
+            `,
+          )
+          .join("");
+
+        return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>${escapeHtml(name)} Resume</title>
+    <style>
+      :root {
+        --navy: #0d1f3c;
+        --blue: #2563eb;
+        --text: #111827;
+        --muted: #475569;
+        --line: #e2e8f0;
+        --panel: #f8fafc;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--text);
+        background: #eef2f7;
+      }
+      .page {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 28px 24px 40px;
+      }
+      .header {
+        background: var(--navy);
+        color: #fff;
+        border-radius: 22px;
+        padding: 28px 30px;
+        margin-bottom: 20px;
+      }
+      .name {
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 1.05;
+        margin: 0 0 6px;
+      }
+      .title {
+        font-size: 15px;
+        color: #bfdbfe;
+        margin: 0 0 14px;
+      }
+      .contact {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 999px;
+        padding: 7px 11px;
+        font-size: 12px;
+      }
+      h2 {
+        margin: 18px 0 10px;
+        font-size: 12px;
+        letter-spacing: 1.8px;
+        text-transform: uppercase;
+        color: var(--blue);
+      }
+      .intro {
+        font-size: 13.5px;
+        line-height: 1.7;
+        margin: 0 0 16px;
+        color: var(--text);
+      }
+      .entry,
+      .edu-entry {
+        border-top: 1px solid var(--line);
+        padding-top: 12px;
+        margin-top: 12px;
+      }
+      .entry-head {
+        display: flex;
+        gap: 14px;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+      .role {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.25;
+        color: var(--navy);
+      }
+      .meta,
+      .period {
+        font-size: 12.5px;
+        color: var(--muted);
+      }
+      .period {
+        white-space: nowrap;
+      }
+      .summary {
+        margin: 8px 0 8px;
+        font-size: 13.5px;
+        line-height: 1.65;
+      }
+      .bullets {
+        margin: 0;
+        padding-left: 18px;
+      }
+      .bullets li {
+        margin: 0 0 6px;
+        font-size: 12.8px;
+        line-height: 1.55;
+      }
+      .footer {
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 11px;
+      }
+      @media print {
+        body {
+          background: #fff;
+        }
+        .page {
+          padding: 0;
+          max-width: none;
+        }
+        .header {
+          border-radius: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="header">
+        <h1 class="name">${escapeHtml(name)}</h1>
+        <p class="title">${escapeHtml(title)}</p>
+        <div class="contact">${contactHtml}</div>
+      </header>
+
+      <h2>Professional Summary</h2>
+      <p class="intro">${escapeHtml(intro)}</p>
+
+      <h2>Experience</h2>
+      ${experienceHtml}
+
+      <h2>Education</h2>
+      ${educationHtml}
+
+      <div class="footer">Generated from the Siva Veginati portfolio site.</div>
+    </main>
+  </body>
+</html>`;
+      }
+
+      function downloadResume() {
+        const filename = "Siva_Veginati_Resume.html";
+        const html = buildResumeHtml();
+        const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+      }
+
+      const downloadResumeButton = document.getElementById("download-resume");
+      if (downloadResumeButton) {
+        downloadResumeButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          downloadResume();
+        });
+      }
+
       /* fade in on scroll */
       const io = new IntersectionObserver(
         (entries) => {
