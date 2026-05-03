@@ -1,2592 +1,2864 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Siva Veginati | Lead Full-Stack Engineer</title>
-    <meta
-      name="description"
-      content="Siva Veginati is a lead full-stack engineer building enterprise web platforms with Angular, React, .NET, and Azure."
-    />
-    <meta name="theme-color" content="#0d1f3c" />
-    <meta
-      property="og:title"
-      content="Siva Veginati | Lead Full-Stack Engineer"
-    />
-    <meta
-      property="og:description"
-      content="Enterprise web platforms, architecture leadership, and delivery quality across Angular, React, .NET, and Azure."
-    />
-    <meta property="og:type" content="website" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;family=Lora:ital,wght@0,400;0,500;1,400&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" href="avatar.svg" type="image/svg+xml" />
-    <style>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Siva Veginati | Lead Full-Stack Engineer</title>
+  <meta name="description"
+    content="Siva Veginati is a lead full-stack engineer building enterprise web platforms with Angular, React, .NET, and Azure." />
+  <meta name="theme-color" content="#0d1f3c" />
+  <meta property="og:title" content="Siva Veginati | Lead Full-Stack Engineer" />
+  <meta property="og:description"
+    content="Enterprise web platforms, architecture leadership, and delivery quality across Angular, React, .NET, and Azure." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;family=Lora:ital,wght@0,400;0,500;1,400&amp;display=swap"
+    rel="stylesheet" />
+  <link rel="icon" href="avatar.svg" type="image/svg+xml" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #0d1f3c;
+      --navy-soft: #1a3254;
+      --slate: #475569;
+      --slate-light: #94a3b8;
+      --blue-accent: #2563eb;
+      --white: #ffffff;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --text: #111827;
+      --text-2: #374151;
+      --text-3: #6b7280;
+      --bg-1: #f7fbff;
+      --bg-2: #eef4fb;
+      --ff: "Plus Jakarta Sans", sans-serif;
+      --fs: "Lora", serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left,
+          rgba(37, 99, 235, 0.08),
+          transparent 24%),
+        radial-gradient(circle at top right,
+          rgba(13, 31, 60, 0.08),
+          transparent 22%),
+        linear-gradient(180deg, var(--bg-1) 0%, #ffffff 18%, #ffffff 100%);
+      color: var(--text);
+      font-family: var(--ff);
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    body::before {
+      top: -120px;
+      left: -140px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+          rgba(37, 99, 235, 0.08),
+          transparent 70%);
+    }
+
+    body::after {
+      right: -140px;
+      bottom: 12%;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+          rgba(13, 31, 60, 0.06),
+          transparent 68%);
+    }
+
+    main {
+      display: block;
+    }
+
+    a,
+    button,
+    input,
+    textarea,
+    select {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: 3px solid rgba(37, 99, 235, 0.35);
+      outline-offset: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 50%;
+      top: 10px;
+      transform: translate(-50%, -180%);
+      background: var(--navy);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      z-index: 2000;
+      transition: transform 0.2s ease;
+    }
+
+    .skip-link:focus {
+      transform: translate(-50%, 0);
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--gray-100);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--blue-accent);
+      border-radius: 4px;
+    }
+
+    /* ─── PROGRESS ─── */
+    #bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--blue-accent);
+      z-index: 1000;
+      width: 0;
+      transition: width 0.08s linear;
+    }
+
+    /* ─── NAV ─── */
+    header {
+      position: fixed;
+      top: 3px;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: rgba(13, 31, 60, 0.94);
+      backdrop-filter: blur(14px);
+      height: 66px;
+      display: flex;
+      align-items: center;
+      padding: 0 5vw;
+      justify-content: space-between;
+      overflow: visible;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .logo-sub {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    nav a {
+      color: rgba(255, 255, 255, 0.62);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      transition:
+        color 0.18s,
+        background 0.18s,
+        transform 0.18s;
+    }
+
+    nav a:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      border-radius: 999px;
+      font-family: var(--ff);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+      height: 38px;
+      padding: 0 14px;
+      cursor: pointer;
+      transition:
+        background 0.18s,
+        transform 0.18s,
+        border-color 0.18s;
+    }
+
+    .nav-toggle:hover {
+      background: rgba(255, 255, 255, 0.11);
+      transform: translateY(-1px);
+    }
+
+    .nav-hire {
+      margin-left: 4px;
+      padding: 9px 18px;
+      background: var(--blue-accent);
+      color: #fff;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition:
+        background 0.18s,
+        transform 0.12s;
+      white-space: nowrap;
+    }
+
+    .nav-hire:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: auto;
+      padding-top: 88px;
+      padding-bottom: 0;
+      background:
+        linear-gradient(180deg,
+          rgba(13, 31, 60, 0.98),
+          rgba(13, 31, 60, 0.96)),
+        radial-gradient(circle at top left,
+          rgba(37, 99, 235, 0.22),
+          transparent 34%),
+        radial-gradient(circle at top right,
+          rgba(96, 165, 250, 0.12),
+          transparent 30%),
+        var(--navy);
+      color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      text-align: left;
+      position: relative;
+    }
+
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      width: min(100%, 1080px);
+      margin: 0 auto;
+      padding: 0;
+      gap: 22px;
+      flex: 1;
+    }
+
+    .hero-avatar-row {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 4px;
+    }
+
+    .hero-avatar-row .avatar-wrap {
+      margin-bottom: 0;
+      align-self: center;
+    }
+
+    .hero-panels {
+      display: grid;
+      grid-template-columns: minmax(0, 1.16fr) minmax(340px, 0.84fr);
+      align-items: stretch;
+      gap: 22px;
+      width: 100%;
+    }
+
+    .hero-identity {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      padding-top: 4px;
+      width: 100%;
+      max-width: none;
+      height: 100%;
+    }
+
+    .hero .avatar-wrap {
+      border-color: rgba(255, 255, 255, 0.92);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.12),
+        0 14px 36px rgba(0, 0, 0, 0.28);
+    }
+
+    /* avatar circle */
+    .avatar-wrap {
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 4px solid var(--white);
+      box-shadow:
+        0 0 0 1px var(--gray-200),
+        0 8px 32px rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.15rem;
+      position: relative;
+      overflow: hidden;
+      align-self: flex-start;
+    }
+
+    .avatar-initials {
+      font-family: var(--fs);
+      font-size: 3rem;
+      font-weight: 400;
+      color: var(--navy);
+      letter-spacing: -1px;
+      font-style: italic;
+    }
+
+    .status-dot {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #22c55e;
+      border: 2.5px solid var(--white);
+    }
+
+    /* heading */
+    .hero-tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #bfdbfe;
+      margin-bottom: 12px;
+      padding: 6px 11px;
+      border: 1px solid rgba(191, 219, 254, 0.18);
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 999px;
+    }
+
+    .hero-name {
+      font-family: var(--fs);
+      font-size: clamp(2.25rem, 4.1vw, 3.9rem);
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: -1px;
+      line-height: 0.95;
+      margin-bottom: 10px;
+      max-width: none;
+      text-wrap: balance;
+    }
+
+    .hero-role {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.72);
+      margin-bottom: 12px;
+      letter-spacing: 0.2px;
+    }
+
+    .hero-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--blue-accent);
+      border-radius: 2px;
+      margin: 0 auto 22px;
+    }
+
+    .hero-bio {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.68);
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 0 20px;
+      font-weight: 400;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .hero-identity .btn-solid {
+      background: #fff;
+      color: var(--navy);
+    }
+
+    .hero-identity .btn-solid:hover {
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .hero-identity .btn-outline {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    .hero-identity .btn-outline:hover {
+      border-color: rgba(255, 255, 255, 0.48);
+      color: #fff;
+    }
+
+    .hero-contact-card {
+      width: 100%;
+      align-self: stretch;
+      background: var(--navy);
+      border-radius: 0;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+
+    .hero-contact-inner {
+      width: min(100%, 1080px);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .hero-contact-card .contact-heading {
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .hero-contact-card .contact-sub {
+      color: rgba(255, 255, 255, 0.68);
+      margin-bottom: 0;
+    }
+
+    .hero-contact-card .contact-links {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .hero-contact-card .cl {
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      align-items: flex-start;
+      transition:
+        transform 0.18s,
+        background 0.18s,
+        border-color 0.18s;
+    }
+
+    .hero-contact-card .cl:hover {
+      padding-left: 16px;
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(191, 219, 254, 0.28);
+    }
+
+    .hero-contact-card .cl-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.12);
+      color: #bfdbfe;
+    }
+
+    .hero-contact-card .cl:hover .cl-icon {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(191, 219, 254, 0.28);
+    }
+
+    .hero-contact-card .cl-lbl {
+      color: rgba(255, 255, 255, 0.48);
+    }
+
+    .hero-contact-card .cl-val {
+      color: #fff;
+    }
+
+    .hero-summary-band {
+      width: 100%;
+      align-self: stretch;
+      margin-left: 0;
+      background: var(--navy);
+      border-radius: 0;
+      padding: 15px 0px;
+      box-sizing: border-box;
+    }
+
+    .hero-summary-inner {
+      width: min(100%, 1080px);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .hero-summary-band .os-label {
+      color: #93c5fd;
+    }
+
+    .hero-summary-band .os-title {
+      color: #fff;
+      font-size: clamp(1.7rem, 2.4vw, 2.2rem);
+      line-height: 1.18;
+      margin-bottom: 0;
+    }
+
+    .hero-summary-band .os-copy {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .hero-summary-band .os-highlights {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+    }
+
+    .hero-summary-band .os-hi {
+      flex: 1;
+      text-align: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: none;
+      padding: 0 16px;
+    }
+
+    .hero-summary-band .os-hi:last-child {
+      border-right: none;
+    }
+
+    #contact {
+      scroll-margin-top: 96px;
+    }
+
+    .btn-solid {
+      padding: 10px 24px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      transition:
+        background 0.18s,
+        transform 0.12s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-solid:hover {
+      background: var(--navy-soft);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      padding: 10px 24px;
+      background: transparent;
+      color: var(--navy);
+      border: 1.5px solid var(--gray-300);
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      transition:
+        border-color 0.18s,
+        color 0.18s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--navy);
+      color: var(--navy);
+    }
+
+    .hero-snapshot {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      width: min(100%, 900px);
+      margin: 0 auto 24px;
+    }
+
+    .snapshot-card {
+      text-align: left;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 16px 18px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+    }
+
+    .snapshot-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--blue-accent);
+      margin-bottom: 8px;
+    }
+
+    .snapshot-value {
+      display: block;
+      font-size: 13px;
+      color: var(--navy);
+      line-height: 1.6;
+      font-weight: 600;
+    }
+
+    /* companies */
+    .hero-companies {
+      margin-bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 0 2rem;
+    }
+
+    .companies-label {
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .companies-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .company-badge {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--slate);
+      padding: 4px 12px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 20px;
+      letter-spacing: 0.3px;
+    }
+
+    /* stats bar */
+    .stats-bar {
+      width: 100%;
+      border-top: 1px solid var(--gray-200);
+      background: var(--white);
+      display: flex;
+      margin-top: 3rem;
+    }
+
+    .stat-cell {
+      flex: 1;
+      padding: 20px 16px;
+      text-align: center;
+      border-right: 1px solid var(--gray-200);
+    }
+
+    .stat-cell:last-child {
+      border-right: none;
+    }
+
+    .stat-n {
+      font-family: var(--fs);
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .stat-n em {
+      font-style: normal;
+      color: var(--blue-accent);
+      font-size: 1.2rem;
+    }
+
+    .stat-l {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-3);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ─── SECTION SHARED ─── */
+    .section {
+      padding: 80px 5vw;
+      border-top: 1px solid var(--gray-200);
+      position: relative;
+    }
+
+    .sec-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--blue-accent);
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-family: var(--fs);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 500;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .sec-desc {
+      font-size: 14px;
+      color: var(--text-3);
+      max-width: 640px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .sec-head {
+      margin-bottom: 40px;
+    }
+
+    /* ─── SKILLS ─── */
+    #skills {
+      background: var(--gray-50);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--gray-200);
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .skill-card {
+      background: var(--white);
+      padding: 24px;
+      transition: background 0.15s;
+    }
+
+    .skill-card:hover {
+      background: var(--gray-50);
+    }
+
+    .sk-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      margin-bottom: 14px;
+    }
+
+    .sk-cat {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--blue-accent);
+      margin-bottom: 4px;
+    }
+
+    .sk-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .sk-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .chip {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 4px;
+      letter-spacing: 0.2px;
+      background: var(--gray-100);
+      color: var(--slate);
+      border: 1px solid var(--gray-200);
+    }
+
+    .chip.primary {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border-color: #bfdbfe;
+    }
+
+    /* ─── OVERALL SUMMARY BANNER ─── */
+    .overall-summary {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 40px;
+      background: var(--navy);
+      border-radius: 10px;
+      padding: 36px 40px;
+      margin-bottom: 40px;
+      align-items: start;
+    }
+
+    .os-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #93c5fd;
+      margin-bottom: 8px;
+    }
+
+    .os-title {
+      font-family: var(--fs);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.25;
+      letter-spacing: -0.3px;
+    }
+
+    .os-right p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.85;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+
+    .os-right p strong {
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 500;
+    }
+
+    .os-highlights {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+    }
+
+    .os-hi {
+      flex: 1;
+      text-align: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0 16px;
+    }
+
+    .os-hi:last-child {
+      border-right: none;
+    }
+
+    .os-hi-num {
+      display: block;
+      font-family: var(--fs);
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .os-hi-lbl {
+      display: block;
+      font-size: 10px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.35);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ─── EXP SUMMARY LINE ─── */
+    .exp-summary {
+      font-size: 13.5px;
+      color: var(--blue-accent);
+      font-weight: 500;
+      line-height: 1.65;
+      margin-bottom: 14px;
+      padding: 10px 14px;
+      background: #eff6ff;
+      border-left: 3px solid var(--blue-accent);
+      border-radius: 0 6px 6px 0;
+    }
+
+    /* ─── EXPERIENCE ─── */
+    .exp-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      border-top: 1px solid var(--gray-200);
+      transition: background 0.15s;
+    }
+
+    .exp-item:first-child {
+      border-top: none;
+    }
+
+    .exp-item:hover {
+      background: var(--gray-50);
+    }
+
+    .exp-left {
+      padding: 28px 24px 28px 0;
+      border-right: 1px solid var(--gray-200);
+    }
+
+    .exp-period {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--blue-accent);
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .exp-company {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+
+    .exp-loc {
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: 0.3px;
+    }
+
+    .exp-right {
+      padding: 28px 0 28px 28px;
+    }
+
+    .exp-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+
+    .exp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+
+    .exp-list li {
+      font-size: 13.5px;
+      color: var(--text-2);
+      line-height: 1.7;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .exp-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--blue-accent);
+    }
+
+    .tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .tp {
+      font-size: 10px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 3px;
+      border: 1px solid var(--gray-200);
+      color: var(--text-3);
+      background: var(--white);
+      letter-spacing: 0.2px;
+    }
+
+    /* ─── PROJECTS ─── */
+    #projects {
+      background: var(--navy);
+    }
+
+    #projects .sec-label {
+      color: #93c5fd;
+    }
+
+    #projects h2 {
+      color: #fff;
+    }
+
+    #projects .sec-desc {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .proj-card {
+      background: rgba(8, 23, 46, 0.92);
+      padding: 26px;
+      position: relative;
+      transition:
+        background 0.18s,
+        transform 0.18s,
+        border-color 0.18s;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 100%;
+      box-shadow: 0 14px 35px rgba(1, 8, 24, 0.16);
+    }
+
+    .proj-card:hover {
+      background: #102545;
+      transform: translateY(-4px);
+    }
+
+    .proj-card.c1 {
+      border-top: 3px solid var(--blue-accent);
+    }
+
+    .proj-card.c2 {
+      border-top: 3px solid #10b981;
+    }
+
+    .proj-card.c3 {
+      border-top: 3px solid #f59e0b;
+    }
+
+    .proj-card.c4 {
+      border-top: 3px solid #8b5cf6;
+    }
+
+    .proj-idx {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .proj-title {
+      font-family: var(--fs);
+      font-size: 19px;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.35;
+      letter-spacing: -0.2px;
+    }
+
+    .proj-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .proj-meta-row {
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .proj-meta-row span {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: #93c5fd;
+      margin-bottom: 6px;
+    }
+
+    .proj-meta-row strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.75;
+    }
+
+    .proj-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 2px;
+    }
+
+    .proj-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      width: fit-content;
+      transition: color 0.18s;
+    }
+
+    .proj-link:hover {
+      color: #93c5fd;
+    }
+
+    .ptag {
+      font-size: 10px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.45);
+      letter-spacing: 0.3px;
+    }
+
+    /* ─── INSIGHTS ─── */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .insight-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+      transition:
+        transform 0.18s,
+        border-color 0.18s,
+        box-shadow 0.18s;
+    }
+
+    .insight-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(37, 99, 235, 0.25);
+      box-shadow: 0 14px 32px rgba(37, 99, 235, 0.08);
+    }
+
+    .insight-kicker {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--blue-accent);
+      margin-bottom: 10px;
+    }
+
+    .insight-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+
+    .insight-copy {
+      font-size: 13.5px;
+      color: var(--text-3);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .insight-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* ─── EDUCATION ─── */
+    #education {
+      background: var(--gray-50);
+    }
+
+    .edu-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .edu-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 28px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition:
+        border-color 0.18s,
+        box-shadow 0.18s;
+    }
+
+    .edu-card:hover {
+      border-color: var(--blue-accent);
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.07);
+    }
+
+    .edu-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .edu-badge {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--blue-accent);
+      margin-bottom: 5px;
+    }
+
+    .edu-degree {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+
+    .edu-school {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-bottom: 3px;
+    }
+
+    .edu-year {
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: 0.3px;
+    }
+
+    /* ─── CONTACT ─── */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .contact-heading {
+      font-family: var(--fs);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .contact-sub {
+      font-size: 14px;
+      color: var(--text-3);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .cl {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--gray-200);
+      text-decoration: none;
+      transition: padding-left 0.18s;
+    }
+
+    .cl:hover {
+      padding-left: 6px;
+    }
+
+    .cl-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 7px;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      transition:
+        background 0.18s,
+        border-color 0.18s;
+    }
+
+    .cl:hover .cl-icon {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+    }
+
+    .cl-lbl {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    .cl-val {
+      font-size: 13px;
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    .contact-panel {
+      position: relative;
+    }
+
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04);
+    }
+
+    .contact-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--blue-accent);
+      margin-bottom: 10px;
+    }
+
+    .contact-card-title {
+      font-family: var(--fs);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1.28;
+      margin-bottom: 12px;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .contact-list li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: var(--text-2);
+    }
+
+    .contact-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue-accent);
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy);
+      padding: 24px 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .fc {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.35);
+      letter-spacing: 0.3px;
+    }
+
+    .fc span {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .fl {
+      display: flex;
+      gap: 20px;
+    }
+
+    .fl a {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.35);
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: color 0.18s;
+    }
+
+    .fl a:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* ─── REVEAL ─── */
+    .fade {
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+    }
+
+    .fade.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
       *,
       *::before,
       *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      :root {
-        --navy: #0d1f3c;
-        --navy-soft: #1a3254;
-        --slate: #475569;
-        --slate-light: #94a3b8;
-        --blue-accent: #2563eb;
-        --white: #ffffff;
-        --gray-50: #f9fafb;
-        --gray-100: #f3f4f6;
-        --gray-200: #e5e7eb;
-        --gray-300: #d1d5db;
-        --text: #111827;
-        --text-2: #374151;
-        --text-3: #6b7280;
-        --bg-1: #f7fbff;
-        --bg-2: #eef4fb;
-        --ff: "Plus Jakarta Sans", sans-serif;
-        --fs: "Lora", serif;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        background:
-          radial-gradient(
-            circle at top left,
-            rgba(37, 99, 235, 0.08),
-            transparent 24%
-          ),
-          radial-gradient(
-            circle at top right,
-            rgba(13, 31, 60, 0.08),
-            transparent 22%
-          ),
-          linear-gradient(180deg, var(--bg-1) 0%, #ffffff 18%, #ffffff 100%);
-        color: var(--text);
-        font-family: var(--ff);
-        font-size: 15px;
-        line-height: 1.6;
-        overflow-x: hidden;
-        position: relative;
-      }
-      body::before,
-      body::after {
-        content: "";
-        position: fixed;
-        inset: auto;
-        pointer-events: none;
-        z-index: -1;
-      }
-      body::before {
-        top: -120px;
-        left: -140px;
-        width: 320px;
-        height: 320px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(37, 99, 235, 0.08),
-          transparent 70%
-        );
-      }
-      body::after {
-        right: -140px;
-        bottom: 12%;
-        width: 360px;
-        height: 360px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(13, 31, 60, 0.06),
-          transparent 68%
-        );
-      }
-      main {
-        display: block;
-      }
-      a,
-      button,
-      input,
-      textarea,
-      select {
-        -webkit-tap-highlight-color: transparent;
-      }
-      a:focus-visible,
-      button:focus-visible,
-      input:focus-visible,
-      textarea:focus-visible,
-      select:focus-visible {
-        outline: 3px solid rgba(37, 99, 235, 0.35);
-        outline-offset: 2px;
-      }
-      .skip-link {
-        position: absolute;
-        left: 50%;
-        top: 10px;
-        transform: translate(-50%, -180%);
-        background: var(--navy);
-        color: #fff;
-        padding: 10px 16px;
-        border-radius: 999px;
-        text-decoration: none;
-        z-index: 2000;
-        transition: transform 0.2s ease;
-      }
-      .skip-link:focus {
-        transform: translate(-50%, 0);
-      }
-      ::-webkit-scrollbar {
-        width: 4px;
-      }
-      ::-webkit-scrollbar-track {
-        background: var(--gray-100);
-      }
-      ::-webkit-scrollbar-thumb {
-        background: var(--blue-accent);
-        border-radius: 4px;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
       }
 
-      /* ─── PROGRESS ─── */
-      #bar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 3px;
-        background: var(--blue-accent);
-        z-index: 1000;
-        width: 0;
-        transition: width 0.08s linear;
-      }
-
-      /* ─── NAV ─── */
-      header {
-        position: fixed;
-        top: 3px;
-        left: 0;
-        right: 0;
-        z-index: 200;
-        background: rgba(13, 31, 60, 0.94);
-        backdrop-filter: blur(14px);
-        height: 66px;
-        display: flex;
-        align-items: center;
-        padding: 0 5vw;
-        justify-content: space-between;
-        overflow: visible;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        text-decoration: none;
-      }
-      .logo-mark {
-        width: 36px;
-        height: 36px;
-        border-radius: 6px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 13px;
-        font-weight: 700;
-        color: #fff;
-        letter-spacing: 0.5px;
-      }
-      .logo-text {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 14px;
-        font-weight: 500;
-        letter-spacing: 0.3px;
-      }
-      .logo-sub {
-        color: rgba(255, 255, 255, 0.4);
-        font-size: 11px;
-        font-weight: 300;
-        letter-spacing: 0.5px;
-      }
-      .header-actions {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-      nav {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-      nav a {
-        color: rgba(255, 255, 255, 0.62);
-        text-decoration: none;
-        font-size: 13px;
-        font-weight: 500;
-        letter-spacing: 0.3px;
-        padding: 8px 14px;
-        border-radius: 999px;
-        transition:
-          color 0.18s,
-          background 0.18s,
-          transform 0.18s;
-      }
-      nav a:hover {
-        color: #fff;
-        background: rgba(255, 255, 255, 0.1);
-        transform: translateY(-1px);
-      }
-      .nav-toggle {
-        display: none;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        background: rgba(255, 255, 255, 0.06);
-        color: #fff;
-        border-radius: 999px;
-        font-family: var(--ff);
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 0.7px;
-        text-transform: uppercase;
-        height: 38px;
-        padding: 0 14px;
-        cursor: pointer;
-        transition:
-          background 0.18s,
-          transform 0.18s,
-          border-color 0.18s;
-      }
-      .nav-toggle:hover {
-        background: rgba(255, 255, 255, 0.11);
-        transform: translateY(-1px);
-      }
-      .nav-hire {
-        margin-left: 4px;
-        padding: 9px 18px;
-        background: var(--blue-accent);
-        color: #fff;
-        border-radius: 999px;
-        font-size: 13px;
-        font-weight: 500;
-        text-decoration: none;
-        letter-spacing: 0.3px;
-        transition:
-          background 0.18s,
-          transform 0.12s;
-        white-space: nowrap;
-      }
-      .nav-hire:hover {
-        background: #1d4ed8;
-        transform: translateY(-1px);
-      }
-
-      /* ─── HERO ─── */
-      .hero {
-        min-height: 92vh;
-        padding-top: 88px;
-        padding-bottom: 48px;
-        background:
-          linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.86),
-            rgba(255, 255, 255, 0.94)
-          ),
-          radial-gradient(
-            circle at top left,
-            rgba(37, 99, 235, 0.08),
-            transparent 36%
-          ),
-          var(--bg-1);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        text-align: left;
-        position: relative;
-      }
-      .hero-inner {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        width: min(100%, 1080px);
-        padding: 0 5vw;
-        gap: 24px;
-        flex: 1;
-        justify-content: flex-start;
-      }
-      .hero-panels {
-        display: grid;
-        grid-template-columns: minmax(0, 1.18fr) minmax(360px, 0.82fr);
-        gap: 22px;
-        width: 100%;
-        align-items: stretch;
-      }
-      .hero-identity {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
-        padding-top: 4px;
-        max-width: 660px;
-      }
-      /* avatar circle */
-      .avatar-wrap {
-        width: 132px;
-        height: 132px;
-        border-radius: 50%;
-        background: var(--white);
-        border: 4px solid var(--white);
-        box-shadow:
-          0 0 0 1px var(--gray-200),
-          0 8px 32px rgba(0, 0, 0, 0.08);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.15rem;
-        position: relative;
-        overflow: hidden;
-        align-self: flex-start;
-      }
-      .avatar-initials {
-        font-family: var(--fs);
-        font-size: 3rem;
-        font-weight: 400;
-        color: var(--navy);
-        letter-spacing: -1px;
-        font-style: italic;
-      }
-      .status-dot {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        background: #22c55e;
-        border: 2.5px solid var(--white);
-      }
-      /* heading */
-      .hero-tag {
-        font-size: 10px;
-        font-weight: 500;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: var(--blue-accent);
-        margin-bottom: 12px;
-        padding: 6px 11px;
-        border: 1px solid rgba(37, 99, 235, 0.14);
-        background: rgba(37, 99, 235, 0.06);
-        border-radius: 999px;
-      }
-      .hero-name {
-        font-family: var(--fs);
-        font-size: clamp(2.25rem, 4.1vw, 3.9rem);
-        font-weight: 500;
-        color: var(--navy);
-        letter-spacing: -1px;
-        line-height: 0.95;
-        margin-bottom: 10px;
-        max-width: none;
-        text-wrap: balance;
-      }
-      .hero-role {
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--slate);
-        margin-bottom: 12px;
-        letter-spacing: 0.2px;
-      }
-      .hero-divider {
-        width: 40px;
-        height: 2px;
-        background: var(--blue-accent);
-        border-radius: 2px;
-        margin: 0 auto 22px;
-      }
-      .hero-bio {
-        font-size: 14px;
-        color: var(--text-3);
-        line-height: 1.7;
-        max-width: 560px;
-        margin: 0 0 20px;
-        font-weight: 400;
-      }
-      .hero-btns {
-        display: flex;
-        gap: 10px;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        margin-bottom: 18px;
-      }
-      .hero-summary-card {
-        margin-bottom: 0;
-        border-radius: 22px;
-        padding: 34px 38px;
-      }
-      .hero-contact-card {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        height: 100%;
-      }
-      .hero-contact-card .contact-actions {
-        margin-top: auto;
-      }
-      #contact {
-        scroll-margin-top: 96px;
-      }
-      .btn-solid {
-        padding: 10px 24px;
-        background: var(--navy);
-        color: #fff;
-        border-radius: 7px;
-        font-size: 13px;
-        font-weight: 500;
-        letter-spacing: 0.3px;
-        text-decoration: none;
-        transition:
-          background 0.18s,
-          transform 0.12s;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        border: none;
-        cursor: pointer;
-      }
-      .btn-solid:hover {
-        background: var(--navy-soft);
-        transform: translateY(-1px);
-      }
-      .btn-outline {
-        padding: 10px 24px;
-        background: transparent;
-        color: var(--navy);
-        border: 1.5px solid var(--gray-300);
-        border-radius: 7px;
-        font-size: 13px;
-        font-weight: 500;
-        letter-spacing: 0.3px;
-        text-decoration: none;
-        transition:
-          border-color 0.18s,
-          color 0.18s;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .btn-outline:hover {
-        border-color: var(--navy);
-        color: var(--navy);
-      }
-      .hero-snapshot {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-        width: min(100%, 900px);
-        margin: 0 auto 24px;
-      }
-      .snapshot-card {
-        text-align: left;
-        background: rgba(255, 255, 255, 0.94);
-        border: 1px solid var(--gray-200);
-        border-radius: 16px;
-        padding: 16px 18px;
-        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
-      }
-      .snapshot-label {
-        display: block;
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 1.6px;
-        text-transform: uppercase;
-        color: var(--blue-accent);
-        margin-bottom: 8px;
-      }
-      .snapshot-value {
-        display: block;
-        font-size: 13px;
-        color: var(--navy);
-        line-height: 1.6;
-        font-weight: 600;
-      }
-      /* companies */
-      .hero-companies {
-        margin-bottom: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        padding: 0 2rem;
-      }
-      .companies-label {
-        font-size: 11px;
-        color: var(--text-3);
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-      }
-      .companies-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        justify-content: center;
-      }
-      .company-badge {
-        font-size: 11px;
-        font-weight: 500;
-        color: var(--slate);
-        padding: 4px 12px;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 20px;
-        letter-spacing: 0.3px;
-      }
-      /* stats bar */
-      .stats-bar {
-        width: 100%;
-        border-top: 1px solid var(--gray-200);
-        background: var(--white);
-        display: flex;
-        margin-top: 3rem;
-      }
-      .stat-cell {
-        flex: 1;
-        padding: 20px 16px;
-        text-align: center;
-        border-right: 1px solid var(--gray-200);
-      }
-      .stat-cell:last-child {
-        border-right: none;
-      }
-      .stat-n {
-        font-family: var(--fs);
-        font-size: 2rem;
-        font-weight: 500;
-        color: var(--navy);
-        line-height: 1;
-      }
-      .stat-n em {
-        font-style: normal;
-        color: var(--blue-accent);
-        font-size: 1.2rem;
-      }
-      .stat-l {
-        font-size: 10px;
-        font-weight: 500;
-        color: var(--text-3);
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        margin-top: 4px;
-      }
-
-      /* ─── SECTION SHARED ─── */
-      .section {
-        padding: 80px 5vw;
-        border-top: 1px solid var(--gray-200);
-        position: relative;
-      }
-      .sec-label {
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 2.5px;
-        text-transform: uppercase;
-        color: var(--blue-accent);
-        margin-bottom: 8px;
-      }
-      h2 {
-        font-family: var(--fs);
-        font-size: clamp(1.8rem, 3vw, 2.4rem);
-        font-weight: 500;
-        color: var(--navy);
-        letter-spacing: -0.5px;
-        line-height: 1.1;
-        margin-bottom: 8px;
-      }
-      .sec-desc {
-        font-size: 14px;
-        color: var(--text-3);
-        max-width: 640px;
-        line-height: 1.7;
-        margin-bottom: 40px;
-      }
-      .sec-head {
-        margin-bottom: 40px;
-      }
-
-      /* ─── SKILLS ─── */
-      #skills {
-        background: var(--gray-50);
-      }
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1px;
-        background: var(--gray-200);
-        border: 1px solid var(--gray-200);
-        border-radius: 10px;
-        overflow: hidden;
-      }
-      .skill-card {
-        background: var(--white);
-        padding: 24px;
-        transition: background 0.15s;
-      }
-      .skill-card:hover {
-        background: var(--gray-50);
-      }
-      .sk-icon {
-        width: 36px;
-        height: 36px;
-        border-radius: 8px;
-        background: var(--gray-100);
-        border: 1px solid var(--gray-200);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 16px;
-        margin-bottom: 14px;
-      }
-      .sk-cat {
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 1.8px;
-        text-transform: uppercase;
-        color: var(--blue-accent);
-        margin-bottom: 4px;
-      }
-      .sk-title {
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--navy);
-        margin-bottom: 12px;
-      }
-      .sk-chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-      }
-      .chip {
-        font-size: 11px;
-        font-weight: 500;
-        padding: 3px 9px;
-        border-radius: 4px;
-        letter-spacing: 0.2px;
-        background: var(--gray-100);
-        color: var(--slate);
-        border: 1px solid var(--gray-200);
-      }
-      .chip.primary {
-        background: #eff6ff;
-        color: #1d4ed8;
-        border-color: #bfdbfe;
-      }
-
-      /* ─── OVERALL SUMMARY BANNER ─── */
-      .overall-summary {
-        display: grid;
-        grid-template-columns: 260px 1fr;
-        gap: 40px;
-        background: var(--navy);
-        border-radius: 10px;
-        padding: 36px 40px;
-        margin-bottom: 40px;
-        align-items: start;
-      }
-      .os-label {
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #93c5fd;
-        margin-bottom: 8px;
-      }
-      .os-title {
-        font-family: var(--fs);
-        font-size: 1.5rem;
-        font-weight: 500;
-        color: #fff;
-        line-height: 1.25;
-        letter-spacing: -0.3px;
-      }
-      .os-right p {
-        font-size: 14px;
-        color: rgba(255, 255, 255, 0.6);
-        line-height: 1.85;
-        margin-bottom: 24px;
-        font-weight: 300;
-      }
-      .os-right p strong {
-        color: rgba(255, 255, 255, 0.85);
-        font-weight: 500;
-      }
-      .os-highlights {
-        display: flex;
-        gap: 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        padding-top: 20px;
-      }
-      .os-hi {
-        flex: 1;
-        text-align: center;
-        border-right: 1px solid rgba(255, 255, 255, 0.08);
-        padding: 0 16px;
-      }
-      .os-hi:last-child {
-        border-right: none;
-      }
-      .os-hi-num {
-        display: block;
-        font-family: var(--fs);
-        font-size: 1.8rem;
-        font-weight: 500;
-        color: #fff;
-        line-height: 1;
-      }
-      .os-hi-lbl {
-        display: block;
-        font-size: 10px;
-        font-weight: 500;
-        color: rgba(255, 255, 255, 0.35);
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        margin-top: 4px;
-      }
-
-      /* ─── EXP SUMMARY LINE ─── */
-      .exp-summary {
-        font-size: 13.5px;
-        color: var(--blue-accent);
-        font-weight: 500;
-        line-height: 1.65;
-        margin-bottom: 14px;
-        padding: 10px 14px;
-        background: #eff6ff;
-        border-left: 3px solid var(--blue-accent);
-        border-radius: 0 6px 6px 0;
-      }
-
-      /* ─── EXPERIENCE ─── */
-      .exp-timeline {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-      }
-      .exp-item {
-        display: grid;
-        grid-template-columns: 220px 1fr;
-        border-top: 1px solid var(--gray-200);
-        transition: background 0.15s;
-      }
-      .exp-item:first-child {
-        border-top: none;
-      }
-      .exp-item:hover {
-        background: var(--gray-50);
-      }
-      .exp-left {
-        padding: 28px 24px 28px 0;
-        border-right: 1px solid var(--gray-200);
-      }
-      .exp-period {
-        font-size: 11px;
-        font-weight: 500;
-        color: var(--blue-accent);
-        letter-spacing: 0.5px;
-        margin-bottom: 6px;
-      }
-      .exp-company {
-        font-size: 15px;
-        font-weight: 600;
-        color: var(--navy);
-        margin-bottom: 2px;
-      }
-      .exp-loc {
-        font-size: 11px;
-        color: var(--text-3);
-        letter-spacing: 0.3px;
-      }
-      .exp-right {
-        padding: 28px 0 28px 28px;
-      }
-      .exp-title {
-        font-size: 15px;
-        font-weight: 600;
-        color: var(--navy);
-        margin-bottom: 14px;
-      }
-      .exp-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 7px;
-        margin-bottom: 14px;
-      }
-      .exp-list li {
-        font-size: 13.5px;
-        color: var(--text-2);
-        line-height: 1.7;
-        padding-left: 16px;
-        position: relative;
-      }
-      .exp-list li::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 9px;
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        background: var(--blue-accent);
-      }
-      .tech-pills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-      }
-      .tp {
-        font-size: 10px;
-        font-weight: 500;
-        padding: 2px 8px;
-        border-radius: 3px;
-        border: 1px solid var(--gray-200);
-        color: var(--text-3);
-        background: var(--white);
-        letter-spacing: 0.2px;
-      }
-
-      /* ─── PROJECTS ─── */
-      #projects {
-        background: var(--navy);
-      }
-      #projects .sec-label {
-        color: #93c5fd;
-      }
-      #projects h2 {
-        color: #fff;
-      }
-      #projects .sec-desc {
-        color: rgba(255, 255, 255, 0.4);
-      }
-      .proj-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 16px;
-      }
-      .proj-card {
-        background: rgba(8, 23, 46, 0.92);
-        padding: 26px;
-        position: relative;
-        transition:
-          background 0.18s,
-          transform 0.18s,
-          border-color 0.18s;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 18px;
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        min-height: 100%;
-        box-shadow: 0 14px 35px rgba(1, 8, 24, 0.16);
-      }
-      .proj-card:hover {
-        background: #102545;
-        transform: translateY(-4px);
-      }
-      .proj-card.c1 {
-        border-top: 3px solid var(--blue-accent);
-      }
-      .proj-card.c2 {
-        border-top: 3px solid #10b981;
-      }
-      .proj-card.c3 {
-        border-top: 3px solid #f59e0b;
-      }
-      .proj-card.c4 {
-        border-top: 3px solid #8b5cf6;
-      }
-      .proj-idx {
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.3);
-      }
-      .proj-title {
-        font-family: var(--fs);
-        font-size: 19px;
-        font-weight: 500;
-        color: #fff;
-        line-height: 1.35;
-        letter-spacing: -0.2px;
-      }
-      .proj-meta {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin-top: 4px;
-      }
-      .proj-meta-row {
-        padding-top: 12px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-      }
-      .proj-meta-row span {
-        display: block;
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 1.6px;
-        text-transform: uppercase;
-        color: #93c5fd;
-        margin-bottom: 6px;
-      }
-      .proj-meta-row strong {
-        display: block;
-        font-size: 13px;
-        font-weight: 400;
-        color: rgba(255, 255, 255, 0.7);
-        line-height: 1.75;
-      }
-      .proj-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-        margin-top: 2px;
-      }
-      .proj-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        margin-top: auto;
-        color: #fff;
-        text-decoration: none;
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: 0.2px;
-        width: fit-content;
-        transition: color 0.18s;
-      }
-      .proj-link:hover {
-        color: #93c5fd;
-      }
-      .ptag {
-        font-size: 10px;
-        font-weight: 500;
-        padding: 3px 9px;
-        border-radius: 3px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: rgba(255, 255, 255, 0.45);
-        letter-spacing: 0.3px;
-      }
-
-      /* ─── INSIGHTS ─── */
-      .insights-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 16px;
-      }
-      .insight-card {
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 16px;
-        padding: 24px;
-        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
-        transition:
-          transform 0.18s,
-          border-color 0.18s,
-          box-shadow 0.18s;
-      }
-      .insight-card:hover {
-        transform: translateY(-3px);
-        border-color: rgba(37, 99, 235, 0.25);
-        box-shadow: 0 14px 32px rgba(37, 99, 235, 0.08);
-      }
-      .insight-kicker {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 1.6px;
-        text-transform: uppercase;
-        color: var(--blue-accent);
-        margin-bottom: 10px;
-      }
-      .insight-title {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--navy);
-        line-height: 1.35;
-        margin-bottom: 10px;
-      }
-      .insight-copy {
-        font-size: 13.5px;
-        color: var(--text-3);
-        line-height: 1.75;
-        margin-bottom: 14px;
-      }
-      .insight-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-      }
-
-      /* ─── EDUCATION ─── */
-      #education {
-        background: var(--gray-50);
-      }
-      .edu-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 16px;
-      }
-      .edu-card {
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 10px;
-        padding: 28px;
-        display: flex;
-        gap: 18px;
-        align-items: flex-start;
-        transition:
-          border-color 0.18s,
-          box-shadow 0.18s;
-      }
-      .edu-card:hover {
-        border-color: var(--blue-accent);
-        box-shadow: 0 4px 20px rgba(37, 99, 235, 0.07);
-      }
-      .edu-icon {
-        width: 44px;
-        height: 44px;
-        border-radius: 8px;
-        flex-shrink: 0;
-        background: #eff6ff;
-        border: 1px solid #bfdbfe;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-      }
-      .edu-badge {
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        color: var(--blue-accent);
-        margin-bottom: 5px;
-      }
-      .edu-degree {
-        font-size: 15px;
-        font-weight: 600;
-        color: var(--navy);
-        margin-bottom: 3px;
-      }
-      .edu-school {
-        font-size: 13px;
-        color: var(--text-2);
-        margin-bottom: 3px;
-      }
-      .edu-year {
-        font-size: 11px;
-        color: var(--text-3);
-        letter-spacing: 0.3px;
-      }
-
-      /* ─── CONTACT ─── */
-      .contact-wrap {
-        display: grid;
-        grid-template-columns: 1.05fr 0.95fr;
-        gap: 32px;
-        align-items: start;
-      }
-      .contact-heading {
-        font-family: var(--fs);
-        font-size: 22px;
-        font-weight: 500;
-        color: var(--navy);
-        margin-bottom: 10px;
-      }
-      .contact-sub {
-        font-size: 14px;
-        color: var(--text-3);
-        line-height: 1.75;
-        margin-bottom: 28px;
-      }
-      .contact-links {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-      }
-      .cl {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        padding: 14px 0;
-        border-bottom: 1px solid var(--gray-200);
-        text-decoration: none;
-        transition: padding-left 0.18s;
-      }
-      .cl:hover {
-        padding-left: 6px;
-      }
-      .cl-icon {
-        width: 36px;
-        height: 36px;
-        border-radius: 7px;
-        background: var(--gray-100);
-        border: 1px solid var(--gray-200);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 14px;
-        flex-shrink: 0;
-        transition:
-          background 0.18s,
-          border-color 0.18s;
-      }
-      .cl:hover .cl-icon {
-        background: #eff6ff;
-        border-color: #bfdbfe;
-      }
-      .cl-lbl {
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        color: var(--text-3);
-      }
-      .cl-val {
-        font-size: 13px;
-        color: var(--navy);
-        font-weight: 500;
-      }
-      .contact-panel {
-        position: relative;
-      }
-      .contact-card {
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 18px;
-        padding: 28px;
-        box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04);
-      }
-      .contact-badge {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 1.6px;
-        text-transform: uppercase;
-        color: var(--blue-accent);
-        margin-bottom: 10px;
-      }
-      .contact-card-title {
-        font-family: var(--fs);
-        font-size: 22px;
-        font-weight: 500;
-        color: var(--navy);
-        line-height: 1.28;
-        margin-bottom: 12px;
-      }
-      .contact-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 22px;
-      }
-      .contact-list li {
-        position: relative;
-        padding-left: 18px;
-        font-size: 13.5px;
-        line-height: 1.7;
-        color: var(--text-2);
-      }
-      .contact-list li::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 10px;
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--blue-accent);
-      }
-      .contact-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-
-      /* ─── FOOTER ─── */
-      footer {
-        background: var(--navy);
-        padding: 24px 5vw;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-      .fc {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.35);
-        letter-spacing: 0.3px;
-      }
-      .fc span {
-        color: rgba(255, 255, 255, 0.6);
-      }
-      .fl {
-        display: flex;
-        gap: 20px;
-      }
-      .fl a {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.35);
-        text-decoration: none;
-        letter-spacing: 0.3px;
-        transition: color 0.18s;
-      }
-      .fl a:hover {
-        color: rgba(255, 255, 255, 0.8);
-      }
-
-      /* ─── REVEAL ─── */
       .fade {
-        opacity: 0;
-        transform: translateY(18px);
-        transition:
-          opacity 0.6s ease,
-          transform 0.6s ease;
-      }
-      .fade.in {
         opacity: 1;
         transform: none;
       }
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-        *,
-        *::before,
-        *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-          scroll-behavior: auto !important;
-        }
-        .fade {
-          opacity: 1;
-          transform: none;
-        }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 860px) {
+      header {
+        padding: 0 4vw;
       }
 
-      /* ─── RESPONSIVE ─── */
-      @media (max-width: 860px) {
-        header {
-          padding: 0 4vw;
-        }
-        .header-actions {
-          gap: 8px;
-          margin-left: auto;
-        }
-        nav {
-          display: none;
-          position: absolute;
-          top: calc(100% + 10px);
-          left: 4vw;
-          right: 4vw;
-          flex-direction: column;
-          align-items: stretch;
-          gap: 6px;
-          padding: 12px;
-          background: rgba(13, 31, 60, 0.98);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 18px;
-          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
-        }
-        header.nav-open nav {
-          display: flex;
-        }
-        nav a {
-          padding: 10px 14px;
-          border-radius: 12px;
-          background: rgba(255, 255, 255, 0.04);
-        }
-        .nav-toggle {
-          display: inline-flex;
-        }
-        .nav-hire {
-          display: none;
-        }
-        .section {
-          padding: 52px 5vw;
-        }
-        .hero {
-          padding-top: 108px;
-          min-height: auto;
-        }
-        .hero-panels {
-          grid-template-columns: 1fr;
-        }
-        .hero-identity {
-          max-width: none;
-          align-items: center;
-          text-align: center;
-        }
-        .hero-contact-card {
-          height: auto;
-        }
-        .hero-name {
-          font-size: clamp(2.1rem, 7vw, 3rem);
-        }
-        .avatar-wrap {
-          align-self: center;
-        }
-        .exp-item {
-          grid-template-columns: 1fr;
-        }
-        .exp-left {
-          border-right: none;
-          border-bottom: 1px solid var(--gray-200);
-          padding: 20px 0;
-        }
-        .exp-right {
-          padding: 20px 0;
-        }
-        .contact-wrap {
-          grid-template-columns: 1fr;
-          gap: 24px;
-        }
-        .overall-summary {
-          grid-template-columns: 1fr;
-          gap: 22px;
-          padding: 28px 24px;
-        }
-        .os-highlights {
-          flex-wrap: wrap;
-        }
-        .os-hi {
-          min-width: 50%;
-          padding: 0 12px 12px;
-        }
-        .proj-grid,
-        .insights-grid {
-          grid-template-columns: 1fr;
-        }
-        .contact-card {
-          padding: 24px;
-        }
-        footer {
-          gap: 16px;
-        }
+      .header-actions {
+        gap: 8px;
+        margin-left: auto;
       }
-      @media (max-width: 560px) {
-        header {
-          height: auto;
-          min-height: 66px;
-          padding-top: 10px;
-          padding-bottom: 10px;
-        }
-        .logo-sub {
-          display: none;
-        }
-        .hero-tag {
-          letter-spacing: 1.8px;
-          padding: 6px 10px;
-        }
-        .btn-solid,
-        .btn-outline {
-          width: 100%;
-          justify-content: center;
-        }
-        .hero-btns,
-        .contact-actions {
-          width: 100%;
-          justify-content: center;
-        }
-        .hero-btns .btn-outline,
-        .contact-actions .btn-outline {
-          width: 100%;
-        }
-        .hero-btns .btn-solid,
-        .contact-actions .btn-solid {
-          width: 100%;
-        }
-        .hero-summary-card {
-          padding: 28px 22px;
-        }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 4vw;
+        right: 4vw;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        padding: 12px;
+        background: rgba(13, 31, 60, 0.98);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
       }
-    </style>
-  </head>
-  <body>
-    <div id="bar"></div>
 
-    <!-- HEADER -->
-    <header>
-      <a class="logo" href="#hero" aria-label="Siva Veginati home">
-        <div class="logo-mark">SV</div>
-        <div>
-          <div class="logo-text">Siva Veginati</div>
-          <div class="logo-sub">Lead Full-Stack Engineer</div>
-        </div>
-      </a>
-      <div class="header-actions">
-        <nav id="site-nav" aria-label="Primary">
-          <a href="#skills">Skills</a>
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="#insights">Insights</a>
-          <a href="#education">Education</a>
-          <a href="#contact">Contact</a>
-        </nav>
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-label="Toggle navigation"
-          aria-controls="site-nav"
-          aria-expanded="false"
-        >
-          Menu
-        </button>
-        <a href="#experience" class="nav-hire">View Resume</a>
+      header.nav-open nav {
+        display: flex;
+      }
+
+      nav a {
+        padding: 10px 14px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .nav-hire {
+        display: none;
+      }
+
+      .section {
+        padding: 52px 5vw;
+      }
+
+      .hero {
+        padding-top: 108px;
+        min-height: auto;
+      }
+
+      .hero-inner {
+        width: min(100%, 760px);
+        gap: 18px;
+      }
+
+      .hero-identity {
+        max-width: none;
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .hero-contact-card {
+        padding: 15px 0px;
+      }
+
+      .hero-contact-inner {
+        gap: 18px;
+      }
+
+      .hero-contact-card .contact-links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-name {
+        font-size: clamp(2.1rem, 7vw, 3rem);
+      }
+
+      .avatar-wrap {
+        align-self: flex-start;
+      }
+
+      .exp-item {
+        grid-template-columns: 1fr;
+      }
+
+      .exp-left {
+        border-right: none;
+        border-bottom: 1px solid var(--gray-200);
+        padding: 20px 0;
+      }
+
+      .exp-right {
+        padding: 20px 0;
+      }
+
+      .contact-wrap {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .proj-grid,
+      .insights-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-card {
+        padding: 24px;
+      }
+
+      .hero-summary-band {
+        padding: 15px 0px;
+      }
+
+      .hero-summary-band .os-title {
+        font-size: clamp(1.5rem, 5vw, 1.9rem);
+      }
+
+      .hero-summary-band .os-copy {
+        font-size: 14px;
+      }
+
+      footer {
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      header {
+        height: auto;
+        min-height: 66px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .logo-sub {
+        display: none;
+      }
+
+      .hero-tag {
+        letter-spacing: 1.8px;
+        padding: 6px 10px;
+      }
+
+      .btn-solid,
+      .btn-outline {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero-btns,
+      .contact-actions {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero-btns .btn-outline,
+      .contact-actions .btn-outline {
+        width: 100%;
+      }
+
+      .hero-btns .btn-solid,
+      .contact-actions .btn-solid {
+        width: 100%;
+      }
+
+      .hero-summary-band {
+        padding: 15px 0px;
+      }
+
+      .hero-summary-band .os-hi {
+        padding: 0 10px;
+      }
+
+      .hero-contact-card .contact-links {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="bar"></div>
+
+  <!-- HEADER -->
+  <header>
+    <a class="logo" href="#hero" aria-label="Siva Veginati home">
+      <div class="logo-mark">SV</div>
+      <div>
+        <div class="logo-text">Siva Veginati</div>
+        <div class="logo-sub">Lead Full-Stack Engineer</div>
       </div>
-    </header>
+    </a>
+    <div class="header-actions">
+      <nav id="site-nav" aria-label="Primary">
+        <a href="#contact">Contact</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#insights">Insights</a>
+        <a href="#education">Education</a>
+      </nav>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-controls="site-nav"
+        aria-expanded="false">
+        Menu
+      </button>
+      <a href="#experience" class="nav-hire">View Resume</a>
+    </div>
+  </header>
 
-    <main id="main">
-      <!-- HERO -->
-      <section class="hero" id="hero">
-        <div class="hero-inner">
-          <div class="hero-panels">
-            <div class="hero-identity">
-              <div class="avatar-wrap fade">
-                <img
-                  src="profile.png"
-                  alt="Portrait of Siva Veginati"
-                  style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    object-position: center 18%;
-                    border-radius: 50%;
-                  "
-                  loading="eager"
-                  decoding="async"
-                />
-                <div class="status-dot"></div>
-              </div>
-
-              <div class="hero-tag fade">
-                Lead Full-Stack Engineer · Enterprise Platforms
-              </div>
-
-              <h1 class="hero-name fade">Siva Veginati</h1>
-
-              <div class="hero-role fade">
-                Angular · React · .NET · Azure · Wilmington, DE
-              </div>
-
-              <p class="hero-bio fade">
-                I help teams ship quickly and stay maintainable across fintech,
-                retail, healthcare, and semiconductor environments.
-              </p>
-
-              <div class="hero-btns fade">
-                <a href="#projects" class="btn-solid">View Case Studies ↓</a>
-                <a href="#experience" class="btn-outline">View Resume</a>
-                <a href="#" class="btn-outline" id="download-resume"
-                  >Download Resume</a
-                >
-              </div>
-            </div>
-
-            <div class="contact-card hero-contact-card fade" id="contact">
-              <div class="contact-links">
-                <a href="mailto:sivavegi04@gmail.com" class="cl">
-                  <div class="cl-icon">✉</div>
-                  <div>
-                    <div class="cl-lbl">Email</div>
-                    <div class="cl-val">sivavegi04@gmail.com</div>
-                  </div>
-                </a>
-                <a href="tel:9132323109" class="cl">
-                  <div class="cl-icon">☎</div>
-                  <div>
-                    <div class="cl-lbl">Phone</div>
-                    <div class="cl-val">(913) 232-3109</div>
-                  </div>
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/siva-veginati-27a21110a/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="cl"
-                >
-                  <div class="cl-icon">in</div>
-                  <div>
-                    <div class="cl-lbl">LinkedIn</div>
-                    <div class="cl-val">linkedin.com/in/siva-veginati</div>
-                  </div>
-                </a>
-                <div class="cl">
-                  <div class="cl-icon">📍</div>
-                  <div>
-                    <div class="cl-lbl">Location</div>
-                    <div class="cl-val">
-                      Wilmington, DE — Open to Relocation
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="contact-actions">
-                <a href="mailto:sivavegi04@gmail.com" class="btn-solid"
-                  >Email Me</a
-                >
-                <a
-                  href="https://www.linkedin.com/in/siva-veginati-27a21110a/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="btn-outline"
-                  >LinkedIn</a
-                >
-              </div>
-            </div>
-          </div>
-
-          <div class="overall-summary hero-summary-card fade">
-            <div class="os-left">
-              <div class="os-label">Professional Summary</div>
-              <div class="os-title">
-                10 Years of Enterprise Full-Stack Engineering
-              </div>
-            </div>
-            <div class="os-right">
-              <p>
-                Over a decade, I have moved from UI Developer to Lead Full-Stack
-                Engineer, building and modernizing enterprise platforms across
-                fintech, retail, healthcare, and semiconductor teams. The
-                through line has stayed the same: strong architecture,
-                full-stack ownership, and close collaboration with product and
-                business partners.
-              </p>
-              <div class="os-highlights">
-                <div class="os-hi">
-                  <span class="os-hi-num">6</span
-                  ><span class="os-hi-lbl">Companies</span>
-                </div>
-                <div class="os-hi">
-                  <span class="os-hi-num">10+</span
-                  ><span class="os-hi-lbl">Years</span>
-                </div>
-                <div class="os-hi">
-                  <span class="os-hi-num">3</span
-                  ><span class="os-hi-lbl">Engineers Mentored</span>
-                </div>
-                <div class="os-hi">
-                  <span class="os-hi-num">4+</span
-                  ><span class="os-hi-lbl">Services Decoupled</span>
-                </div>
-              </div>
-            </div>
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <div class="hero-avatar-row fade">
+          <div class="avatar-wrap fade">
+            <img src="profile.png" alt="Portrait of Siva Veginati" style="
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  object-position: center 18%;
+                  border-radius: 50%;
+                " loading="eager" decoding="async" />
+            <div class="status-dot"></div>
           </div>
         </div>
-      </section>
-      <!-- SKILLS -->
-      <section class="section" id="skills">
-        <div class="sec-head fade">
-          <div class="sec-label">Technical Expertise</div>
-          <h2>Core Competencies</h2>
-          <p class="sec-desc">
-            A full-spectrum stack built over 10 years across frontend, backend,
-            cloud, analytics, and data visualization.
+
+        <div class="hero-identity">
+          <div class="hero-tag fade">
+            Lead Full-Stack Engineer · Enterprise Platforms
+          </div>
+
+          <h1 class="hero-name fade">Siva Veginati</h1>
+
+          <div class="hero-role fade">
+            Angular · React · .NET · Azure · Wilmington, DE
+          </div>
+
+          <p class="hero-bio fade">
+            I help teams ship quickly and stay maintainable across fintech,
+            retail, healthcare, and semiconductor environments.
           </p>
-        </div>
-        <div class="skills-grid fade">
-          <div class="skill-card">
-            <div class="sk-icon">⚡</div>
-            <div class="sk-cat">Frontend</div>
-            <div class="sk-title">UI Engineering</div>
-            <div class="sk-chips">
-              <span class="chip primary">Angular 20</span>
-              <span class="chip primary">React</span>
-              <span class="chip primary">TypeScript</span>
-              <span class="chip">RxJS</span>
-              <span class="chip">NgRx / Redux</span>
-              <span class="chip">Signals</span>
-              <span class="chip">Ionic</span>
-              <span class="chip">HTML5 / SCSS</span>
-            </div>
-          </div>
 
-          <div class="skill-card">
-            <div class="sk-icon">🖥</div>
-            <div class="sk-cat">Backend</div>
-            <div class="sk-title">Server &amp; APIs</div>
-            <div class="sk-chips">
-              <span class="chip primary">.NET Core 9</span>
-              <span class="chip primary">Node.js</span>
-              <span class="chip primary">C# / ASP.NET</span>
-              <span class="chip">Entity Framework</span>
-              <span class="chip">REST / ODATA</span>
-              <span class="chip">SQL Server</span>
-              <span class="chip">MongoDB</span>
-              <span class="chip">Express.js</span>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="sk-icon">🎨</div>
-            <div class="sk-cat">Design Systems</div>
-            <div class="sk-title">UI Libraries</div>
-            <div class="sk-chips">
-              <span class="chip primary">Angular Material</span>
-              <span class="chip primary">Bootstrap 5</span>
-              <span class="chip primary">NZ-Zorro</span>
-              <span class="chip">Material UI</span>
-              <span class="chip">Primeng</span>
-              <span class="chip">Flex Layout</span>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="sk-icon">📊</div>
-            <div class="sk-cat">Data &amp; Visualization</div>
-            <div class="sk-title">Charts &amp; Grids</div>
-            <div class="sk-chips">
-              <span class="chip primary">AG-Grid</span>
-              <span class="chip primary">D3.js</span>
-              <span class="chip primary">Plotly</span>
-              <span class="chip">Angular Hi-Charts</span>
-              <span class="chip">Power BI</span>
-              <span class="chip">Azure App Insights</span>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="sk-icon">📡</div>
-            <div class="sk-cat">Analytics</div>
-            <div class="sk-title">Tag Management</div>
-            <div class="sk-chips">
-              <span class="chip primary">Adobe Launch</span>
-              <span class="chip primary">Adobe Analytics</span>
-              <span class="chip primary">Tealium</span>
-              <span class="chip">Google Analytics</span>
-              <span class="chip">Optimizely A/B</span>
-              <span class="chip">Data Layer</span>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="sk-icon">☁</div>
-            <div class="sk-cat">Cloud &amp; DevOps</div>
-            <div class="sk-title">Infrastructure</div>
-            <div class="sk-chips">
-              <span class="chip primary">Azure Cloud</span>
-              <span class="chip primary">GitHub Actions</span>
-              <span class="chip primary">Azure DevOps</span>
-              <span class="chip">Apache Kafka</span>
-              <span class="chip">CI/CD Pipelines</span>
-              <span class="chip">Agile / Scrum</span>
-              <span class="chip">Git</span>
-            </div>
+          <div class="hero-btns fade">
+            <a href="#projects" class="btn-solid">View Case Studies ↓</a>
+            <a href="mailto:sivavegi04@gmail.com" class="btn-solid">Email Me</a>
+            <a href="https://www.linkedin.com/in/siva-veginati-27a21110a/" target="_blank" rel="noopener noreferrer"
+              class="btn-outline">LinkedIn</a>
+            <a href="#experience" class="btn-outline">View Resume</a>
+            <a href="#" class="btn-outline" id="download-resume">
+              Download Resume
+            </a>
           </div>
         </div>
-      </section>
 
-      <!-- EXPERIENCE -->
-      <section class="section" id="experience">
-        <div class="exp-timeline">
-          <!-- CAPITALONE -->
-          <div class="exp-item fade">
-            <div class="exp-left">
-              <div class="exp-period">Feb 2026 — Present</div>
-              <div class="exp-company">CapitalOne</div>
-              <div class="exp-loc">Wilmington, DE</div>
-            </div>
-            <div class="exp-right">
-              <div class="exp-title">Lead Software Engineer</div>
-              <div class="exp-summary">
-                Leading frontend architecture at one of the largest US banks —
-                driving Angular 20 adoption, CI/CD quality standards, and
-                Bloomreach CMS integration across enterprise-scale
-                consumer-facing applications.
-              </div>
-              <ul class="exp-list">
-                <li>
-                  Architected and built scalable consumer web applications with
-                  Angular 20 using standalone components, Signals, and Reactive
-                  Forms, significantly reducing change detection overhead and
-                  improving long-term maintainability.
-                </li>
-                <li>
-                  Configured and maintained CI/CD pipelines via GitHub Actions
-                  and Azure DevOps, incorporating automated Jest test gates and
-                  code quality checks to enforce standards before every merge to
-                  main.
-                </li>
-                <li>
-                  Led pull request reviews across the engineering team,
-                  identifying and resolving anti-patterns in change detection,
-                  lazy loading, and reactive form design to ensure consistent,
-                  high-quality code.
-                </li>
-                <li>
-                  Integrated Bloomreach Web Content Management (WCM) platform to
-                  enable non-technical stakeholders to update UI content
-                  dynamically without requiring code deployments — eliminating a
-                  recurring development bottleneck.
-                </li>
-                <li>
-                  Implemented OnPush change detection and optimized component
-                  architecture using Angular Signals, improving application
-                  rendering performance measurably across key user flows.
-                </li>
-                <li>
-                  Presented frontend architecture proposals and integration
-                  design patterns in cross-team technical review sessions,
-                  driving adoption of consistent Angular standards across
-                  multiple engineering groups.
-                </li>
-                <li>
-                  Partnered with product managers and business stakeholders to
-                  assess technical feasibility of requirements, presenting
-                  tradeoffs and risk assessments during sprint planning and
-                  design sessions.
-                </li>
-              </ul>
-              <div class="tech-pills">
-                <span class="tp">Angular 20</span><span class="tp">Signals</span
-                ><span class="tp">GitHub Actions</span
-                ><span class="tp">Azure DevOps</span
-                ><span class="tp">Bloomreach WCM</span
-                ><span class="tp">Jest</span><span class="tp">TypeScript</span
-                ><span class="tp">RxJS</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- ABIM -->
-          <div class="exp-item fade">
-            <div class="exp-left">
-              <div class="exp-period">Aug 2025 — Jan 2026</div>
-              <div class="exp-company">ABIM</div>
-              <div class="exp-loc">Malvern, PA</div>
-            </div>
-            <div class="exp-right">
-              <div class="exp-title">Lead Full-Stack Engineer</div>
-              <div class="exp-summary">
-                Led full-stack engineering for the American Board of Internal
-                Medicine — establishing Clean Architecture standards, mentoring
-                the engineering team, and delivering a modern .NET Core 9 +
-                Angular 20 platform from the ground up.
-              </div>
-              <ul class="exp-list">
-                <li>
-                  Led the design and development of dynamic, responsive web
-                  applications using Angular 20, TypeScript, Bootstrap 5, and
-                  the ng-zorro component library, optimizing for performance,
-                  accessibility, and user experience.
-                </li>
-                <li>
-                  Established Clean Architecture patterns and SOLID design
-                  principles as team-wide engineering standards, conducting
-                  architecture review sessions to evaluate all backend service
-                  and API proposals before implementation.
-                </li>
-                <li>
-                  Coached 3 junior developers through weekly design reviews,
-                  TypeScript pairing sessions, and code quality workshops —
-                  measurably reducing bug rates and improving the consistency of
-                  delivered features.
-                </li>
-                <li>
-                  Developed RESTful APIs and microservices using .NET Core 9,
-                  ensuring clean separation of concerns, scalability, and
-                  adherence to API design best practices.
-                </li>
-                <li>
-                  Implemented Entity Framework Core 9 for ORM, leveraging LINQ
-                  queries, database migrations, and optimized data access
-                  patterns to support complex data requirements.
-                </li>
-                <li>
-                  Designed and tuned complex SQL Server stored procedures,
-                  views, and indexes, improving query performance and reducing
-                  database load under production traffic.
-                </li>
-                <li>
-                  Led sprint planning, code reviews, and deployment cycles
-                  within an Agile/Scrum delivery environment, ensuring
-                  consistent on-time delivery of features.
-                </li>
-                <li>
-                  Optimized Angular build times and bundle size through AOT
-                  compilation, code-splitting strategies, and Angular CLI
-                  configuration improvements.
-                </li>
-              </ul>
-              <div class="tech-pills">
-                <span class="tp">Angular 20</span
-                ><span class="tp">.NET Core 9</span
-                ><span class="tp">NZ-Zorro</span
-                ><span class="tp">Bootstrap 5</span
-                ><span class="tp">Entity Framework</span
-                ><span class="tp">SQL Server</span
-                ><span class="tp">Clean Architecture</span
-                ><span class="tp">Agile</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- ALBERTSONS -->
-          <div class="exp-item fade">
-            <div class="exp-left">
-              <div class="exp-period">Aug 2022 — Jul 2025</div>
-              <div class="exp-company">Albertsons</div>
-              <div class="exp-loc">Malvern, PA</div>
-            </div>
-            <div class="exp-right">
-              <div class="exp-title">Senior Full-Stack Engineer</div>
-              <div class="exp-summary">
-                Drove large-scale integration modernization and analytics
-                platform delivery at one of the US's largest grocery chains —
-                leading Kafka migration, Adobe Launch analytics pipelines, and
-                Search page modernization across 3 simultaneous workstreams.
-              </div>
-              <ul class="exp-list">
-                <li>
-                  Developed dynamic, responsive front-end applications using
-                  Angular 15/17/18 and React, leveraging TypeScript for type
-                  safety and SCSS for modular styling; contributed to
-                  Albertsons' custom Angular Material Design theme for
-                  consistency across the platform.
-                </li>
-                <li>
-                  Led integration modernization by replacing legacy
-                  point-to-point data pipelines with Apache Kafka streaming,
-                  decoupling 4+ upstream service dependencies and significantly
-                  improving system resilience and operational efficiency.
-                </li>
-                <li>
-                  Implemented end-to-end analytics data capture across multiple
-                  repositories using Adobe Launch and Adobe Analytics, providing
-                  marketing teams with comprehensive user behavior insights and
-                  enabling data-driven decisions.
-                </li>
-                <li>
-                  Automated third-party pixel validation as part of the CI/CD
-                  release pipeline, reducing manual QA effort and enabling
-                  reliable, repeatable deployments across multiple repositories.
-                </li>
-                <li>
-                  Simultaneously led 3 independent workstreams — Search page
-                  modernization, analytics pipeline, and Kafka integration —
-                  delivering each within sprint commitments without dedicated
-                  project management support.
-                </li>
-                <li>
-                  Designed and implemented state management solutions using NgRx
-                  in Angular and Redux in React, while utilizing RxJS for
-                  efficient reactive component communication, improving
-                  application performance and user experience.
-                </li>
-                <li>
-                  Served as frontend technical partner to back-end engineering
-                  teams, defining API contract expectations, reviewing
-                  integration designs, and identifying performance improvements
-                  across team boundaries.
-                </li>
-                <li>
-                  Developed REST APIs using Node.js and Express.js to support
-                  server-side data capture and reporting for marketing and
-                  analytics strategies.
-                </li>
-                <li>
-                  Integrated third-party pixels using Adobe Launch for
-                  analytics, ensuring accurate cross-repository data tracking
-                  and reporting consistency.
-                </li>
-              </ul>
-              <div class="tech-pills">
-                <span class="tp">Angular 15–18</span
-                ><span class="tp">React</span
-                ><span class="tp">Apache Kafka</span
-                ><span class="tp">Adobe Launch</span
-                ><span class="tp">Adobe Analytics</span
-                ><span class="tp">NgRx</span><span class="tp">Redux</span
-                ><span class="tp">Node.js</span><span class="tp">Tealium</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- DSW -->
-          <div class="exp-item fade">
-            <div class="exp-left">
-              <div class="exp-period">Apr 2021 — Jul 2022</div>
-              <div class="exp-company">Designer Brands (DSW)</div>
-              <div class="exp-loc">Cleveland, OH</div>
-            </div>
-            <div class="exp-right">
-              <div class="exp-title">Software Engineer II</div>
-              <div class="exp-summary">
-                Contributed to frontend modernization at DSW — driving Angular
-                architecture decisions, implementing A/B testing frameworks, and
-                building CMS-driven content experiences for one of the largest
-                US footwear retailers.
-              </div>
-              <ul class="exp-list">
-                <li>
-                  Drove Angular module architecture decisions including NgRx
-                  state management strategy, component decomposition, and
-                  third-party library evaluation — improving maintainability and
-                  reducing overall bundle size.
-                </li>
-                <li>
-                  Designed and built user interfaces using Angular 11/12/14 with
-                  Bootstrap for responsive layouts, enhancing existing HTML5,
-                  CSS3, and TypeScript implementations.
-                </li>
-                <li>
-                  Implemented A/B testing with Optimizely for UI variations,
-                  enabling data-driven product decisions and improving
-                  conversion rates through real user analysis.
-                </li>
-                <li>
-                  Integrated Strapi CMS for content management, empowering the
-                  business team to update site content dynamically without
-                  engineering involvement.
-                </li>
-                <li>
-                  Enhanced site performance and user experience by replacing
-                  heavyweight third-party libraries with custom, reusable
-                  in-house functions — reducing bundle size and improving load
-                  time.
-                </li>
-                <li>
-                  Advanced UI development using Angular Flex Layout, focusing on
-                  modular, accessible, and responsive component design for
-                  enhanced cross-device user experience.
-                </li>
-                <li>
-                  Established and enforced unit testing standards using Karma
-                  and Jasmine, setting meaningful coverage thresholds and
-                  reviewing test quality during code reviews.
-                </li>
-                <li>
-                  Collaborated closely with cross-functional teams and
-                  implementation partners, translating business requirements
-                  into structured, testable technical implementations.
-                </li>
-              </ul>
-              <div class="tech-pills">
-                <span class="tp">Angular 11–14</span><span class="tp">NgRx</span
-                ><span class="tp">Optimizely</span
-                ><span class="tp">Strapi CMS</span
-                ><span class="tp">Karma/Jasmine</span
-                ><span class="tp">Bootstrap</span
-                ><span class="tp">TypeScript</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- LAM RESEARCH -->
-          <div class="exp-item fade">
-            <div class="exp-left">
-              <div class="exp-period">Nov 2019 — Mar 2021</div>
-              <div class="exp-company">Lam Research</div>
-              <div class="exp-loc">Portland, OR</div>
-            </div>
-            <div class="exp-right">
-              <div class="exp-title">Software Engineer</div>
-              <div class="exp-summary">
-                Built full-stack MEAN applications and cross-platform Ionic
-                mobile apps for semiconductor equipment telemetry and reporting
-                — delivering data-rich dashboards with AG-Grid, D3.js, and Power
-                BI for engineering and operations teams.
-              </div>
-              <ul class="exp-list">
-                <li>
-                  Designed, developed, and implemented a full MEAN stack web
-                  application (MongoDB, Express.js, AngularJS, Node.js) from
-                  scratch, delivering a comprehensive data management and
-                  reporting platform for internal engineering teams.
-                </li>
-                <li>
-                  Developed and maintained cross-platform mobile and web
-                  applications using the Ionic framework, creating custom themes
-                  and ensuring full responsiveness across all device sizes using
-                  Ionic Grid and Flexbox.
-                </li>
-                <li>
-                  Used AG-Grid for displaying live telemetry data in interactive
-                  grids, and D3.js and Plotly for building rich, interactive
-                  charts and reports for engineering analysis.
-                </li>
-                <li>
-                  Configured Azure Application Insights to capture and monitor
-                  telemetry data from production systems, enabling proactive
-                  performance monitoring and alerting.
-                </li>
-                <li>
-                  Created Power BI visualizations and dashboards from database
-                  telemetry and operational data, providing actionable insights
-                  to engineering and operations leadership.
-                </li>
-                <li>
-                  Developed extensive REST APIs using Node.js, Express.js, and
-                  MongoDB to support data retrieval and backend processing for
-                  all application features.
-                </li>
-                <li>
-                  Created interactive mockups using Adobe XD, collaborating
-                  directly with end users to gather feedback and drive iterative
-                  design improvements.
-                </li>
-                <li>
-                  Authored detailed software specification documents for
-                  offshore development teams, translating business requirements
-                  into implementable technical designs that accelerated
-                  cross-timezone delivery.
-                </li>
-              </ul>
-              <div class="tech-pills">
-                <span class="tp">MEAN Stack</span><span class="tp">Ionic</span
-                ><span class="tp">AG-Grid</span><span class="tp">D3.js</span
-                ><span class="tp">Plotly</span><span class="tp">Power BI</span
-                ><span class="tp">Azure Insights</span
-                ><span class="tp">MongoDB</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- MICROSOFT -->
-          <div class="exp-item fade">
-            <div class="exp-left">
-              <div class="exp-period">Apr 2018 — Oct 2019</div>
-              <div class="exp-company">Microsoft</div>
-              <div class="exp-loc">Redmond, WA</div>
-            </div>
-            <div class="exp-right">
-              <div class="exp-title">UI Developer (Full-Stack)</div>
-              <div class="exp-summary">
-                Full-stack engineer at Microsoft — owning end-to-end delivery of
-                internal web applications using Angular 5, .NET ODATA APIs, and
-                SQL Server, while configuring Azure deployment pipelines for
-                consistent, repeatable production releases.
-              </div>
-              <ul class="exp-list">
-                <li>
-                  Owned full-stack delivery of internal web applications —
-                  designing Angular 5 frontend architecture, building ODATA REST
-                  APIs in .NET, and optimizing SQL Server stored procedures and
-                  LINQ queries end-to-end.
-                </li>
-                <li>
-                  Implemented Angular 5 modular design with a shared module
-                  managing all cross-module reusable components, improving code
-                  reuse and reducing duplication across the application.
-                </li>
-                <li>
-                  Created complex SQL queries, views, functions, and stored
-                  procedures in SQL Server, optimizing data retrieval
-                  performance through efficient LINQ and query tuning.
-                </li>
-                <li>
-                  Configured end-to-end Azure deployment pipelines from
-                  development through production, ensuring consistent,
-                  repeatable release processes with minimal manual intervention.
-                </li>
-                <li>
-                  Built RESTful APIs using .NET and ODATA, exposing structured
-                  data endpoints consumed by the Angular frontend and
-                  third-party integrations.
-                </li>
-                <li>
-                  Used Primeng and Angular Material Design components to deliver
-                  polished, consistent UI experiences aligned with Microsoft's
-                  internal design standards.
-                </li>
-                <li>
-                  Maintained source control repositories using Git, enforcing
-                  branching strategies and code review workflows across the
-                  team.
-                </li>
-              </ul>
-              <div class="tech-pills">
-                <span class="tp">Angular 5</span
-                ><span class="tp">.NET / ODATA</span
-                ><span class="tp">SQL Server</span
-                ><span class="tp">Azure Pipelines</span
-                ><span class="tp">Entity Framework</span
-                ><span class="tp">Primeng</span
-                ><span class="tp">TypeScript</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- APLOMB -->
-          <div class="exp-item fade">
-            <div class="exp-left">
-              <div class="exp-period">May 2016 — Jan 2018</div>
-              <div class="exp-company">Aplomb Technologies</div>
-              <div class="exp-loc">Edison, NJ</div>
-            </div>
-            <div class="exp-right">
-              <div class="exp-title">UI Developer</div>
-              <div class="exp-summary">
-                Started career as a UI Developer building Angular 2 SPAs and
-                ASP.NET MVC applications — establishing a strong foundation in
-                OOP, component architecture, REST API integration, and Azure
-                cloud deployment.
-              </div>
-              <ul class="exp-list">
-                <li>
-                  Built scalable front-end architecture using Angular 2,
-                  TypeScript, and Angular-CLI — applying OOP methodologies to
-                  create reusable, modular components and services across
-                  business and UI layers.
-                </li>
-                <li>
-                  Developed full application logic using C#, ASP.NET MVC, and
-                  Entity Framework, integrating with SQL Server 2008 for data
-                  persistence and business rule enforcement.
-                </li>
-                <li>
-                  Created RESTful Web APIs for UI data retrieval and integrated
-                  them into Angular components, enabling seamless communication
-                  between frontend and backend layers.
-                </li>
-                <li>
-                  Designed database structures including tables, views, and
-                  stored procedures in SQL using Visual Studio 2017, ensuring
-                  normalized, performant schemas for application data.
-                </li>
-                <li>
-                  Deployed applications on Microsoft Azure for high
-                  availability, managing environment configurations and release
-                  processes.
-                </li>
-                <li>
-                  Adopted Git for version control and Visual Studio Online for
-                  development tracking, ensuring full project traceability and
-                  collaborative workflow across the team.
-                </li>
-                <li>
-                  Leveraged Agile methodology for rapid iterative development,
-                  participating in sprint planning, daily standups, and
-                  retrospectives to ensure consistent delivery cadence.
-                </li>
-              </ul>
-              <div class="tech-pills">
-                <span class="tp">Angular 2</span
-                ><span class="tp">C# / ASP.NET</span
-                ><span class="tp">Entity Framework</span
-                ><span class="tp">Azure</span><span class="tp">SQL Server</span
-                ><span class="tp">REST APIs</span><span class="tp">Git</span>
+        <div class="hero-contact-card fade" id="contact">
+          <div class="hero-contact-inner">
+            <div class="contact-links">
+              <a href="mailto:sivavegi04@gmail.com" class="cl">
+                <div class="cl-icon">✉</div>
+                <div>
+                  <div class="cl-lbl">Email</div>
+                  <div class="cl-val">sivavegi04@gmail.com</div>
+                </div>
+              </a>
+              <a href="tel:9132323109" class="cl">
+                <div class="cl-icon">☎</div>
+                <div>
+                  <div class="cl-lbl">Phone</div>
+                  <div class="cl-val">(913) 232-3109</div>
+                </div>
+              </a>
+              <a href="https://www.linkedin.com/in/siva-veginati-27a21110a/" target="_blank" rel="noopener noreferrer"
+                class="cl">
+                <div class="cl-icon">in</div>
+                <div>
+                  <div class="cl-lbl">LinkedIn</div>
+                  <div class="cl-val">linkedin.com/in/siva-veginati</div>
+                </div>
+              </a>
+              <div class="cl">
+                <div class="cl-icon">📍</div>
+                <div>
+                  <div class="cl-lbl">Location</div>
+                  <div class="cl-val">
+                    Wilmington, DE — Open to Relocation
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
-
-      <!-- PROJECTS -->
-      <section
-        class="section"
-        id="projects"
-        style="background: var(--navy); border-top: none"
-      >
-        <div class="sec-head fade">
-          <div class="sec-label">Selected Work</div>
-          <h2>Case Studies</h2>
-          <p class="sec-desc">
-            A curated set of enterprise deliveries that show the problem, the
-            solution, and the operational impact.
-          </p>
-        </div>
-        <div class="proj-grid fade">
-          <article class="proj-card c1">
-            <div class="proj-idx">CapitalOne · 2026</div>
-            <div class="proj-title">
-              Angular 20 platform with Signals architecture
-            </div>
-            <div class="proj-meta">
-              <div class="proj-meta-row">
-                <span>Challenge</span>
-                <strong>
-                  Reduce change-detection overhead in a complex consumer app.
-                </strong>
-              </div>
-              <div class="proj-meta-row">
-                <span>What I built</span>
-                <strong>
-                  Standalone components, Signals, OnPush change detection,
-                  GitHub Actions quality gates, and Bloomreach CMS integration.
-                </strong>
-              </div>
-              <div class="proj-meta-row">
-                <span>Impact</span>
-                <strong>
-                  Faster content updates, cleaner architecture, and stronger
-                  merge confidence.
-                </strong>
-              </div>
-            </div>
-            <div class="proj-tags">
-              <span class="ptag">Angular 20</span
-              ><span class="ptag">Signals</span
-              ><span class="ptag">GitHub Actions</span
-              ><span class="ptag">Bloomreach WCM</span
-              ><span class="ptag">Jest</span>
-            </div>
-            <a class="proj-link" href="#experience">Read role details →</a>
-          </article>
-          <article class="proj-card c2">
-            <div class="proj-idx">Albertsons · 2022–2025</div>
-            <div class="proj-title">
-              Kafka modernization &amp; analytics pipeline
-            </div>
-            <div class="proj-meta">
-              <div class="proj-meta-row">
-                <span>Challenge</span>
-                <strong>
-                  Replace brittle point-to-point dependencies and unify
-                  analytics tracking across multiple repos.
-                </strong>
-              </div>
-              <div class="proj-meta-row">
-                <span>What I built</span>
-                <strong>
-                  Apache Kafka streaming, Adobe Launch / Adobe Analytics wiring,
-                  and front-end updates to support the new data flow.
-                </strong>
-              </div>
-              <div class="proj-meta-row">
-                <span>Impact</span>
-                <strong>
-                  Decoupled 4+ upstream services and made event tracking easier
-                  to evolve.
-                </strong>
-              </div>
-            </div>
-            <div class="proj-tags">
-              <span class="ptag">Apache Kafka</span
-              ><span class="ptag">Adobe Launch</span
-              ><span class="ptag">Adobe Analytics</span
-              ><span class="ptag">NgRx</span><span class="ptag">Node.js</span>
-            </div>
-            <a class="proj-link" href="#experience">Read role details →</a>
-          </article>
-          <article class="proj-card c3">
-            <div class="proj-idx">ABIM · 2025</div>
-            <div class="proj-title">
-              Clean Architecture platform with Angular 20 and .NET Core 9
-            </div>
-            <div class="proj-meta">
-              <div class="proj-meta-row">
-                <span>Challenge</span>
-                <strong>
-                  Create a maintainable foundation for a new full-stack platform
-                  with strong technical standards.
-                </strong>
-              </div>
-              <div class="proj-meta-row">
-                <span>What I built</span>
-                <strong>
-                  Clean Architecture patterns, REST APIs, Entity Framework,
-                  Angular 20 UI flows, and SQL Server performance tuning.
-                </strong>
-              </div>
-              <div class="proj-meta-row">
-                <span>Impact</span>
-                <strong>
-                  Established a shared engineering baseline the team could build
-                  on confidently.
-                </strong>
-              </div>
-            </div>
-            <div class="proj-tags">
-              <span class="ptag">Angular 20</span
-              ><span class="ptag">.NET Core 9</span
-              ><span class="ptag">Entity Framework</span
-              ><span class="ptag">SQL Server</span
-              ><span class="ptag">NZ-Zorro</span>
-            </div>
-            <a class="proj-link" href="#experience">Read role details →</a>
-          </article>
-          <article class="proj-card c4">
-            <div class="proj-idx">Lam Research · 2019–2021</div>
-            <div class="proj-title">
-              MEAN stack dashboard with AG-Grid and Power BI reporting
-            </div>
-            <div class="proj-meta">
-              <div class="proj-meta-row">
-                <span>Challenge</span>
-                <strong>
-                  Turn operational telemetry into something engineering and
-                  operations teams could use quickly.
-                </strong>
-              </div>
-              <div class="proj-meta-row">
-                <span>What I built</span>
-                <strong>
-                  A MEAN stack application with AG-Grid, D3.js, Plotly, Azure
-                  Insights, and Power BI dashboards.
-                </strong>
-              </div>
-              <div class="proj-meta-row">
-                <span>Impact</span>
-                <strong>
-                  Gave teams a clearer view of performance and reporting without
-                  manual spreadsheet work.
-                </strong>
-              </div>
-            </div>
-            <div class="proj-tags">
-              <span class="ptag">AG-Grid</span><span class="ptag">D3.js</span
-              ><span class="ptag">Plotly</span><span class="ptag">Power BI</span
-              ><span class="ptag">Azure Insights</span>
-            </div>
-            <a class="proj-link" href="#experience">Read role details →</a>
-          </article>
-        </div>
-      </section>
-
-      <!-- INSIGHTS -->
-      <section class="section" id="insights">
-        <div class="sec-head fade">
-          <div class="sec-label">Perspectives</div>
-          <h2>Engineering Notes</h2>
-          <p class="sec-desc">
-            Topics I tend to write or talk about: maintainable frontends,
-            reliable APIs, and delivery systems that keep teams moving.
-          </p>
-        </div>
-        <div class="insights-grid fade">
-          <article class="insight-card">
-            <div class="insight-kicker">01</div>
-            <div class="insight-title">
-              Angular systems that stay maintainable
-            </div>
-            <p class="insight-copy">
-              Standalone components, Signals, and OnPush are most valuable when
-              they are paired with clean boundaries, predictable state, and a
-              strong review culture.
-            </p>
-            <div class="insight-tags">
-              <span class="chip primary">Angular</span>
-              <span class="chip">Signals</span>
-              <span class="chip">Architecture</span>
-            </div>
-          </article>
-          <article class="insight-card">
-            <div class="insight-kicker">02</div>
-            <div class="insight-title">
-              Backends and APIs that stay predictable
-            </div>
-            <p class="insight-copy">
-              Good API design is mostly about consistency, clear contracts, and
-              avoiding accidental complexity as the system grows.
-            </p>
-            <div class="insight-tags">
-              <span class="chip primary">.NET</span>
-              <span class="chip">REST</span>
-              <span class="chip">SQL Server</span>
-            </div>
-          </article>
-          <article class="insight-card">
-            <div class="insight-kicker">03</div>
-            <div class="insight-title">
-              Delivery systems that keep teams moving
-            </div>
-            <p class="insight-copy">
-              CI/CD, testing gates, and stakeholder alignment matter because
-              they reduce friction before it becomes expensive.
-            </p>
-            <div class="insight-tags">
-              <span class="chip primary">CI/CD</span>
-              <span class="chip">Quality</span>
-              <span class="chip">Collaboration</span>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- EDUCATION -->
-      <section class="section" id="education">
-        <div class="sec-head fade">
-          <div class="sec-label">Academic Background</div>
-          <h2>Education</h2>
-        </div>
-        <div class="edu-cards fade">
-          <div class="edu-card">
-            <div class="edu-icon">🎓</div>
-            <div>
-              <div class="edu-badge">Graduate Degree</div>
-              <div class="edu-degree">Master of Science — Computer Science</div>
-              <div class="edu-school">
-                University of Central Missouri, Warrensburg, MO
-              </div>
-              <div class="edu-year">Aug 2014 — Dec 2015</div>
-            </div>
-          </div>
-          <div class="edu-card">
-            <div class="edu-icon">🏛</div>
-            <div>
-              <div class="edu-badge">Undergraduate Degree</div>
-              <div class="edu-degree">Bachelor of Technology</div>
-              <div class="edu-school">
-                Acharya Nagarjuna University, Guntur, Andhra Pradesh
-              </div>
-              <div class="edu-year">Sep 2010 — Jun 2014</div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-      <div class="fc">
-        © 2026 <span>Siva Veginati</span> · Lead Full-Stack Engineer ·
-        Wilmington, DE
       </div>
-      <div class="fl">
-        <a href="#hero">Top ↑</a>
-        <a href="#experience">Resume</a>
-        <a href="#projects">Case Studies</a>
-        <a
-          href="https://www.linkedin.com/in/siva-veginati-27a21110a/"
-          target="_blank"
-          rel="noopener noreferrer"
-          >LinkedIn</a
-        >
-        <a href="mailto:sivavegi04@gmail.com">Email</a>
-      </div>
-    </footer>
 
-    <script>
-      /* progress bar */
-      window.addEventListener("scroll", () => {
-        const d = document.documentElement;
-        document.getElementById("bar").style.width =
-          (d.scrollTop / (d.scrollHeight - d.clientHeight)) * 100 + "%";
+      <div class="hero-summary-band fade">
+        <div class="hero-summary-inner">
+          <div class="os-label">Professional Summary</div>
+          <div class="os-title">
+            10 Years of Enterprise Full-Stack Engineering
+          </div>
+          <p class="os-copy">
+            Over a decade, I have moved from UI Developer to Lead Full-Stack
+            Engineer, building and modernizing enterprise platforms across
+            fintech, retail, healthcare, and semiconductor teams. The through
+            line has stayed the same: strong architecture, full-stack
+            ownership, and close collaboration with product and business
+            partners.
+          </p>
+          <div class="os-highlights">
+            <div class="os-hi">
+              <span class="os-hi-num">6</span><span class="os-hi-lbl">Companies</span>
+            </div>
+            <div class="os-hi">
+              <span class="os-hi-num">10+</span><span class="os-hi-lbl">Years</span>
+            </div>
+            <div class="os-hi">
+              <span class="os-hi-num">3</span><span class="os-hi-lbl">Engineers Mentored</span>
+            </div>
+            <div class="os-hi">
+              <span class="os-hi-num">4+</span><span class="os-hi-lbl">Services Decoupled</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="sec-head fade">
+        <div class="sec-label">Technical Expertise</div>
+        <h2>Core Competencies</h2>
+        <p class="sec-desc">
+          A full-spectrum stack built over 10 years across frontend, backend,
+          cloud, analytics, and data visualization.
+        </p>
+      </div>
+      <div class="skills-grid fade">
+        <div class="skill-card">
+          <div class="sk-icon">⚡</div>
+          <div class="sk-cat">Frontend</div>
+          <div class="sk-title">UI Engineering</div>
+          <div class="sk-chips">
+            <span class="chip primary">Angular 20</span>
+            <span class="chip primary">React</span>
+            <span class="chip primary">TypeScript</span>
+            <span class="chip">RxJS</span>
+            <span class="chip">NgRx / Redux</span>
+            <span class="chip">Signals</span>
+            <span class="chip">Ionic</span>
+            <span class="chip">HTML5 / SCSS</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="sk-icon">🖥</div>
+          <div class="sk-cat">Backend</div>
+          <div class="sk-title">Server &amp; APIs</div>
+          <div class="sk-chips">
+            <span class="chip primary">.NET Core 9</span>
+            <span class="chip primary">Node.js</span>
+            <span class="chip primary">C# / ASP.NET</span>
+            <span class="chip">Entity Framework</span>
+            <span class="chip">REST / ODATA</span>
+            <span class="chip">SQL Server</span>
+            <span class="chip">MongoDB</span>
+            <span class="chip">Express.js</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="sk-icon">🎨</div>
+          <div class="sk-cat">Design Systems</div>
+          <div class="sk-title">UI Libraries</div>
+          <div class="sk-chips">
+            <span class="chip primary">Angular Material</span>
+            <span class="chip primary">Bootstrap 5</span>
+            <span class="chip primary">NZ-Zorro</span>
+            <span class="chip">Material UI</span>
+            <span class="chip">Primeng</span>
+            <span class="chip">Flex Layout</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="sk-icon">📊</div>
+          <div class="sk-cat">Data &amp; Visualization</div>
+          <div class="sk-title">Charts &amp; Grids</div>
+          <div class="sk-chips">
+            <span class="chip primary">AG-Grid</span>
+            <span class="chip primary">D3.js</span>
+            <span class="chip primary">Plotly</span>
+            <span class="chip">Angular Hi-Charts</span>
+            <span class="chip">Power BI</span>
+            <span class="chip">Azure App Insights</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="sk-icon">📡</div>
+          <div class="sk-cat">Analytics</div>
+          <div class="sk-title">Tag Management</div>
+          <div class="sk-chips">
+            <span class="chip primary">Adobe Launch</span>
+            <span class="chip primary">Adobe Analytics</span>
+            <span class="chip primary">Tealium</span>
+            <span class="chip">Google Analytics</span>
+            <span class="chip">Optimizely A/B</span>
+            <span class="chip">Data Layer</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="sk-icon">☁</div>
+          <div class="sk-cat">Cloud &amp; DevOps</div>
+          <div class="sk-title">Infrastructure</div>
+          <div class="sk-chips">
+            <span class="chip primary">Azure Cloud</span>
+            <span class="chip primary">GitHub Actions</span>
+            <span class="chip primary">Azure DevOps</span>
+            <span class="chip">Apache Kafka</span>
+            <span class="chip">CI/CD Pipelines</span>
+            <span class="chip">Agile / Scrum</span>
+            <span class="chip">Git</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="exp-timeline">
+        <!-- CAPITALONE -->
+        <div class="exp-item fade">
+          <div class="exp-left">
+            <div class="exp-period">Feb 2026 — Present</div>
+            <div class="exp-company">CapitalOne</div>
+            <div class="exp-loc">Wilmington, DE</div>
+          </div>
+          <div class="exp-right">
+            <div class="exp-title">Lead Software Engineer</div>
+            <div class="exp-summary">
+              Leading frontend architecture at one of the largest US banks —
+              driving Angular 20 adoption, CI/CD quality standards, and
+              Bloomreach CMS integration across enterprise-scale
+              consumer-facing applications.
+            </div>
+            <ul class="exp-list">
+              <li>
+                Architected and built scalable consumer web applications with
+                Angular 20 using standalone components, Signals, and Reactive
+                Forms, significantly reducing change detection overhead and
+                improving long-term maintainability.
+              </li>
+              <li>
+                Configured and maintained CI/CD pipelines via GitHub Actions
+                and Azure DevOps, incorporating automated Jest test gates and
+                code quality checks to enforce standards before every merge to
+                main.
+              </li>
+              <li>
+                Led pull request reviews across the engineering team,
+                identifying and resolving anti-patterns in change detection,
+                lazy loading, and reactive form design to ensure consistent,
+                high-quality code.
+              </li>
+              <li>
+                Integrated Bloomreach Web Content Management (WCM) platform to
+                enable non-technical stakeholders to update UI content
+                dynamically without requiring code deployments — eliminating a
+                recurring development bottleneck.
+              </li>
+              <li>
+                Implemented OnPush change detection and optimized component
+                architecture using Angular Signals, improving application
+                rendering performance measurably across key user flows.
+              </li>
+              <li>
+                Presented frontend architecture proposals and integration
+                design patterns in cross-team technical review sessions,
+                driving adoption of consistent Angular standards across
+                multiple engineering groups.
+              </li>
+              <li>
+                Partnered with product managers and business stakeholders to
+                assess technical feasibility of requirements, presenting
+                tradeoffs and risk assessments during sprint planning and
+                design sessions.
+              </li>
+            </ul>
+            <div class="tech-pills">
+              <span class="tp">Angular 20</span><span class="tp">Signals</span><span class="tp">GitHub
+                Actions</span><span class="tp">Azure DevOps</span><span class="tp">Bloomreach WCM</span><span
+                class="tp">Jest</span><span class="tp">TypeScript</span><span class="tp">RxJS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ABIM -->
+        <div class="exp-item fade">
+          <div class="exp-left">
+            <div class="exp-period">Aug 2025 — Jan 2026</div>
+            <div class="exp-company">ABIM</div>
+            <div class="exp-loc">Malvern, PA</div>
+          </div>
+          <div class="exp-right">
+            <div class="exp-title">Lead Full-Stack Engineer</div>
+            <div class="exp-summary">
+              Led full-stack engineering for the American Board of Internal
+              Medicine — establishing Clean Architecture standards, mentoring
+              the engineering team, and delivering a modern .NET Core 9 +
+              Angular 20 platform from the ground up.
+            </div>
+            <ul class="exp-list">
+              <li>
+                Led the design and development of dynamic, responsive web
+                applications using Angular 20, TypeScript, Bootstrap 5, and
+                the ng-zorro component library, optimizing for performance,
+                accessibility, and user experience.
+              </li>
+              <li>
+                Established Clean Architecture patterns and SOLID design
+                principles as team-wide engineering standards, conducting
+                architecture review sessions to evaluate all backend service
+                and API proposals before implementation.
+              </li>
+              <li>
+                Coached 3 junior developers through weekly design reviews,
+                TypeScript pairing sessions, and code quality workshops —
+                measurably reducing bug rates and improving the consistency of
+                delivered features.
+              </li>
+              <li>
+                Developed RESTful APIs and microservices using .NET Core 9,
+                ensuring clean separation of concerns, scalability, and
+                adherence to API design best practices.
+              </li>
+              <li>
+                Implemented Entity Framework Core 9 for ORM, leveraging LINQ
+                queries, database migrations, and optimized data access
+                patterns to support complex data requirements.
+              </li>
+              <li>
+                Designed and tuned complex SQL Server stored procedures,
+                views, and indexes, improving query performance and reducing
+                database load under production traffic.
+              </li>
+              <li>
+                Led sprint planning, code reviews, and deployment cycles
+                within an Agile/Scrum delivery environment, ensuring
+                consistent on-time delivery of features.
+              </li>
+              <li>
+                Optimized Angular build times and bundle size through AOT
+                compilation, code-splitting strategies, and Angular CLI
+                configuration improvements.
+              </li>
+            </ul>
+            <div class="tech-pills">
+              <span class="tp">Angular 20</span><span class="tp">.NET Core 9</span><span class="tp">NZ-Zorro</span><span
+                class="tp">Bootstrap 5</span><span class="tp">Entity Framework</span><span class="tp">SQL
+                Server</span><span class="tp">Clean Architecture</span><span class="tp">Agile</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ALBERTSONS -->
+        <div class="exp-item fade">
+          <div class="exp-left">
+            <div class="exp-period">Aug 2022 — Jul 2025</div>
+            <div class="exp-company">Albertsons</div>
+            <div class="exp-loc">Malvern, PA</div>
+          </div>
+          <div class="exp-right">
+            <div class="exp-title">Senior Full-Stack Engineer</div>
+            <div class="exp-summary">
+              Drove large-scale integration modernization and analytics
+              platform delivery at one of the US's largest grocery chains —
+              leading Kafka migration, Adobe Launch analytics pipelines, and
+              Search page modernization across 3 simultaneous workstreams.
+            </div>
+            <ul class="exp-list">
+              <li>
+                Developed dynamic, responsive front-end applications using
+                Angular 15/17/18 and React, leveraging TypeScript for type
+                safety and SCSS for modular styling; contributed to
+                Albertsons' custom Angular Material Design theme for
+                consistency across the platform.
+              </li>
+              <li>
+                Led integration modernization by replacing legacy
+                point-to-point data pipelines with Apache Kafka streaming,
+                decoupling 4+ upstream service dependencies and significantly
+                improving system resilience and operational efficiency.
+              </li>
+              <li>
+                Implemented end-to-end analytics data capture across multiple
+                repositories using Adobe Launch and Adobe Analytics, providing
+                marketing teams with comprehensive user behavior insights and
+                enabling data-driven decisions.
+              </li>
+              <li>
+                Automated third-party pixel validation as part of the CI/CD
+                release pipeline, reducing manual QA effort and enabling
+                reliable, repeatable deployments across multiple repositories.
+              </li>
+              <li>
+                Simultaneously led 3 independent workstreams — Search page
+                modernization, analytics pipeline, and Kafka integration —
+                delivering each within sprint commitments without dedicated
+                project management support.
+              </li>
+              <li>
+                Designed and implemented state management solutions using NgRx
+                in Angular and Redux in React, while utilizing RxJS for
+                efficient reactive component communication, improving
+                application performance and user experience.
+              </li>
+              <li>
+                Served as frontend technical partner to back-end engineering
+                teams, defining API contract expectations, reviewing
+                integration designs, and identifying performance improvements
+                across team boundaries.
+              </li>
+              <li>
+                Developed REST APIs using Node.js and Express.js to support
+                server-side data capture and reporting for marketing and
+                analytics strategies.
+              </li>
+              <li>
+                Integrated third-party pixels using Adobe Launch for
+                analytics, ensuring accurate cross-repository data tracking
+                and reporting consistency.
+              </li>
+            </ul>
+            <div class="tech-pills">
+              <span class="tp">Angular 15–18</span><span class="tp">React</span><span class="tp">Apache
+                Kafka</span><span class="tp">Adobe Launch</span><span class="tp">Adobe Analytics</span><span
+                class="tp">NgRx</span><span class="tp">Redux</span><span class="tp">Node.js</span><span
+                class="tp">Tealium</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DSW -->
+        <div class="exp-item fade">
+          <div class="exp-left">
+            <div class="exp-period">Apr 2021 — Jul 2022</div>
+            <div class="exp-company">Designer Brands (DSW)</div>
+            <div class="exp-loc">Cleveland, OH</div>
+          </div>
+          <div class="exp-right">
+            <div class="exp-title">Software Engineer II</div>
+            <div class="exp-summary">
+              Contributed to frontend modernization at DSW — driving Angular
+              architecture decisions, implementing A/B testing frameworks, and
+              building CMS-driven content experiences for one of the largest
+              US footwear retailers.
+            </div>
+            <ul class="exp-list">
+              <li>
+                Drove Angular module architecture decisions including NgRx
+                state management strategy, component decomposition, and
+                third-party library evaluation — improving maintainability and
+                reducing overall bundle size.
+              </li>
+              <li>
+                Designed and built user interfaces using Angular 11/12/14 with
+                Bootstrap for responsive layouts, enhancing existing HTML5,
+                CSS3, and TypeScript implementations.
+              </li>
+              <li>
+                Implemented A/B testing with Optimizely for UI variations,
+                enabling data-driven product decisions and improving
+                conversion rates through real user analysis.
+              </li>
+              <li>
+                Integrated Strapi CMS for content management, empowering the
+                business team to update site content dynamically without
+                engineering involvement.
+              </li>
+              <li>
+                Enhanced site performance and user experience by replacing
+                heavyweight third-party libraries with custom, reusable
+                in-house functions — reducing bundle size and improving load
+                time.
+              </li>
+              <li>
+                Advanced UI development using Angular Flex Layout, focusing on
+                modular, accessible, and responsive component design for
+                enhanced cross-device user experience.
+              </li>
+              <li>
+                Established and enforced unit testing standards using Karma
+                and Jasmine, setting meaningful coverage thresholds and
+                reviewing test quality during code reviews.
+              </li>
+              <li>
+                Collaborated closely with cross-functional teams and
+                implementation partners, translating business requirements
+                into structured, testable technical implementations.
+              </li>
+            </ul>
+            <div class="tech-pills">
+              <span class="tp">Angular 11–14</span><span class="tp">NgRx</span><span class="tp">Optimizely</span><span
+                class="tp">Strapi CMS</span><span class="tp">Karma/Jasmine</span><span class="tp">Bootstrap</span><span
+                class="tp">TypeScript</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAM RESEARCH -->
+        <div class="exp-item fade">
+          <div class="exp-left">
+            <div class="exp-period">Nov 2019 — Mar 2021</div>
+            <div class="exp-company">Lam Research</div>
+            <div class="exp-loc">Portland, OR</div>
+          </div>
+          <div class="exp-right">
+            <div class="exp-title">Software Engineer</div>
+            <div class="exp-summary">
+              Built full-stack MEAN applications and cross-platform Ionic
+              mobile apps for semiconductor equipment telemetry and reporting
+              — delivering data-rich dashboards with AG-Grid, D3.js, and Power
+              BI for engineering and operations teams.
+            </div>
+            <ul class="exp-list">
+              <li>
+                Designed, developed, and implemented a full MEAN stack web
+                application (MongoDB, Express.js, AngularJS, Node.js) from
+                scratch, delivering a comprehensive data management and
+                reporting platform for internal engineering teams.
+              </li>
+              <li>
+                Developed and maintained cross-platform mobile and web
+                applications using the Ionic framework, creating custom themes
+                and ensuring full responsiveness across all device sizes using
+                Ionic Grid and Flexbox.
+              </li>
+              <li>
+                Used AG-Grid for displaying live telemetry data in interactive
+                grids, and D3.js and Plotly for building rich, interactive
+                charts and reports for engineering analysis.
+              </li>
+              <li>
+                Configured Azure Application Insights to capture and monitor
+                telemetry data from production systems, enabling proactive
+                performance monitoring and alerting.
+              </li>
+              <li>
+                Created Power BI visualizations and dashboards from database
+                telemetry and operational data, providing actionable insights
+                to engineering and operations leadership.
+              </li>
+              <li>
+                Developed extensive REST APIs using Node.js, Express.js, and
+                MongoDB to support data retrieval and backend processing for
+                all application features.
+              </li>
+              <li>
+                Created interactive mockups using Adobe XD, collaborating
+                directly with end users to gather feedback and drive iterative
+                design improvements.
+              </li>
+              <li>
+                Authored detailed software specification documents for
+                offshore development teams, translating business requirements
+                into implementable technical designs that accelerated
+                cross-timezone delivery.
+              </li>
+            </ul>
+            <div class="tech-pills">
+              <span class="tp">MEAN Stack</span><span class="tp">Ionic</span><span class="tp">AG-Grid</span><span
+                class="tp">D3.js</span><span class="tp">Plotly</span><span class="tp">Power BI</span><span
+                class="tp">Azure Insights</span><span class="tp">MongoDB</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- MICROSOFT -->
+        <div class="exp-item fade">
+          <div class="exp-left">
+            <div class="exp-period">Apr 2018 — Oct 2019</div>
+            <div class="exp-company">Microsoft</div>
+            <div class="exp-loc">Redmond, WA</div>
+          </div>
+          <div class="exp-right">
+            <div class="exp-title">UI Developer (Full-Stack)</div>
+            <div class="exp-summary">
+              Full-stack engineer at Microsoft — owning end-to-end delivery of
+              internal web applications using Angular 5, .NET ODATA APIs, and
+              SQL Server, while configuring Azure deployment pipelines for
+              consistent, repeatable production releases.
+            </div>
+            <ul class="exp-list">
+              <li>
+                Owned full-stack delivery of internal web applications —
+                designing Angular 5 frontend architecture, building ODATA REST
+                APIs in .NET, and optimizing SQL Server stored procedures and
+                LINQ queries end-to-end.
+              </li>
+              <li>
+                Implemented Angular 5 modular design with a shared module
+                managing all cross-module reusable components, improving code
+                reuse and reducing duplication across the application.
+              </li>
+              <li>
+                Created complex SQL queries, views, functions, and stored
+                procedures in SQL Server, optimizing data retrieval
+                performance through efficient LINQ and query tuning.
+              </li>
+              <li>
+                Configured end-to-end Azure deployment pipelines from
+                development through production, ensuring consistent,
+                repeatable release processes with minimal manual intervention.
+              </li>
+              <li>
+                Built RESTful APIs using .NET and ODATA, exposing structured
+                data endpoints consumed by the Angular frontend and
+                third-party integrations.
+              </li>
+              <li>
+                Used Primeng and Angular Material Design components to deliver
+                polished, consistent UI experiences aligned with Microsoft's
+                internal design standards.
+              </li>
+              <li>
+                Maintained source control repositories using Git, enforcing
+                branching strategies and code review workflows across the
+                team.
+              </li>
+            </ul>
+            <div class="tech-pills">
+              <span class="tp">Angular 5</span><span class="tp">.NET / ODATA</span><span class="tp">SQL
+                Server</span><span class="tp">Azure Pipelines</span><span class="tp">Entity Framework</span><span
+                class="tp">Primeng</span><span class="tp">TypeScript</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- APLOMB -->
+        <div class="exp-item fade">
+          <div class="exp-left">
+            <div class="exp-period">May 2016 — Jan 2018</div>
+            <div class="exp-company">Aplomb Technologies</div>
+            <div class="exp-loc">Edison, NJ</div>
+          </div>
+          <div class="exp-right">
+            <div class="exp-title">UI Developer</div>
+            <div class="exp-summary">
+              Started career as a UI Developer building Angular 2 SPAs and
+              ASP.NET MVC applications — establishing a strong foundation in
+              OOP, component architecture, REST API integration, and Azure
+              cloud deployment.
+            </div>
+            <ul class="exp-list">
+              <li>
+                Built scalable front-end architecture using Angular 2,
+                TypeScript, and Angular-CLI — applying OOP methodologies to
+                create reusable, modular components and services across
+                business and UI layers.
+              </li>
+              <li>
+                Developed full application logic using C#, ASP.NET MVC, and
+                Entity Framework, integrating with SQL Server 2008 for data
+                persistence and business rule enforcement.
+              </li>
+              <li>
+                Created RESTful Web APIs for UI data retrieval and integrated
+                them into Angular components, enabling seamless communication
+                between frontend and backend layers.
+              </li>
+              <li>
+                Designed database structures including tables, views, and
+                stored procedures in SQL using Visual Studio 2017, ensuring
+                normalized, performant schemas for application data.
+              </li>
+              <li>
+                Deployed applications on Microsoft Azure for high
+                availability, managing environment configurations and release
+                processes.
+              </li>
+              <li>
+                Adopted Git for version control and Visual Studio Online for
+                development tracking, ensuring full project traceability and
+                collaborative workflow across the team.
+              </li>
+              <li>
+                Leveraged Agile methodology for rapid iterative development,
+                participating in sprint planning, daily standups, and
+                retrospectives to ensure consistent delivery cadence.
+              </li>
+            </ul>
+            <div class="tech-pills">
+              <span class="tp">Angular 2</span><span class="tp">C# / ASP.NET</span><span class="tp">Entity
+                Framework</span><span class="tp">Azure</span><span class="tp">SQL Server</span><span class="tp">REST
+                APIs</span><span class="tp">Git</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects" style="background: var(--navy); border-top: none">
+      <div class="sec-head fade">
+        <div class="sec-label">Selected Work</div>
+        <h2>Case Studies</h2>
+        <p class="sec-desc">
+          A curated set of enterprise deliveries that show the problem, the
+          solution, and the operational impact.
+        </p>
+      </div>
+      <div class="proj-grid fade">
+        <article class="proj-card c1">
+          <div class="proj-idx">CapitalOne · 2026</div>
+          <div class="proj-title">
+            Angular 20 platform with Signals architecture
+          </div>
+          <div class="proj-meta">
+            <div class="proj-meta-row">
+              <span>Challenge</span>
+              <strong>
+                Reduce change-detection overhead in a complex consumer app.
+              </strong>
+            </div>
+            <div class="proj-meta-row">
+              <span>What I built</span>
+              <strong>
+                Standalone components, Signals, OnPush change detection,
+                GitHub Actions quality gates, and Bloomreach CMS integration.
+              </strong>
+            </div>
+            <div class="proj-meta-row">
+              <span>Impact</span>
+              <strong>
+                Faster content updates, cleaner architecture, and stronger
+                merge confidence.
+              </strong>
+            </div>
+          </div>
+          <div class="proj-tags">
+            <span class="ptag">Angular 20</span><span class="ptag">Signals</span><span class="ptag">GitHub
+              Actions</span><span class="ptag">Bloomreach WCM</span><span class="ptag">Jest</span>
+          </div>
+          <a class="proj-link" href="#experience">Read role details →</a>
+        </article>
+        <article class="proj-card c2">
+          <div class="proj-idx">Albertsons · 2022–2025</div>
+          <div class="proj-title">
+            Kafka modernization &amp; analytics pipeline
+          </div>
+          <div class="proj-meta">
+            <div class="proj-meta-row">
+              <span>Challenge</span>
+              <strong>
+                Replace brittle point-to-point dependencies and unify
+                analytics tracking across multiple repos.
+              </strong>
+            </div>
+            <div class="proj-meta-row">
+              <span>What I built</span>
+              <strong>
+                Apache Kafka streaming, Adobe Launch / Adobe Analytics wiring,
+                and front-end updates to support the new data flow.
+              </strong>
+            </div>
+            <div class="proj-meta-row">
+              <span>Impact</span>
+              <strong>
+                Decoupled 4+ upstream services and made event tracking easier
+                to evolve.
+              </strong>
+            </div>
+          </div>
+          <div class="proj-tags">
+            <span class="ptag">Apache Kafka</span><span class="ptag">Adobe Launch</span><span class="ptag">Adobe
+              Analytics</span><span class="ptag">NgRx</span><span class="ptag">Node.js</span>
+          </div>
+          <a class="proj-link" href="#experience">Read role details →</a>
+        </article>
+        <article class="proj-card c3">
+          <div class="proj-idx">ABIM · 2025</div>
+          <div class="proj-title">
+            Clean Architecture platform with Angular 20 and .NET Core 9
+          </div>
+          <div class="proj-meta">
+            <div class="proj-meta-row">
+              <span>Challenge</span>
+              <strong>
+                Create a maintainable foundation for a new full-stack platform
+                with strong technical standards.
+              </strong>
+            </div>
+            <div class="proj-meta-row">
+              <span>What I built</span>
+              <strong>
+                Clean Architecture patterns, REST APIs, Entity Framework,
+                Angular 20 UI flows, and SQL Server performance tuning.
+              </strong>
+            </div>
+            <div class="proj-meta-row">
+              <span>Impact</span>
+              <strong>
+                Established a shared engineering baseline the team could build
+                on confidently.
+              </strong>
+            </div>
+          </div>
+          <div class="proj-tags">
+            <span class="ptag">Angular 20</span><span class="ptag">.NET Core 9</span><span class="ptag">Entity
+              Framework</span><span class="ptag">SQL Server</span><span class="ptag">NZ-Zorro</span>
+          </div>
+          <a class="proj-link" href="#experience">Read role details →</a>
+        </article>
+        <article class="proj-card c4">
+          <div class="proj-idx">Lam Research · 2019–2021</div>
+          <div class="proj-title">
+            MEAN stack dashboard with AG-Grid and Power BI reporting
+          </div>
+          <div class="proj-meta">
+            <div class="proj-meta-row">
+              <span>Challenge</span>
+              <strong>
+                Turn operational telemetry into something engineering and
+                operations teams could use quickly.
+              </strong>
+            </div>
+            <div class="proj-meta-row">
+              <span>What I built</span>
+              <strong>
+                A MEAN stack application with AG-Grid, D3.js, Plotly, Azure
+                Insights, and Power BI dashboards.
+              </strong>
+            </div>
+            <div class="proj-meta-row">
+              <span>Impact</span>
+              <strong>
+                Gave teams a clearer view of performance and reporting without
+                manual spreadsheet work.
+              </strong>
+            </div>
+          </div>
+          <div class="proj-tags">
+            <span class="ptag">AG-Grid</span><span class="ptag">D3.js</span><span class="ptag">Plotly</span><span
+              class="ptag">Power BI</span><span class="ptag">Azure Insights</span>
+          </div>
+          <a class="proj-link" href="#experience">Read role details →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- INSIGHTS -->
+    <section class="section" id="insights">
+      <div class="sec-head fade">
+        <div class="sec-label">Perspectives</div>
+        <h2>Engineering Notes</h2>
+        <p class="sec-desc">
+          Topics I tend to write or talk about: maintainable frontends,
+          reliable APIs, and delivery systems that keep teams moving.
+        </p>
+      </div>
+      <div class="insights-grid fade">
+        <article class="insight-card">
+          <div class="insight-kicker">01</div>
+          <div class="insight-title">
+            Angular systems that stay maintainable
+          </div>
+          <p class="insight-copy">
+            Standalone components, Signals, and OnPush are most valuable when
+            they are paired with clean boundaries, predictable state, and a
+            strong review culture.
+          </p>
+          <div class="insight-tags">
+            <span class="chip primary">Angular</span>
+            <span class="chip">Signals</span>
+            <span class="chip">Architecture</span>
+          </div>
+        </article>
+        <article class="insight-card">
+          <div class="insight-kicker">02</div>
+          <div class="insight-title">
+            Backends and APIs that stay predictable
+          </div>
+          <p class="insight-copy">
+            Good API design is mostly about consistency, clear contracts, and
+            avoiding accidental complexity as the system grows.
+          </p>
+          <div class="insight-tags">
+            <span class="chip primary">.NET</span>
+            <span class="chip">REST</span>
+            <span class="chip">SQL Server</span>
+          </div>
+        </article>
+        <article class="insight-card">
+          <div class="insight-kicker">03</div>
+          <div class="insight-title">
+            Delivery systems that keep teams moving
+          </div>
+          <p class="insight-copy">
+            CI/CD, testing gates, and stakeholder alignment matter because
+            they reduce friction before it becomes expensive.
+          </p>
+          <div class="insight-tags">
+            <span class="chip primary">CI/CD</span>
+            <span class="chip">Quality</span>
+            <span class="chip">Collaboration</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section" id="education">
+      <div class="sec-head fade">
+        <div class="sec-label">Academic Background</div>
+        <h2>Education</h2>
+      </div>
+      <div class="edu-cards fade">
+        <div class="edu-card">
+          <div class="edu-icon">🎓</div>
+          <div>
+            <div class="edu-badge">Graduate Degree</div>
+            <div class="edu-degree">Master of Science — Computer Science</div>
+            <div class="edu-school">
+              University of Central Missouri, Warrensburg, MO
+            </div>
+            <div class="edu-year">Aug 2014 — Dec 2015</div>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-icon">🏛</div>
+          <div>
+            <div class="edu-badge">Undergraduate Degree</div>
+            <div class="edu-degree">Bachelor of Technology</div>
+            <div class="edu-school">
+              Acharya Nagarjuna University, Guntur, Andhra Pradesh
+            </div>
+            <div class="edu-year">Sep 2010 — Jun 2014</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="fc">
+      © 2026 <span>Siva Veginati</span> · Lead Full-Stack Engineer ·
+      Wilmington, DE
+    </div>
+    <div class="fl">
+      <a href="#hero">Top ↑</a>
+      <a href="#experience">Resume</a>
+      <a href="#projects">Case Studies</a>
+      <a href="https://www.linkedin.com/in/siva-veginati-27a21110a/" target="_blank"
+        rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:sivavegi04@gmail.com">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    /* progress bar */
+    window.addEventListener("scroll", () => {
+      const d = document.documentElement;
+      document.getElementById("bar").style.width =
+        (d.scrollTop / (d.scrollHeight - d.clientHeight)) * 100 + "%";
+    });
+    const header = document.querySelector("header");
+    const navToggle = document.querySelector(".nav-toggle");
+    const navLinks = document.querySelectorAll("nav a");
+
+    if (navToggle && header) {
+      navToggle.addEventListener("click", () => {
+        const isOpen = header.classList.toggle("nav-open");
+        navToggle.setAttribute("aria-expanded", String(isOpen));
       });
-      const header = document.querySelector("header");
-      const navToggle = document.querySelector(".nav-toggle");
-      const navLinks = document.querySelectorAll("nav a");
 
-      if (navToggle && header) {
-        navToggle.addEventListener("click", () => {
-          const isOpen = header.classList.toggle("nav-open");
-          navToggle.setAttribute("aria-expanded", String(isOpen));
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          header.classList.remove("nav-open");
+          navToggle.setAttribute("aria-expanded", "false");
         });
+      });
+    }
 
-        navLinks.forEach((link) => {
-          link.addEventListener("click", () => {
-            header.classList.remove("nav-open");
-            navToggle.setAttribute("aria-expanded", "false");
-          });
-        });
-      }
+    function escapeHtml(text) {
+      return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
 
-      function escapeHtml(text) {
-        return String(text)
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;")
-          .replace(/'/g, "&#39;");
-      }
+    function cleanText(text) {
+      return String(text).replace(/\s+/g, " ").trim();
+    }
 
-      function cleanText(text) {
-        return String(text).replace(/\s+/g, " ").trim();
-      }
+    function textOf(root, selector) {
+      const el = root.querySelector(selector);
+      return el ? cleanText(el.textContent || "") : "";
+    }
 
-      function textOf(root, selector) {
-        const el = root.querySelector(selector);
-        return el ? cleanText(el.textContent || "") : "";
-      }
+    function buildResumeHtml() {
+      const name = textOf(document, ".hero-name");
+      const title = textOf(document, ".hero-role");
+      const intro = textOf(document, ".hero-bio");
+      const contactItems = Array.from(
+        document.querySelectorAll(".hero-contact-card .cl"),
+      )
+        .map((item) => ({
+          label: textOf(item, ".cl-lbl"),
+          value: textOf(item, ".cl-val"),
+        }))
+        .filter((item) => item.label && item.value);
 
-      function buildResumeHtml() {
-        const name = textOf(document, ".hero-name");
-        const title = textOf(document, ".hero-role");
-        const intro = textOf(document, ".hero-bio");
-        const contactItems = Array.from(
-          document.querySelectorAll(".hero-contact-card .cl"),
+      const experiences = Array.from(
+        document.querySelectorAll("#experience .exp-item"),
+      ).map((item) => ({
+        role: textOf(item, ".exp-title"),
+        company: textOf(item, ".exp-company"),
+        location: textOf(item, ".exp-loc"),
+        period: textOf(item, ".exp-period"),
+        summary: textOf(item, ".exp-summary"),
+        bullets: Array.from(item.querySelectorAll(".exp-list li"))
+          .slice(0, 3)
+          .map((li) => cleanText(li.textContent || "")),
+      }));
+
+      const education = Array.from(
+        document.querySelectorAll("#education .edu-card"),
+      ).map((item) => ({
+        degree: textOf(item, ".edu-degree"),
+        school: textOf(item, ".edu-school"),
+        year: textOf(item, ".edu-year"),
+      }));
+
+      const contactHtml = contactItems
+        .map(
+          (item) =>
+            `<span class="pill"><strong>${escapeHtml(
+              item.label,
+            )}:</strong> ${escapeHtml(item.value)}</span>`,
         )
-          .map((item) => ({
-            label: textOf(item, ".cl-lbl"),
-            value: textOf(item, ".cl-val"),
-          }))
-          .filter((item) => item.label && item.value);
+        .join("");
 
-        const experiences = Array.from(
-          document.querySelectorAll("#experience .exp-item"),
-        ).map((item) => ({
-          role: textOf(item, ".exp-title"),
-          company: textOf(item, ".exp-company"),
-          location: textOf(item, ".exp-loc"),
-          period: textOf(item, ".exp-period"),
-          summary: textOf(item, ".exp-summary"),
-          bullets: Array.from(item.querySelectorAll(".exp-list li"))
-            .slice(0, 3)
-            .map((li) => cleanText(li.textContent || "")),
-        }));
-
-        const education = Array.from(
-          document.querySelectorAll("#education .edu-card"),
-        ).map((item) => ({
-          degree: textOf(item, ".edu-degree"),
-          school: textOf(item, ".edu-school"),
-          year: textOf(item, ".edu-year"),
-        }));
-
-        const contactHtml = contactItems
-          .map(
-            (item) =>
-              `<span class="pill"><strong>${escapeHtml(
-                item.label,
-              )}:</strong> ${escapeHtml(item.value)}</span>`,
-          )
-          .join("");
-
-        const experienceHtml = experiences
-          .map(
-            (item) => `
+      const experienceHtml = experiences
+        .map(
+          (item) => `
               <section class="entry">
                 <div class="entry-head">
                   <div>
                     <h3 class="role">${escapeHtml(item.role)}</h3>
                     <div class="meta">${escapeHtml(item.company)} · ${escapeHtml(
-                      item.location,
-                    )}</div>
+            item.location,
+          )}</div>
                   </div>
                   <div class="period">${escapeHtml(item.period)}</div>
                 </div>
                 <p class="summary">${escapeHtml(item.summary)}</p>
                 <ul class="bullets">
                   ${item.bullets
-                    .map((bullet) => `<li>${escapeHtml(bullet)}</li>`)
-                    .join("")}
+              .map((bullet) => `<li>${escapeHtml(bullet)}</li>`)
+              .join("")}
                 </ul>
               </section>
             `,
-          )
-          .join("");
+        )
+        .join("");
 
-        const educationHtml = education
-          .map(
-            (item) => `
+      const educationHtml = education
+        .map(
+          (item) => `
               <section class="edu-entry">
                 <h3 class="role">${escapeHtml(item.degree)}</h3>
                 <div class="meta">${escapeHtml(item.school)} · ${escapeHtml(
-                  item.year,
-                )}</div>
+            item.year,
+          )}</div>
               </section>
             `,
-          )
-          .join("");
+        )
+        .join("");
 
-        return `<!doctype html>
+      return `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -2742,43 +3014,44 @@
     </main>
   </body>
 </html>`;
-      }
+    }
 
-      function downloadResume() {
-        const filename = "Siva_Veginati_Resume.html";
-        const html = buildResumeHtml();
-        const blob = new Blob([html], { type: "text/html;charset=utf-8" });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-        window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-      }
+    function downloadResume() {
+      const filename = "Siva_Veginati_Resume.html";
+      const html = buildResumeHtml();
+      const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
 
-      const downloadResumeButton = document.getElementById("download-resume");
-      if (downloadResumeButton) {
-        downloadResumeButton.addEventListener("click", (event) => {
-          event.preventDefault();
-          downloadResume();
+    const downloadResumeButton = document.getElementById("download-resume");
+    if (downloadResumeButton) {
+      downloadResumeButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        downloadResume();
+      });
+    }
+
+    /* fade in on scroll */
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e, i) => {
+          if (e.isIntersecting) {
+            setTimeout(() => e.target.classList.add("in"), i * 80);
+            io.unobserve(e.target);
+          }
         });
-      }
+      },
+      { threshold: 0.07 },
+    );
+    document.querySelectorAll(".fade").forEach((el) => io.observe(el));
+  </script>
+</body>
 
-      /* fade in on scroll */
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e, i) => {
-            if (e.isIntersecting) {
-              setTimeout(() => e.target.classList.add("in"), i * 80);
-              io.unobserve(e.target);
-            }
-          });
-        },
-        { threshold: 0.07 },
-      );
-      document.querySelectorAll(".fade").forEach((el) => io.observe(el));
-    </script>
-  </body>
 </html>
