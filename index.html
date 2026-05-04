@@ -1781,7 +1781,7 @@
           </p>
 
           <div class="hero-btns fade">
-            <a href="#projects" class="btn-solid">View Case Studies ↓</a>
+            <a href="#projects" class="btn-solid">View Hilights ↓</a>
             <a href="mailto:sivavegi04@gmail.com" class="btn-solid">Email Me</a>
             <a href="https://www.linkedin.com/in/siva-veginati-27a21110a/" target="_blank" rel="noopener noreferrer"
               class="btn-outline">LinkedIn</a>
@@ -2442,7 +2442,7 @@
     <section class="section" id="projects">
       <div class="sec-head fade">
         <div class="sec-label">Selected Work</div>
-        <h2>Case Studies</h2>
+        <h2>Hilights</h2>
         <p class="sec-desc">
           A curated set of enterprise deliveries that show the problem, the
           solution, and the operational impact.
@@ -2689,7 +2689,7 @@
     <div class="fl">
       <a href="#hero">Top ↑</a>
       <a href="#experience">Resume</a>
-      <a href="#projects">Case Studies</a>
+      <a href="#projects">Hilights</a>
       <a href="https://www.linkedin.com/in/siva-veginati-27a21110a/" target="_blank"
         rel="noopener noreferrer">LinkedIn</a>
       <a href="mailto:sivavegi04@gmail.com">Email</a>
@@ -2978,17 +2978,14 @@
     }
 
     function downloadResume() {
-      const filename = "Siva_Veginati_Resume.pdf";
       const html = buildResumeHtml();
-      const blob = new Blob([html], { type: "text/html;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = filename;
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+      const printWindow = window.open("", "_blank");
+      printWindow.document.write(html);
+      printWindow.document.close();
+      printWindow.focus();
+      printWindow.onload = function () {
+        printWindow.print();
+      };
     }
 
     const downloadResumeButton = document.getElementById("download-resume");
